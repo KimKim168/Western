@@ -223,7 +223,7 @@
 /* === Start Colors Project === */
 
 /* --primary: #655eb3; camlibdata.com */
-/* --primary: #6A2E90; sesor.com */
+/* --primary: #05369F; sesor.com */
 /* --primary-two: #F3AB1C; sesor.com */
 /* --primary: #93191e; buddhist.gov.edu */
 /* --primary: #134571; book-cambo */
@@ -237,7 +237,7 @@
     --card-foreground: oklch(0.145 0 0);
     --popover: oklch(1 0 0);
     --popover-foreground: oklch(0.145 0 0);
-    --primary: #6A2E90;
+    --primary: #05369F;
     --dark-primary: #781216;
     --primary-two: #f3ab1c;
     --primary-three: #8ab35e;
@@ -270,7 +270,7 @@
     --sidebar-border: oklch(0.922 0 0);
     --sidebar-ring: oklch(0.87 0 0);
 
-    --true-primary: #6A2E90;
+    --true-primary: #05369F;
 }
 
 /* .dark {
@@ -310,7 +310,7 @@
     --sidebar-border: oklch(0.269 0 0);
     --sidebar-ring: oklch(0.439 0 0);
 
-    --true-primary: #6A2E90;
+    --true-primary: #05369F;
 } */
 
 @layer base {
