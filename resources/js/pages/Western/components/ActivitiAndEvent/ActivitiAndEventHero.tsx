@@ -1,4 +1,6 @@
-import Header from './Header';
+import Header from "@/pages/Buddhist/components/Header";
+import ButtonSimple from "@/pages/Sesor/components/Bottons/ButtonSimple";
+import ActivitiAndEventCard from "./ActivitiAndEventCard";
 
 interface StudentCouncil {
     title: string;
@@ -6,10 +8,10 @@ interface StudentCouncil {
     images: { image: string }[];
 }
 
-const WesternHero = () => {
+const ActivitiAndEventHero = () => {
     // Static data
     const studentCouncil: StudentCouncil = {
-        title: 'Western International School',
+        title: 'School Life Activities and Events',
         long_description: `
       <p>Western International School began to help shape the children's future in the year 2003 when it first opened. Since then, we have been continuously aiming to be Cambodia's leading and most progressive bilingual international school.
 <p>We establish our students' educational background by providing a bilingual education program to build their literacy skills and attain proficiency in the English language. We also have summer classes and exchange programs which provide quality education or the students, preparing them to pursue their secondary education anywhere in the world.</p>
@@ -21,8 +23,8 @@ const WesternHero = () => {
     };
 
     return (
-        <div className="mt-16">
-            <Header title={'Welcome to Western International School'} />
+        <div className="mt-16  section-container">
+            <Header title={'Activities and Events'} />
             <div className="relative mx-auto mt-8 flex flex-col px-4 sm:px-6 lg:px-0">
                 {/* Hero Image */}
                 <div className="relative w-full">
@@ -38,21 +40,18 @@ const WesternHero = () => {
                 </div>
 
                 {/* Description Card */}
-                <div className="absolute bottom-0 z-10 bg-primary/60">
-                    <div className="mx-auto flex flex-col items-start gap-[50px] rounded-xl p-4 px-8 shadow-lg lg:flex-row lg:items-center dark:shadow-foreground/10">
-                        <h3 className="mb-4 text-2xl font-bold tracking-tight text-white sm:text-[40px]">{studentCouncil.title}</h3>
-                        <div className="flex w-full flex-1 gap-4 break-words">
-                            <div className="h-auto w-6 border bg-white"></div>
-                            <div
-                                className="ck-content prose max-w-none bg-background p-4 py-6 text-base leading-relaxed text-primary dark:prose-invert"
-                                dangerouslySetInnerHTML={{ __html: studentCouncil.long_description }}
-                            />
+                <div className="absolute bottom-0 z-10 bg-primary/60 w-full">
+                    <div className="w-full flex flex-col items-start p-4 px-8">
+                        <h3 className="mb-4 text-2xl tracking-tight bg-white text-primary p-4 sm:text-3xl">{studentCouncil.title}</h3>
+                        <div className="mt-16">
+                        <ButtonSimple title='Read More' link={''}/>
                         </div>
                     </div>
                 </div>
             </div>
+            <ActivitiAndEventCard/>
         </div>
     );
 };
 
-export default WesternHero;
+export default ActivitiAndEventHero;

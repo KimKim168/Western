@@ -31,7 +31,6 @@ const Navbar02Page = () => {
                         >
                             Book Your Delivery
                         </Link>
-
                         <LanguageSwitcher />
                         {/* Mobile Menu */}
                         <div className="lg:hidden">

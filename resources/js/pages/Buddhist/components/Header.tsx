@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 
-const Header = ({ title }) => {
+const Header = ({ title, short_description }) => {
   const textRef = useRef(null);
   const [lineWidth, setLineWidth] = useState(0);
 
@@ -26,6 +26,9 @@ const Header = ({ title }) => {
         className="mt-1 h-[3px] bg-primary rounded-full"
         style={{ width: `${lineWidth}px` }}
       ></div>
+      <div className="text-lg mt-4">
+        {short_description}
+      </div>
     </div>
   );
 };

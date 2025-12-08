@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "motion/react";
 import { usePage, Link } from "@inertiajs/react";
-import { ChevronRight, ChevronUp } from "lucide-react";
+import { ChevronRight, ChevronUp, Dot } from "lucide-react";
 
 const transition = {
   type: "spring",
@@ -59,7 +59,7 @@ export const MenuItem = ({
           <motion.div
             transition={transition}
             layoutId="active"
-            className="bg-blue-950 w-[250px] overflow-hidden shadow-xl"
+            className="bg-gray-200 w-[250px] overflow-hidden shadow-xl"
           >
             <motion.div layout className="h-full w-full p-4">
               {children}
@@ -88,11 +88,12 @@ export const HoveredLink = ({
     <Link
       href={href}
       {...rest}
-      className={`group flex items-center text-sm w-full border-b-[0.5px] border-white py-2 text-white ${
+      className={`group flex items-center text-sm w-full hover:text-red-500 border-b-[0.5px] border-primary py-2 text-primary ${
         isActive ? "text-red-500 font-extrabold" : ""
       }`}
     >
-      <ChevronRight className={`w-4 h-4 mr-1  ${isActive ? 'w-4 h-4 mr-4':' opacity-0 group-hover:opacity-100 transition-opacity duration-300'}`} />
+      {/* <ChevronRight className={`w-4 h-4 mr-1  ${isActive ? 'w-4 h-4 mr-4':' opacity-0 group-hover:opacity-100 transition-opacity duration-300'}`} /> */}
+      <Dot className={`w-4 h-4 mr-4  ${isActive ? 'w-4 h-4 ':'transition-opacity duration-300'}`}/>
       <span className="transition-transform -translate-x-4 duration-300 group-hover:translate-x-[10px]">
         {children}
       </span>

@@ -10,7 +10,7 @@ const ButtonSimple = ({ title, link, targetBlank }: any) => {
             <Button
                 asChild
                 className={cn(
-                    'button w-[200px] bg-primary-two px-2 font-manrope-bold text-[13px] text-primary transition-all hover:bg-primary-two md:text-[15px]',
+                    'button w-[120px] bg-primary-two hover:bg-primary-two rounded-none px-2 text-[13px] text-white transition-all md:text-[15px]',
                     'newStyle',
                 )}
             >
@@ -33,7 +33,6 @@ const StyledWrapper = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
-        border-radius: 9999px;
         gap: 8px;
         border: none;
         transition: all 0.3s ease;

@@ -5,6 +5,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 export default function PostCarousel() {
     const { posts } = usePage<any>().props;
     const { locale } = usePage().props;
+    
     return (
         <>
             <Carousel opts={{ align: 'start' }}>

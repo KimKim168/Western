@@ -33,8 +33,8 @@ const NavbarPage = () => {
       <nav
         ref={headerRef}
         className={`
-          fixed top-0 left-0 w-full z-50 transition-all duration-300
-          ${isSticky ? 'bg-white/70 backdrop-blur-lg shadow-sm' : 'bg-transparent'}
+          fixed top-0 left-0 w-full z-50 transition-all duration-300 
+          ${isSticky ? 'bg-[url("/assets/buddhist/image.png")] ' : 'bg-primary'}
         `}
       >
         <div className="mx-auto max-w-screen-2xl px-4 xl:px-16">

@@ -1,5 +1,5 @@
 export const Logo = () => (
     <a href="/">
-        <img id="logo-7" className="h-10 md:h-16 object-contain w-full" src="/assets/sesor/SESORLogo1.png"></img>
+        <img id="logo-7" className="h-44 md:h-56 object-contain" src="/assets/buddhist/logo.png"></img>
     </a>
 );

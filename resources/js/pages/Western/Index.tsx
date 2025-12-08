@@ -1,7 +1,10 @@
 
 import WesternHero from '../Buddhist/components/WesternHero';
 import WesternLayout from './WesternLayout';
-import Header from '../Buddhist/components/Header';
+import Statistics from '../Buddhist/components/Statistics';
+import Campush from './components/Campush';
+import ActivitiAndEventHero from './components/ActivitiAndEvent/ActivitiAndEventHero';
+import Contact from './components/Contact';
 
 const Index = () => {
     return (
@@ -22,7 +25,10 @@ const Index = () => {
                 </div>
             </div>
             <WesternHero/>
-            <Header title={'Statistics'}/>
+            <Statistics/>
+            <Campush/>
+            <ActivitiAndEventHero/>
+            <Contact/>
         </WesternLayout>
     );
 };

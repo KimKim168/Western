@@ -6,9 +6,9 @@ use Inertia\Inertia;
 Route::get('/', function () {
     return Inertia::render('Western/Index');
 });
-Route::get('/about_us', function () {
-    return Inertia::render('Sesor/AboutUs/Index');
-})->name('about_us');
+Route::get('/history_and_values', function () {
+    return Inertia::render('Western/HistoryAndValuse/Index');
+})->name('history_and_values');
 Route::get('/campaign_promotion', function () {
     return Inertia::render('Sesor/AboutUs/CampaignPromotion');
 })->name('campaign_promotion');
