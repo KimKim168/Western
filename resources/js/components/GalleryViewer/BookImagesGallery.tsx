@@ -18,7 +18,16 @@ const images = [
 ];
 
 export default function BookImagesGallery({
-    images = ['https://www.elibrary-rule.com/assets/images/theses/Thesis2019%20(107).jpg'],
+    images = ['https://www.elibrary-rule.com/assets/images/theses/Thesis2019%20(107).jpg',
+        'https://www.elibrary-rule.com/assets/images/theses/Thesis2019%20(106).jpg',
+    'https://www.elibrary-rule.com/assets/images/theses/Thesis2019%20(105).jpg',
+    'https://www.elibrary-rule.com/assets/images/theses/Thesis2019%20(104).jpg',
+    'https://www.elibrary-rule.com/assets/images/theses/Thesis2019%20(103).jpg',
+    'https://www.elibrary-rule.com/assets/images/theses/Thesis2019%20(102).jpg',
+    'https://www.elibrary-rule.com/assets/images/theses/Thesis2019%20(101).jpg',
+    'https://www.elibrary-rule.com/assets/images/theses/Thesis2019%20(108).jpg',
+    'https://www.elibrary-rule.com/assets/images/theses/Thesis2019%20(109).jpg',
+    ],
     mainImageClassName = '',
 }) {
     const [mainImage, setMainImage] = useState(images[0]);

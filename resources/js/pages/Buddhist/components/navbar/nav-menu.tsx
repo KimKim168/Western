@@ -34,7 +34,7 @@ export function MyNavMenu({ className }: { className?: string }) {
                                     <div className={`flex flex-col space-y-4 text-sm `}>
                                         <HoveredLink href="/history_and_values" >{t('History and Values')}</HoveredLink>
                                         <HoveredLink href="/school_facilities">{t('School Facilities')}</HoveredLink>
-                                        <HoveredLink href="/campuses">{t('Campuses')}</HoveredLink>
+                                        <HoveredLink href="/our_campuses">{t('Our Campuses')}</HoveredLink>
                                     </div>
                                 </MenuItem>
                             </Link>
