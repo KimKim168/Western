@@ -9,8 +9,7 @@ const ExchangeProgram = ({ children }: { children: any[] }) => {
 
     return (
         <div className="mt-36 ">
-            <div className="grid section-container grid-cols-1 gap-10 lg:grid-cols-12">
-                
+            <div className="grid section-container grid-cols-1 gap-10 lg:grid-cols-12"> 
                 
                 {/* Main Content */}
                 <div className="space-y-10 lg:col-span-8">
