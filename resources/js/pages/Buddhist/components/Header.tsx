@@ -1,6 +1,7 @@
+import { cn } from "@/lib/utils";
 import React, { useRef, useEffect, useState } from "react";
 
-const Header = ({ title, short_description }) => {
+const Header = ({ title, short_description, className }) => {
   const textRef = useRef(null);
   const [lineWidth, setLineWidth] = useState(0);
 
@@ -12,7 +13,7 @@ const Header = ({ title, short_description }) => {
   }, [title]);
 
   return (
-    <div className="flex flex-col items-center text-center">
+    <div className={cn('flex flex-col items-center text-center', className)}>
       {/* Title */}
       <p
         ref={textRef}

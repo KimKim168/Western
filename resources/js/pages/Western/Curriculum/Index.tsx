@@ -23,7 +23,6 @@ const Index = () => {
             
             <div className="mt-8 section-container">
                 <Header title={child?.title} />
-
                 <img
                     src={`/assets/buddhist/${child?.images?.[0]?.image}`}
                     alt={child?.title}

@@ -37,7 +37,7 @@ const NavbarPage = () => {
           ${isSticky ? 'bg-[url("/assets/buddhist/image.png")] ' : 'bg-primary'}
         `}
       >
-        <div className="mx-auto max-w-screen-2xl px-4 xl:px-16">
+        <div className="section-container">
           <div className="flex items-center justify-between h-24 xl:h-28">
             
             {/* LOGO  */}

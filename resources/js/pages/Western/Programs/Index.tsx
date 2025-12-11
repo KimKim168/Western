@@ -14,13 +14,74 @@ const Index = () => {
         title: "Student Exchange Overview",
         title_kh: "ព័ត៌មានអំពីកម្មវិធីប្ដូរនិស្សិត",
         long_description: `
-          <p>The Student Exchange Program allows learners to explore new cultures,
-          improve language skills, and gain international academic experience.</p>
-          <ul>
-            <li>1–6 month exchange duration</li>
-            <li>Partner schools across Asia & Europe</li>
-            <li>Full academic credit transfer</li>
-          </ul>
+          <section>
+  <p class="mb-4">
+    The U.S. Exchange Program is an American cultural exchange where our students study abroad in one of our school partners in the United States while they live with a volunteer host family for 1 semester. This program allows our students to strengthen their skills in using the English language, learn new perspectives in life, adjust to new situations, and be independent.
+  </p>
+  <p class="mb-6">
+    Since 2005, Western has cooperated with American partners to help bring our students abroad to study and live as exchange students. Then in 2018, we broadened the scope of this Study Program and launched it in Australia as well. Every year, about 20-40 students are being sent outside the country for this program.
+  </p>
+
+  <h2 class="text-2xl font-semibold mb-4">Why Exchange?</h2>
+  
+  <ol class="list-decimal space-y-4">
+    <li>
+      <h3 class="font-semibold">See the World</h3>
+      <p>
+        Have the opportunity to see the world. Experience a brand new country with incredible new outlooks, customs, and activities. See new terrains, natural wonders, museums, and landmarks.
+      </p>
+    </li>
+    <li>
+      <h3 class="font-semibold">Widen your Education</h3>
+      <p>
+        Encounter different styles and a broader educational system.
+      </p>
+    </li>
+    <li>
+      <h3 class="font-semibold">Take in a New Culture</h3>
+      <p>
+        Experience different cultural perspectives; traditions, customs, excellent cuisines, and social atmospheres. Have a better understanding and appreciation for the nation’s people and history, and witness a completely new way of life.
+      </p>
+    </li>
+    <li>
+      <h3 class="font-semibold">Sharpen Language Skills</h3>
+      <p>
+        Completely immerse yourself in the English language as you live in an environment that naturally speaks the language.
+      </p>
+    </li>
+    <li>
+      <h3 class="font-semibold">Discover Career Opportunities</h3>
+      <p>
+        Return home with a new perspective on culture, language skills, a great education, and a willingness to learn. Needless to say, all of these are very attractive to future employers. Get closer to having the opportunity to work abroad.
+      </p>
+    </li>
+    <li>
+      <h3 class="font-semibold">Find New Interests</h3>
+      <p>
+        Discover further activities and interests that you may have never realized before. You will also have the chance to experience other exciting forms of entertainment such as plays, movies, dance performances, and concerts.
+      </p>
+    </li>
+    <li>
+      <h3 class="font-semibold">Make Lifelong Friends</h3>
+      <p>
+        Have an opportunity to meet lifelong friends from different backgrounds - get to know and create lasting relationships with your fellow students abroad. In addition to rewarding personal relationships, these friends can also be important networking tools later down the road.
+      </p>
+    </li>
+    <li>
+      <h3 class="font-semibold">Improve Personal Development</h3>
+      <p>
+        Discover yourself while gaining an understanding of a different culture and bringing out the best in you. Exchange students become explorers of their new nation and discover the curiosity and excitement that they harbor.
+      </p>
+    </li>
+    <li>
+      <h3 class="font-semibold">Gain Life Experiences</h3>
+      <p>
+        The Exchange Program may be the only opportunity you may get to be abroad for a long time. Eventually, you will have to find a job and a career, and this program may turn out to be a once-in-a-lifetime opportunity.
+      </p>
+    </li>
+  </ol>
+</section>
+
         `,
         long_description_kh: `
           <p>កម្មវិធីប្ដូរនិស្សិតជួយឱ្យសិស្សបានស្វែងរកវប្បធម៌ថ្មីៗ

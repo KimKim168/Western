@@ -21,3 +21,12 @@ Route::get('/curriculum', function () {
 Route::get('/programs', function () {
     return Inertia::render('Western/Programs/Index');
 })->name('programs');
+Route::get('/school_calendar', function () {
+    return Inertia::render('Western/SchoolCalendar/Index');
+})->name('school_calendar');
+Route::get('/class_schedules_and_subjects', function () {
+    return Inertia::render('Western/ClassScheduleAndSubject/Index');
+})->name('class_schedules_and_subjects');
+Route::get('/admissions', function () {
+    return Inertia::render('Western/Admissions/Index');
+})->name('admissions');

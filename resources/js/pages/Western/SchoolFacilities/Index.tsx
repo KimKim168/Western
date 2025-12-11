@@ -21,12 +21,14 @@ const Index = () => {
 
     return (
         <WesternLayout>
-           <HeaderAllPage data={Data}/>
+              <HeaderAllPage data={Data}/>
+         <div className='section-container'>
             {/*  */}
             <div className='mt-10 max-w-2xl mx-auto'>
                 <Header title={'Western International School provides'} short_description={'Modern, safe, and inspiring facilities that help students learn, create, and grow. Click on an image to see more!'}/>
             </div>
             <AlertDetial/>
+         </div>
         </WesternLayout>
     );
 };
