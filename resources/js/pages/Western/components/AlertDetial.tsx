@@ -1,5 +1,5 @@
 import 'react-photo-view/dist/react-photo-view.css';
-import GalleryCard from './GalleryCard';
+import GalleryCard from './Cards/GalleryCard';
 
 export default function AlertDetial() {
     const school = [

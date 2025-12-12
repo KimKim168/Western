@@ -15,9 +15,9 @@ const Index = () => {
                     To enroll at Western International School, students must fulfill the following requirements:
                 </div>
                 {/*  */}
-                <FeatureAddmision/>
+                <FeatureAddmision />
                 {/*  */}
-                <SchoolFees/>
+                <SchoolFees />
                 {/*  */}
             </div>
         </WesternLayout>

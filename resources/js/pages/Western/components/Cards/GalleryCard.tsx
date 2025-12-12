@@ -28,7 +28,7 @@ const GalleryCard = ({ item }) => {
                 </div>
             </AlertDialogTrigger>
 
-            <AlertDialogContent className="sm:max-w-full">
+            <AlertDialogContent className="sm:max-w-full rounded-none">
                 <div className="flex justify-end">
                     <AlertDialogPrimitive.Cancel
                         className={buttonVariants({
@@ -58,7 +58,7 @@ const GalleryCard = ({ item }) => {
                                     onClick={prevImage}
                                     className="absolute top-1/2 left-0 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center bg-primary/80 text-white transition hover:bg-primary"
                                 >
-                                    <ArrowLeft />
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-chevron-left"><path d="m15 18-6-6 6-6"></path></svg> 
                                 </button>
 
                                 {/* Main Image */}

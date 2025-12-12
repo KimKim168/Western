@@ -23,10 +23,27 @@ Route::get('/programs', function () {
 })->name('programs');
 Route::get('/school_calendar', function () {
     return Inertia::render('Western/SchoolCalendar/Index');
-})->name('school_calendar');
+})->name(name: 'school_calendar');
 Route::get('/class_schedules_and_subjects', function () {
     return Inertia::render('Western/ClassScheduleAndSubject/Index');
 })->name('class_schedules_and_subjects');
 Route::get('/admissions', function () {
     return Inertia::render('Western/Admissions/Index');
 })->name('admissions');
+Route::get('/student_services', function () {
+    return Inertia::render('Western/StudentServices/Index');
+})->name('student_services');
+// 
+Route::get('/activities_and_events', function () {
+    return Inertia::render('Western/ActivitiesAndSvents/Index');
+})->name('activities_and_events');
+// 
+Route::get('/extracurricular_activities', function () {
+    return Inertia::render('Western/ExtracurricularActivities/Index');
+})->name('extracurricular_activities');
+Route::get('/outreach_programs', function () {
+    return Inertia::render('Western/OutreachPrograms/Index');
+})->name('outreach_programs');
+Route::get('/student_council', function () {
+    return Inertia::render('Western/StudentCouncil/Index');
+})->name('student_council');

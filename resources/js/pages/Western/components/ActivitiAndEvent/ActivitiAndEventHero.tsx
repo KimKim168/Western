@@ -38,7 +38,6 @@ const ActivitiAndEventHero = () => {
                         <div className="w-full sm:h-20"></div>
                     )}
                 </div>
-
                 {/* Description Card */}
                 <div className="absolute bottom-0 z-10 bg-primary/60 w-full">
                     <div className="w-full flex flex-col items-start p-4 px-8">
