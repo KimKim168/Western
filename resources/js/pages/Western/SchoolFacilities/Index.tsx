@@ -3,6 +3,7 @@ import WesternLayout from '../WesternLayout';
 import Header from '@/pages/Buddhist/components/Header';
 import AlertDetial from '../components/AlertDetial';
 import HeaderAllPage from '../components/HeaderAllPage';
+import WesternLayout2 from '../WesternLayout2';
 
 interface StudentCouncil {
     title: string;
@@ -20,8 +21,8 @@ const Index = () => {
     };
 
     return (
-        <WesternLayout>
-              <HeaderAllPage data={Data}/>
+        <WesternLayout2>
+              <div className='mt-28'><HeaderAllPage data={Data}/></div>
          <div className='section-container'>
             {/*  */}
             <div className='mt-10 max-w-2xl mx-auto'>
@@ -29,7 +30,7 @@ const Index = () => {
             </div>
             <AlertDetial/>
          </div>
-        </WesternLayout>
+        </WesternLayout2>
     );
 };
 

@@ -1,6 +1,7 @@
 import Header from "@/pages/Buddhist/components/Header";
 import ButtonSimple from "@/pages/Sesor/components/Bottons/ButtonSimple";
 import ActivitiAndEventCard from "./ActivitiAndEventCard";
+import CardSectionTextFisrt from "../Cards/CardSectionTextFisrt";
 
 interface StudentCouncil {
     title: string;

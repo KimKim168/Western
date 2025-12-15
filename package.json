@@ -55,6 +55,7 @@
         "@types/react": "^19.0.3",
         "@types/react-dom": "^19.0.2",
         "@vitejs/plugin-react": "^4.6.0",
+        "aos": "^3.0.0-beta.6",
         "ckeditor5": "^46.1.0",
         "class-variance-authority": "^0.7.1",
         "clsx": "^2.1.1",

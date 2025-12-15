@@ -1,6 +1,9 @@
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 const data = [
   {
-    year: "2003",
     title: "Found 2003",
     description:
       "Western International School: The first-ever campus was located in Toul Kork District. It offered Nursery to Grade 12 General Education (English and Khmer).",
@@ -8,122 +11,154 @@ const data = [
     icon: "flag.png",
   },
   {
-    year: "2004",
     title: "2004",
     description: "K-East Campus: The first Kindergarten campus",
     type: "white",
     icon: "school.png",
   },
   {
-    year: "2004",
-    title: "2004",
-    description: "K-East Campus: The first Kindergarten campus",
+    title: "2005",
+    description: "New campus opened",
+    type: "white",
+    icon: "school.png",
+  },
+  {
+    title: "2006",
+    description: "Expansion continues",
     type: "blue",
     icon: "school.png",
   },
   {
-    year: "2004",
-    title: "2004",
-    description: "K-East Campus: The first Kindergarten campus",
-    type: "white",
-    icon: "school.png",
-  },
-  {
-    year: "2004",
-    title: "2004",
-    description: "K-East Campus: The first Kindergarten campus",
+    title: "2007",
+    description: "Another milestone",
     type: "blue",
-    icon: "school.png",
-  },
-  {
-    year: "2004",
-    title: "2004",
-    description: "K-East Campus: The first Kindergarten campus",
-    type: "white",
-    icon: "school.png",
+    icon: "flag.png",
   },
 ];
 
 export default function Timeline() {
+  useEffect(() => {
+    AOS.init({
+      duration: 900,
+      easing: "ease-in-out",
+      once: true,
+    });
+  }, []);
+
   return (
-    <div>
-      <p className="text-xl font-bold text-primary text-center mt-8">
-        Western International School Campuses Timeline:
-      </p>
+    <div className="relative w-full px-6 py-20">
+      {/* CENTER LINE */}
+      <div className="absolute left-1/2 top-0 -translate-x-1/2 h-full w-0.5 bg-primary"></div>
 
-      <div className="w-4 mx-auto mt-1 h-0.5 bg-primary rounded-full"></div>
+      <div className="space-y-24">
+        {data.map((item, index) => {
+          const isLeft = index % 2 === 0;
 
-      <div className="relative w-full px-6 py-20">
-        {/* Center Line */}
-        <div className="absolute left-1/2 top-0 -translate-x-1/2 h-full w-0.5 bg-primary"></div>
-
-        <div className="space-y-24">
-          {data.map((item, index) => {
-            const isLeft = index % 2 === 0;
-
-            return (
-              <div key={index} className="relative flex w-full">
-                {/* Card Column */}
-                <div
-                  className={`w-1/2 relative ${
-                    isLeft ? "pr-16 text-left" : "pl-16 text-right ml-auto"
-                  }`}
-                >
-                  {/* Card */}
+          return (
+            <div key={index} className="relative flex w-full items-center">
+              {/* LEFT CARD */}
+              <div className={`w-1/2 ${isLeft ? "pr-16" : "pr-16 opacity-0"}`}>
+                {isLeft && (
                   <div
-                    className={`p-8 rounded-md relative ${
+                    data-aos="fade-right"
+                    className={`relative p-8 rounded-md ${
                       item.type === "blue"
                         ? "bg-primary text-white"
                         : "bg-white border border-primary"
                     }`}
                   >
-                    {/* Title */}
                     <h3
                       className={`text-2xl font-bold ${
-                        item.type === "white" ? "text-black text-start" : "text-white"
+                        item.type === "white"
+                          ? "text-black"
+                          : "text-white"
                       }`}
                     >
                       {item.title}
                     </h3>
 
-                    {/* Description */}
                     <p
-                      className={`mt-2 text-base leading-relaxed ${
+                      className={`mt-2 ${
                         item.type === "white"
-                          ? "text-gray-700 text-start"
+                          ? "text-gray-700"
                           : "text-white/90"
                       }`}
                     >
                       {item.description}
                     </p>
 
-                    {/* Arrow Pointer */}
+                    {/* ARROW → CENTER */}
                     <div
                       className={`absolute top-1/2 -translate-y-1/2 w-7 h-7 rotate-45 ${
                         item.type === "blue"
                           ? "bg-primary"
-                          : "bg-white border-l border-b border-primary"
-                      } ${isLeft ? "-right-3.5" : "-left-3.5"}`}
-                    ></div>
-                  </div>
-                </div>
-
-                {/* Center Icon */}
-                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-                  <div className="w-14 h-14 rounded-full bg-primary flex items-center justify-center ring-8 ring-white">
-                    <img
-                      src={`/assets/buddhist/${item.icon}`}
-                      className="w-7 h-7"
-                      alt=""
+                          : "bg-white border-t border-r border-primary"
+                      } -right-3.5`}
                     />
                   </div>
+                )}
+              </div>
+
+              {/* CENTER ICON */}
+              <div className="absolute left-1/2 -translate-x-1/2">
+                <div
+                  data-aos="zoom-in"
+                  className="w-14 h-14 rounded-full bg-primary flex items-center justify-center ring-8 ring-white"
+                >
+                  <img
+                    src={`/assets/buddhist/${item.icon}`}
+                    className="w-7 h-7"
+                    alt=""
+                  />
                 </div>
               </div>
-            );
-          })}
-        </div>
+
+              {/* RIGHT CARD */}
+              <div className={`w-1/2 ${!isLeft ? "pl-16" : "pl-16 opacity-0"}`}>
+                {!isLeft && (
+                  <div
+                    data-aos="fade-left"
+                    className={`relative p-8 rounded-md ${
+                      item.type === "blue"
+                        ? "bg-primary text-white"
+                        : "bg-white border border-primary"
+                    }`}
+                  >
+                    <h3
+                      className={`text-2xl font-bold ${
+                        item.type === "white"
+                          ? "text-black"
+                          : "text-white"
+                      }`}
+                    >
+                      {item.title}
+                    </h3>
+
+                    <p
+                      className={`mt-2 ${
+                        item.type === "white"
+                          ? "text-gray-700"
+                          : "text-white/90"
+                      }`}
+                    >
+                      {item.description}
+                    </p>
+
+                    {/* ARROW ← CENTER */}
+                    <div
+                      className={`absolute top-1/2 -translate-y-1/2 w-7 h-7 rotate-45 ${
+                        item.type === "blue"
+                          ? "bg-primary"
+                          : "bg-white border-b border-l border-primary"
+                      } -left-3.5`}
+                    />
+                  </div>
+                )}
+              </div>
+            </div>
+          );
+        })}
       </div>
-       <div className="w-4 mx-auto h-0.5 bg-primary rounded-full"></div>
     </div>
   );
 }

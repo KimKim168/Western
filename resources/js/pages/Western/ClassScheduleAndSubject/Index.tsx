@@ -1,5 +1,6 @@
 import HeaderAllPage from '../components/HeaderAllPage';
 import WesternLayout from '../WesternLayout';
+import WesternLayout2 from '../WesternLayout2';
 
 const Index = () => {
     const ClassSchedule = [
@@ -222,8 +223,8 @@ const Index = () => {
     ];
 
     return (
-        <WesternLayout>
-            <div className="mt-8 space-y-10">
+        <WesternLayout2>
+            <div className="mt-28 space-y-10">
                 {ClassSchedule.map((item) => (
                     <div key={item.id}>
                         <HeaderAllPage data={item} />
@@ -248,7 +249,7 @@ const Index = () => {
                     </div>
                 ))}
             </div>
-        </WesternLayout>
+        </WesternLayout2>
     );
 };
 

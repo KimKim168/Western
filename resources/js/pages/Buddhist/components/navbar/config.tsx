@@ -18,7 +18,7 @@ import {
     },
     {
         title: "Campuses",
-        href: "/campuses",
+        href: "/our_campuses",
     },
    
   ];

@@ -6,7 +6,7 @@ import { usePage } from '@inertiajs/react';
 import MySearch from '../my-search';
 import { LanguageSwitcher } from '@/pages/Sesor/components/LanguageSwitcher';
 
-const NavbarPage = () => {
+const NavbarPage2 = () => {
   const { application_info } = usePage().props;
   const headerRef = useRef(null);
   const sentinelRef = useRef(null);
@@ -34,7 +34,7 @@ const NavbarPage = () => {
         ref={headerRef}
         className={`
           fixed top-0 left-0 w-full z-50 transition-all duration-300 
-          ${isSticky ? 'bg-primary' : ''}
+          ${isSticky ? 'bg-primary' : 'bg-primary'}
         `}
 
         // className={`
@@ -49,7 +49,7 @@ const NavbarPage = () => {
             <Logo />
 
             {/* DESKTOP MENU */}
-          <div className="hidden md:flex gap-6">
+            <div className="hidden md:flex gap-6">
               <MyNavMenu />
               <MySearch/>
             </div>
@@ -70,4 +70,4 @@ const NavbarPage = () => {
   );
 };
 
-export default NavbarPage;
+export default NavbarPage2;

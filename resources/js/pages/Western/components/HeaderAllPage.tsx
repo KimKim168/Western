@@ -8,7 +8,7 @@ const HeaderAllPage = ({data}) => {
                     {data.images?.[0]?.image ? (
                         <img
                             src={`/assets/buddhist/${data.images[0].image}`}
-                            className="aspect-[21/8] w-full object-cover"
+                            className="aspect-[21/7] w-full object-cover"
                             alt={data.title}
                         />
                     ) : (
@@ -18,7 +18,7 @@ const HeaderAllPage = ({data}) => {
 
                 {/* Title Overlay */}
                 <div className="absolute bottom-0 left-0 w-full bg-primary/60 z-10">
-                    <div className="flex flex-col items-start p-8 section-container">
+                    <div className="flex flex-col items-start py-8 section-container">
                         <h3 className="text-2xl font-bold tracking-tight text-white sm:text-[40px]">
                             {data.title}
                         </h3>

@@ -74,7 +74,7 @@ export function MyNavMenu({ className }: { className?: string }) {
                                         '/extracurricular_activities',
                                         '/outreach_programs',
                                         '/student_council',
-                                        '/news',
+                                        '/news_and_blogs',
                                     ]}
                                     className={''}
                                 >
@@ -84,7 +84,7 @@ export function MyNavMenu({ className }: { className?: string }) {
                                         <HoveredLink href="/extracurricular_activities">{t('Extracurricular Activities')}</HoveredLink>
                                         <HoveredLink href="/outreach_programs">{t('Outreach Programs')}</HoveredLink>
                                         <HoveredLink href="/student_council">{t('Student Council')}</HoveredLink>
-                                        <HoveredLink href="/news">{t('News And Blogs')}</HoveredLink>
+                                        <HoveredLink href="/news_and_blogs">{t('News And Blogs')}</HoveredLink>
                                     </div>
                                 </MenuItem>
                             </Link>

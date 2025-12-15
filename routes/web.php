@@ -35,7 +35,7 @@ require __DIR__ . '/file_manager.php';
 
 // ====Admin & LibraryDataFrontPage Routes ====
 require __DIR__ . '/admin_route.php';
-require __DIR__ . '/library_data_route.php';
+// require __DIR__ . '/library_data_route.php';
 
 // ==== Other Routes ====
 // require __DIR__ . '/elibrary.php';

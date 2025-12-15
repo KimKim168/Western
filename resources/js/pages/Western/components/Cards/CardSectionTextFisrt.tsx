@@ -7,6 +7,7 @@ import { X } from 'lucide-react';
 import { AlertDialog as AlertDialogPrimitive } from 'radix-ui';
 import { useState } from 'react';
 import { PhotoProvider } from 'react-photo-view';
+import { styled } from 'styled-components';
 
 const CardSectionTextFisrt = () => {
     const data = [
@@ -181,8 +182,8 @@ const CardSectionTextFisrt = () => {
                                         <CardContent className="px-3 pb-4">
                                             <h3 className="inline-block bg-white p-1.5 text-xl font-semibold text-primary">{item.title}</h3>
                                             <p className="text-lg">{item.short_description}</p>
-                                            <div className="mt-16">
-                                                <ButtonSimple title="Read More" link="" />
+                                            <div className="mt-16 text-center ">
+                                                <p className='button w-[120px] bg-primary-two hover:bg-primary-two rounded-none p-2 text-[13px] text-white transition-all md:text-[15px]'>Read More</p>
                                             </div>
                                         </CardContent>
                                     </Card>
@@ -284,5 +285,31 @@ const CardSectionTextFisrt = () => {
         </AlertDialog>
     );
 };
+
+const StyledWrapper = styled.div`
+    .button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        border: none;
+        transition: all 0.3s ease;
+    }
+
+    .button:hover {
+        transform: translateY(-2px);
+    }
+
+    .svgIcon {
+        opacity: 0;
+        transform: translateX(-5px);
+        transition: all 0.3s ease;
+    }
+
+    .button:hover .svgIcon {
+        opacity: 1;
+        transform: translateX(0);
+    }
+`;
 
 export default CardSectionTextFisrt;

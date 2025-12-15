@@ -47,3 +47,12 @@ Route::get('/outreach_programs', function () {
 Route::get('/student_council', function () {
     return Inertia::render('Western/StudentCouncil/Index');
 })->name('student_council');
+Route::get('/news_and_blogs', function () {
+    return Inertia::render('Western/NewsAndBlogs/Index');
+})->name('news_and_blogs');
+Route::get('/news_and_blogs/{id}', function () {
+    return Inertia::render('Western/NewsAndBlogs/Detail');
+})->name('/news_and_blogs/{id}');
+Route::get('/contact', function () {
+    return Inertia::render('Western/Contact');
+})->name('/contact');

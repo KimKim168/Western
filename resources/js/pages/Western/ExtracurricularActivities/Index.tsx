@@ -1,9 +1,10 @@
 import WesternLayout from '../WesternLayout';
+import WesternLayout2 from '../WesternLayout2';
 import CardSectionTextFisrt from '../components/Cards/CardSectionTextFisrt';
 
 const Index = () => {
     return (
-        <WesternLayout>
+        <WesternLayout2>
             <div className="section-container mt-26 md:mt-36">
                 <p className="relative inline-block text-3xl font-bold text-primary after:absolute after:bottom-0 after:left-1/2 after:h-[1.5px] after:w-4/5 after:-translate-x-1/2 md:text-5xl">
                     Extracurricular Activities
@@ -15,7 +16,7 @@ const Index = () => {
                 {/* Card with dielog */}
                 <CardSectionTextFisrt />
             </div>
-        </WesternLayout>
+        </WesternLayout2>
     );
 };
 

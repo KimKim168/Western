@@ -88,8 +88,8 @@ export const HoveredLink = ({
     <Link
       href={href}
       {...rest}
-      className={`group flex items-center text-sm w-full hover:text-red-500 border-b-[0.5px] border-primary py-2 text-primary ${
-        isActive ? "text-red-500 font-extrabold" : ""
+      className={`group flex items-center text-sm w-full hover:text-primary hover:text-red-800  border-b-[0.5px] border-primary py-2 text-primary ${
+        isActive ? "text-red-800" : ""
       }`}
     >
       {/* <ChevronRight className={`w-4 h-4 mr-1  ${isActive ? 'w-4 h-4 mr-4':' opacity-0 group-hover:opacity-100 transition-opacity duration-300'}`} /> */}

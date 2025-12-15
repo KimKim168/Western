@@ -1,5 +1,6 @@
 import ExchangeProgram from '../components/ExchangeProgram';
 import WesternLayout from '../WesternLayout';
+import WesternLayout2 from '../WesternLayout2';
 
 const Index = () => {
     const Data = {
@@ -125,9 +126,9 @@ const Index = () => {
         ],
     };
     return (
-        <WesternLayout>
+        <WesternLayout2>
             <ExchangeProgram children={Data.children} />
-        </WesternLayout>
+        </WesternLayout2>
     );
 };
 

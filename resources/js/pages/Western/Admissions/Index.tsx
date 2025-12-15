@@ -1,10 +1,11 @@
 import SchoolFees from '@/pages/Western/components/SchoolFees';
 import FeatureAddmision from '../components/FeaturAddmision';
 import WesternLayout from '../WesternLayout';
+import WesternLayout2 from '../WesternLayout2';
 
 const Index = () => {
     return (
-        <WesternLayout>
+        <WesternLayout2>
             <div className="section-container mt-26 md:mt-36">
                 <h1 className="text-3xl font-bold text-primary md:text-5xl"> How to Enroll Your Child?</h1>
                 {/* Title */}
@@ -20,7 +21,7 @@ const Index = () => {
                 <SchoolFees />
                 {/*  */}
             </div>
-        </WesternLayout>
+        </WesternLayout2>
     );
 };
 

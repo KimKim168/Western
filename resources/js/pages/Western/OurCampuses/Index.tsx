@@ -1,4 +1,5 @@
 import WesternLayout from '../WesternLayout';
+import WesternLayout2 from '../WesternLayout2';
 import CampusDialog from '../components/CampusDialog';
 import HeaderAllPage from '../components/HeaderAllPage';
 
@@ -184,9 +185,9 @@ const Index = () => {
 
 
     return (
-        <WesternLayout>
+        <WesternLayout2>
            
-            <HeaderAllPage data={Data} />
+            <div className='mt-28'><HeaderAllPage data={Data}/></div>
             {/* spacing tuned to mimic the provided image */}
             <div className="section-container mt-12 flex flex-wrap justify-center gap-4">
                 {campuses.map((item) => (
@@ -195,7 +196,7 @@ const Index = () => {
                     </div>
                 ))}
             </div>
-        </WesternLayout>
+        </WesternLayout2>
     );
 };
 

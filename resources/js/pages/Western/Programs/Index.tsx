@@ -2,6 +2,7 @@ import React from 'react'
 import WesternLayout from '../WesternLayout'
 import HeaderAllPage from '../components/HeaderAllPage';
 import ExchangeProgram from '../components/ExchangeProgram'; // ← make sure the path is correct
+import WesternLayout2 from '../WesternLayout2';
 
 const Index = () => {
   const Data = {
@@ -154,10 +155,10 @@ const Index = () => {
   };
 
   return (
-    <WesternLayout>
+    <WesternLayout2>
       {/* ✅ Add this — the main program content */}
       <ExchangeProgram children={Data.children} />
-    </WesternLayout>
+    </WesternLayout2>
   );
 }
 

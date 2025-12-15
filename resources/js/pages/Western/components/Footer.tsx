@@ -27,9 +27,10 @@ const socialMedia = [
 
 const Footer = () => {
   return (
-    <footer className="bg-primary mt-10 text-white" style={{ backgroundImage: "url('/assets/buddhist/image.png')"
+    <footer className="bg-primary mt-10 text-white" style={{ 
+      // backgroundImage: "url('/assets/buddhist/image.png')"
     // , backgroundSize: 'cover'
-    ,       // uncomment if you want it to cover the whole div
+    //  ,      uncomment if you want it to cover the whole div
     backgroundPosition: 'center',
     // backgroundRepeat: 'no-repeat',  
     }}>

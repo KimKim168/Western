@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Copy } from 'lucide-react';
 import WesternLayout from '../WesternLayout';
+import WesternLayout2 from '../WesternLayout2';
 
 const Index = () => {
     const tabs = [
@@ -20,7 +21,7 @@ const Index = () => {
     ];
 
     return (
-        <WesternLayout>
+        <WesternLayout2>
             <div className="section-container mt-28 md:mt-36">
                 {/* Title */}
                 <p className="relative inline-block text-3xl md:text-5xl font-bold text-primary after:absolute after:bottom-0 after:left-1/2 after:h-[1.5px] after:w-4/5 after:translate-y-1 after:-translate-x-1/2 after:rounded-full after:bg-primary after:content-['']">
@@ -50,7 +51,7 @@ const Index = () => {
                     ))}
                 </Tabs>
             </div>
-        </WesternLayout>
+        </WesternLayout2>
     );
 };
 
