@@ -50,9 +50,9 @@ Route::get('/student_council', function () {
 Route::get('/news_and_blogs', function () {
     return Inertia::render('Western/NewsAndBlogs/Index');
 })->name('news_and_blogs');
-Route::get('/news_and_blogs/{id}', function () {
+Route::get('/detail', function () {
     return Inertia::render('Western/NewsAndBlogs/Detail');
-})->name('/news_and_blogs/{id}');
+});
 Route::get('/contact', function () {
     return Inertia::render('Western/Contact');
-})->name('/contact');
+})->name('contact');

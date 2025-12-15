@@ -175,7 +175,7 @@ const Index = () => {
                                             <h3 className="inline-block bg-white p-1.5 text-xl font-semibold text-primary">{item.title}</h3>
                                             <p className="text-lg">{item.short_description}</p>
                                             <div className="mt-16">
-                                                <ButtonSimple title="Read More" link={`/news_and_blogs/${item.id}`} />
+                                                <ButtonSimple title="Read More" link={`/detail`} />
                                             </div>
                                         </CardContent>
                                     </Card>
