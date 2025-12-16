@@ -43,7 +43,7 @@ const NavbarPage = () => {
         // `}
       >
         <div className="section-container">
-          <div className="flex items-center justify-between h-24 xl:h-28">
+          <div className="flex items-center justify-between h-18 xl:h-28">
             
             {/* LOGO  */}
             <Logo />

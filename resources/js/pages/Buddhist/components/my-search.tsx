@@ -7,15 +7,13 @@ const MySearch = () => {
     return (
         <div>
             <Sheet>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1">
                     <SheetTrigger asChild>
                             <Search className="size-6 text-white" />
                     </SheetTrigger>
                 </div>
-                <SheetContent side="top" className="w-full bg-background/30 p-6 shadow-md backdrop-blur-xl">
-                    <SheetHeader>
+                <SheetContent side="top" className="w-full bg-background/30 p-2 shadow-md backdrop-blur-xl">
                         <SheetTitle className="text-white">Search</SheetTitle>
-                    </SheetHeader>
                     <MySearchProducts className="mx-auto max-w-full border-white" />
                 </SheetContent>
             </Sheet>

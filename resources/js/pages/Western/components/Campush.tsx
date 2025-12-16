@@ -1,10 +1,9 @@
-import ButtonSimple from "@/pages/Sesor/components/Bottons/ButtonSimple";
+import ButtonSimple from '@/pages/Sesor/components/Bottons/ButtonSimple';
 
 const Campush = () => {
     return (
         <div
-            className="relative aspect-[21/9] w-full overflow-hidden mt-12"
-            id="home"
+            className="relative mt-12 aspect-[16/9] w-full overflow-hidden md:aspect-[21/9]"
             style={{
                 backgroundImage: "url('/assets/buddhist/image1.jpg')",
                 backgroundSize: 'cover',
@@ -12,19 +11,18 @@ const Campush = () => {
             }}
         >
             {/* Hero Text */}
-            <div className="absolute inset-0 z-10 flex items-center ml-52 ">
-                <div className="bg-primary/70 px-6 py-8 max-w-xl">
-                    <div>
-                        <h1 className="text-2xl font-bold text-white drop-shadow-lg md:text-4xl">
+            <div className="absolute inset-0 z-10 flex items-center justify-center px-4 sm:px-6 md:ml-12 md:justify-start md:px-8 lg:ml-20 xl:ml-52">
+                <div className="w-full max-w-xl bg-primary/70 my-2  px-4 py-4 sm:px-6 sm:py-8">
+                    <p className="relative inline-block text-xl font-bold text-white after:absolute after:bottom-0 after:left-1/2 after:h-[1.5px] after:w-4/5 after:-translate-x-1/2 after:translate-y-1 after:rounded-full after:bg-primary-two after:content-[''] sm:text-2xl md:text-3xl lg:text-4xl">
                         Our Campuses
-                    </h1>
-                  <div className="mt-2 h-[2.5px] bg-primary-two w-48 rounded-full"></div>
-                    </div>
-                    <p className="mt-4 text-lg text-white drop-shadow-lg md:text-xl">
+                    </p>
+                    <p className="mt-4 text-base text-white drop-shadow-lg sm:text-lg md:text-xl">
                         Take a look at our purpose-built, and beautiful green space
                     </p>
 
-                    <div className="mt-26"><ButtonSimple title={'View Photos'} link={""} /></div>
+                    <div className="mt-6 sm:mt-8 md:mt-26">
+                        <ButtonSimple title={'View Photos'} link={`/our_campuses`} />
+                    </div>
                 </div>
             </div>
         </div>

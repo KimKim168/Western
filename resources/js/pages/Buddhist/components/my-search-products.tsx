@@ -38,8 +38,8 @@ export function MySearchProducts({ className }: { className?: string }) {
                         handleSearch(e.target.value);
                     }
                 }}
-                className="ml-0.5 xl:min-w-xsrounded-sm border-none shadow-none"
-                placeholder={`${t('Search')}...`}
+                className="ml-0.5 xl:min-w-xsrounded-sm border-none shadow-none text-white"
+                placeholder={`${t('Search News')}...`}
             />
             <Button variant="outline" type="submit" onClick={() => handleSearch(search)}>
                 <SearchIcon className="[&_svg]:size-2" /> <span className="hidden lg:inline">{t('Search')}</span>
