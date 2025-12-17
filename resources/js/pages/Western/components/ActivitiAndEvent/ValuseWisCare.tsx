@@ -29,46 +29,67 @@ const faq = [
         question: 'Respect',
         answer: `Value every voice "Respect each other".`,
     },
-    ,
     {
         icon: 'puzzle.png',
         question: 'Excellence',
-        answer: `
-Fully explore details of the management process in order to build the highest reliability and accountability in educational services.`,
+        answer: `Fully explore details of the management process in order to build the highest reliability and accountability in educational services.`,
     },
 ];
 
 const ValuseWisCare = () => {
-    const firstRow = faq.slice(0, 3); // first 3 items
-    const secondRow = faq.slice(3); // remaining items
+    const firstRow = faq.slice(0, 3);
+    const secondRow = faq.slice(3);
 
-    const renderItem = ({ question, answer, icon: Icon }) => (
-        <div key={question} className="relative border-[0.5px] border-primary p-8">
-            <div className="flex items-center gap-2">
-                <div className="flex h-12 w-12 items-start justify-center">
-                    <img src={`/assets/buddhist/${Icon}`} className="h-10 w-10 object-contain" alt="icon" />
+    const renderItem = ({ question, answer, icon, isLast }) => (
+        <div key={question} className="relative border-[0.5px] border-primary p-5 sm:p-6">
+            <div className="flex items-center gap-3">
+                <div className="flex h-10 w-10 shrink-0 sm:h-12 sm:w-12">
+                    <img src={`/assets/buddhist/${icon}`} className="h-full w-full object-contain" alt={question} />
                 </div>
-                <div className={`absolute top-1/2 -right-4.5 z-20 h-10 w-10 -translate-y-1/2 rounded-full border-primary bg-white`}></div>
-                <div className={`absolute top-1/2 -right-5.5 h-10 w-10 -translate-y-1/2 rounded-full border border-primary bg-white`}></div>
-                <div className="flex items-start gap-2 text-2xl font-semibold text-primary">
-                    <span>{question}</span>
-                </div>
+
+                {/* Right circle decoration (desktop only) */}
+                {!isLast && (
+                    <div className="hidden xl:block">
+                        <div className="absolute top-1/2 -right-4.5 z-20 hidden h-10 w-10 -translate-y-1/2 rounded-full border-primary bg-white md:block" />
+                        <div className="absolute top-1/2 -right-5.5 hidden h-10 w-10 -translate-y-1/2 rounded-full border border-primary bg-white md:block" />
+                    </div>
+                )}
+
+                <h3 className="text-lg font-semibold text-primary sm:text-xl md:text-2xl">{question}</h3>
             </div>
-            <p className="mt-1 text-[14px] text-foreground/70">{answer}</p>
+
+            <p className="mt-2 text-sm leading-relaxed text-foreground/70 sm:text-[14px]">{answer}</p>
         </div>
     );
+
     return (
-        <div className="flex items-center justify-center">
-            <div className="section-container">
-                <h2 className="mt-8 text-center text-3xl font-bold text-primary">Valuse: WISCARE</h2>
+            <div className="mt-8 md:mt-12">
+                <h2 className="my-4 text-center text-2xl font-bold text-primary sm:text-3xl">Valuse: WISCARE</h2>
 
-                {/* First Row - grid-cols-3 */}
-                <div className="mt-4 grid overflow-hidden outline-[0.5px] outline-primary md:grid-cols-3">{firstRow.map(renderItem)}</div>
+                <div className="hidden grid-cols-1 sm:grid-cols-2 xl:grid xl:grid-cols-3 border-t-[0.5px] border-l-[0.5px] border-r-[0.5px] border-primary">
+                    {firstRow.map((item, index) => renderItem({ ...item, isLast: index === firstRow.length - 1 }))}
+                </div>
 
-                {/* Second Row - grid-cols-4 */}
-                <div className="grid overflow-hidden outline-[0.5px] outline-primary md:grid-cols-4">{secondRow.map(renderItem)}</div>
+                <div className="hidden grid-cols-1 sm:grid-cols-2 xl:grid xl:grid-cols-4 border-b-[0.5px] border-l-[0.5px] border-r-[0.5px] border-primary">
+                    {secondRow.map((item, index) => renderItem({ ...item, isLast: index === secondRow.length - 1 }))}
+                </div>
+
+                <div className="xl:hidden grid-cols-1 grid md:grid-cols-2 border-[0.5px] border-primary ">
+                {faq?.map((item) => (
+                    <div key={item.question} className="relative border-[0.5px] border-primary p-5 sm:p-6">
+                        <div className="flex items-center gap-3">
+                            <div className="flex h-10 w-10 shrink-0 sm:h-12 sm:w-12">
+                                <img src={`/assets/buddhist/${item.icon}`} className="h-full w-full object-contain" alt={item.question} />
+                            </div>
+
+                            <h3 className="text-lg font-semibold text-primary sm:text-xl md:text-2xl">{item.question}</h3>
+                        </div>
+
+                        <p className="mt-2 text-sm leading-relaxed text-foreground/70 sm:text-[14px]">{item.answer}</p>
+                    </div>
+                ))}
+                </div>
             </div>
-        </div>
     );
 };
 

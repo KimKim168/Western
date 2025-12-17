@@ -10,7 +10,7 @@ interface LayoutProps {
 const WesternLayout2 = ({ children }: LayoutProps) => {
     return (
         <>
-            <div className="relative">
+            <div className="relative mb-24 xl:mb-28">
                 {/* Navbar overlays video */}
                 <div className="absolute top-0 left-0 z-20 w-full">
                     <NavbarPage2 />

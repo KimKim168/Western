@@ -11,7 +11,7 @@ export default function Contact() {
     };
 
     return (
-        <div className="mt-10 bg-primary py-6 lg:py-0">
+        <div className="mt-8 md:mt-12 bg-primary py-6 lg:py-0">
             <div className="section-container px-4 sm:px-6 lg:px-0">
                 <div className="flex flex-col items-start gap-6 lg:flex-row">
                     {/* Image */}

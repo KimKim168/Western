@@ -108,7 +108,7 @@ This comprehensive curriculum design creates a multilingual advantage by preserv
             <div className="section-container mt-8">
                 {/* <Header title={child?.title} /> */}
                 <div className="flex justify-center">
-                    <p className="relative mx-auto inline-block text-center text-3xl font-bold text-primary after:absolute after:bottom-0 after:left-1/2 after:h-[1.5px] after:w-[90%] after:-translate-x-1/2 after:translate-y-1 after:rounded-full after:bg-primary after:content-[''] md:text-[28px]">
+                    <p className="relative mx-auto inline-block text-center text-3xl font-bold text-primary after:absolute after:bottom-0 after:left-1/2 after:h-[2px] after:w-[90%] after:-translate-x-1/2 after:translate-y-1 after:rounded-full after:bg-primary after:content-[''] md:text-[28px]">
                         Comprehensive K-12 Bilingual Curriculum Overview for Western International School
                     </p>
                 </div>

@@ -16,16 +16,16 @@ const Index = () => {
         title: 'School Facilities',
         long_description: '',
         images: [
-            { image: 'hero.JPG' }, // Make sure this file exists: public/assets/buddhist/hero.JPG
+            { image: 'hero.JPG' }, 
         ],
     };
 
     return (
         <WesternLayout2>
-              <div className='mt-28'><HeaderAllPage data={Data}/></div>
+        <div className=''><HeaderAllPage data={Data}/></div>
          <div className='section-container'>
             {/*  */}
-            <div className='mt-10 max-w-2xl mx-auto'>
+            <div className='mt-10 max-w-3xl mx-auto'>
                 <Header title={'Western International School provides'} short_description={'Modern, safe, and inspiring facilities that help students learn, create, and grow. Click on an image to see more!'}/>
             </div>
             <AlertDetial/>

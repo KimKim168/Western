@@ -174,12 +174,12 @@ export default function ActivitiAndEventCard() {
 
                     {selectedItem && (
                         <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
-                            <div className="flex flex-col gap-4">
+                            <div className="flex flex-col gap-4 inline-block">
                                 <h2 className="inline-block bg-primary p-2 md:p-4 text-lg font-bold text-white md:text-3xl lg:text-4xl">
                                     {selectedItem.name}
                                 </h2>
                                 <p
-                                    className="md:mt-2 md:text-xl text-black"
+                                    className="mt-2 md:text-xl text-black"
                                     dangerouslySetInnerHTML={{
                                         __html: selectedItem.long_description,
                                     }}

@@ -3,7 +3,7 @@ import ButtonSimple from '@/pages/Sesor/components/Bottons/ButtonSimple';
 const Campush = () => {
     return (
         <div
-            className="relative mt-12 aspect-[16/9] w-full overflow-hidden md:aspect-[21/9]"
+            className="relative mt-8 md:mt-12 aspect-[16/9] w-full overflow-hidden md:aspect-[21/9]"
             style={{
                 backgroundImage: "url('/assets/buddhist/image1.jpg')",
                 backgroundSize: 'cover',

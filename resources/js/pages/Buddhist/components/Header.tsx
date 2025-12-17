@@ -17,17 +17,13 @@ const Header = ({ title, short_description, className }) => {
       {/* Title */}
       <p
         ref={textRef}
-        className="text-3xl font-bold text-primary inline-block"
+        className="text-2xl sm:text-3xl font-bold text-primary inline-block relative md:text-4xl after:absolute after:bottom-0 after:left-1/2 after:h-[2px] after:w-2/5 md:after:w-4/5 after:translate-y-1 after:-translate-x-1/2 after:rounded-full after:bg-primary after:content-['']"
       >
         {title}
       </p>
 
       {/* Underline (dynamic width) */}
-      <div
-        className="mt-1 h-[3px] bg-primary rounded-full"
-        style={{ width: `${lineWidth}px` }}
-      ></div>
-      <div className="text-lg mt-4">
+      <div className="md:text-lg mt-4">
         {short_description}
       </div>
     </div>

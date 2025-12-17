@@ -1,164 +1,131 @@
-import { useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from 'react';
 
 const data = [
-  {
-    title: "Found 2003",
-    description:
-      "Western International School: The first-ever campus was located in Toul Kork District. It offered Nursery to Grade 12 General Education (English and Khmer).",
-    type: "blue",
-    icon: "flag.png",
-  },
-  {
-    title: "2004",
-    description: "K-East Campus: The first Kindergarten campus",
-    type: "white",
-    icon: "school.png",
-  },
-  {
-    title: "2005",
-    description: "New campus opened",
-    type: "white",
-    icon: "school.png",
-  },
-  {
-    title: "2006",
-    description: "Expansion continues",
-    type: "blue",
-    icon: "school.png",
-  },
-  {
-    title: "2007",
-    description: "Another milestone",
-    type: "blue",
-    icon: "flag.png",
-  },
+    {
+        title: 'Found 2003',
+        description:
+            'Western International School: The first-ever campus was located in Toul Kork District. It offered Nursery to Grade 12 General Education (English and Khmer).',
+        type: 'blue',
+        icon: 'flag.png',
+    },
+    {
+        title: '2004',
+        description: 'K-East Campus: The first Kindergarten campus',
+        type: 'white',
+        icon: 'school.png',
+    },
+    {
+        title: '2005',
+        description: 'New campus opened',
+        type: 'white',
+        icon: 'school.png',
+    },
+    {
+        title: '2006',
+        description: 'Expansion continues',
+        type: 'blue',
+        icon: 'school.png',
+    },
+    {
+        title: '2007',
+        description: 'Another milestone',
+        type: 'blue',
+        icon: 'school.png',
+    },
 ];
 
 export default function Timeline() {
-  useEffect(() => {
-    AOS.init({
-      duration: 900,
-      easing: "ease-in-out",
-      once: true,
-    });
-  }, []);
+    useEffect(() => {
+        AOS.init({
+            duration: 900,
+            easing: 'ease-in-out',
+            once: true,
+        });
+        AOS.refresh();
+    }, []);
 
-  return (
-    <div className="relative w-full px-6 py-20">
-      {/* CENTER LINE */}
-      <div className="absolute left-1/2 top-0 -translate-x-1/2 h-full w-0.5 bg-primary"></div>
+    return (
+        <div className="relative w-full px-4 py-20 md:px-6">
+            {/* CENTER LINE */}
+            <div className="absolute top-0 left-6 h-full w-0.5 bg-primary md:left-1/2 md:-translate-x-1/2"></div>
 
-      <div className="space-y-24">
-        {data.map((item, index) => {
-          const isLeft = index % 2 === 0;
+            <div className="space-y-20 md:space-y-24">
+                {data.map((item, index) => {
+                    const isLeft = index % 2 === 0;
+                    const iconSrc = index === 0 ? 'flag.png' : 'school.png';
 
-          return (
-            <div key={index} className="relative flex w-full items-center">
-              {/* LEFT CARD */}
-              <div className={`w-1/2 ${isLeft ? "pr-16" : "pr-16 opacity-0"}`}>
-                {isLeft && (
-                  <div
-                    data-aos="fade-right"
-                    className={`relative p-8 rounded-md ${
-                      item.type === "blue"
-                        ? "bg-primary text-white"
-                        : "bg-white border border-primary"
-                    }`}
-                  >
-                    <h3
-                      className={`text-2xl font-bold ${
-                        item.type === "white"
-                          ? "text-black"
-                          : "text-white"
-                      }`}
-                    >
-                      {item.title}
-                    </h3>
+                    return (
+                        <div key={item.title} className="relative flex w-full md:items-center">
+                            {/* LEFT CARD (DESKTOP) */}
+                            <div className={`hidden w-1/2 md:block ${isLeft ? 'pr-16' : 'pr-16 opacity-0'}`}>
+                                {isLeft && (
+                                    <div
+                                        data-aos="fade-right"
+                                        className={`relative rounded-md p-8 ${
+                                            item.type === 'blue' ? 'bg-primary text-white' : 'border border-primary bg-white'
+                                        }`}
+                                    >
+                                        <h3 className="text-2xl font-bold">{item.title}</h3>
+                                        <p className="mt-2">{item.description}</p>
 
-                    <p
-                      className={`mt-2 ${
-                        item.type === "white"
-                          ? "text-gray-700"
-                          : "text-white/90"
-                      }`}
-                    >
-                      {item.description}
-                    </p>
+                                        {/* ARROW */}
+                                        <div
+                                            className={`absolute top-1/2 h-7 w-7 -translate-y-1/2 rotate-45 ${
+                                                item.type === 'blue' ? 'bg-primary' : 'border-t border-r border-primary bg-white'
+                                            } -right-3.5`}
+                                        />
+                                    </div>
+                                )}
+                            </div>
 
-                    {/* ARROW → CENTER */}
-                    <div
-                      className={`absolute top-1/2 -translate-y-1/2 w-7 h-7 rotate-45 ${
-                        item.type === "blue"
-                          ? "bg-primary"
-                          : "bg-white border-t border-r border-primary"
-                      } -right-3.5`}
-                    />
-                  </div>
-                )}
-              </div>
+                            {/* CENTER ICON */}
+                            <div className="absolute left-6 md:left-1/2 md:-translate-x-1/2">
+                                <div
+                                    data-aos="zoom-in"
+                                    className="flex h-12 w-12 items-center justify-center rounded-full bg-primary ring-8 ring-white md:h-14 md:w-14"
+                                >
+                                    <img src={`/assets/buddhist/${iconSrc}`} className="h-6 w-6 md:h-7 md:w-7" alt={item.title} />
+                                </div>
+                            </div>
 
-              {/* CENTER ICON */}
-              <div className="absolute left-1/2 -translate-x-1/2">
-                <div
-                  data-aos="zoom-in"
-                  className="w-14 h-14 rounded-full bg-primary flex items-center justify-center ring-8 ring-white"
-                >
-                  <img
-                    src={`/assets/buddhist/${item.icon}`}
-                    className="w-7 h-7"
-                    alt=""
-                  />
-                </div>
-              </div>
+                            {/* RIGHT CARD (DESKTOP) */}
+                            <div className={`hidden w-1/2 md:block ${!isLeft ? 'pl-16' : 'pl-16 opacity-0'}`}>
+                                {!isLeft && (
+                                    <div
+                                        data-aos="fade-left"
+                                        className={`relative rounded-md p-8 ${
+                                            item.type === 'blue' ? 'bg-primary text-white' : 'border border-primary bg-white'
+                                        }`}
+                                    >
+                                        <h3 className="text-2xl font-bold">{item.title}</h3>
+                                        <p className="mt-2">{item.description}</p>
 
-              {/* RIGHT CARD */}
-              <div className={`w-1/2 ${!isLeft ? "pl-16" : "pl-16 opacity-0"}`}>
-                {!isLeft && (
-                  <div
-                    data-aos="fade-left"
-                    className={`relative p-8 rounded-md ${
-                      item.type === "blue"
-                        ? "bg-primary text-white"
-                        : "bg-white border border-primary"
-                    }`}
-                  >
-                    <h3
-                      className={`text-2xl font-bold ${
-                        item.type === "white"
-                          ? "text-black"
-                          : "text-white"
-                      }`}
-                    >
-                      {item.title}
-                    </h3>
+                                        {/* ARROW */}
+                                        <div
+                                            className={`absolute top-1/2 h-7 w-7 -translate-y-1/2 rotate-45 ${
+                                                item.type === 'blue' ? 'bg-primary' : 'border-b border-l border-primary bg-white'
+                                            } -left-3.5`}
+                                        />
+                                    </div>
+                                )}
+                            </div>
 
-                    <p
-                      className={`mt-2 ${
-                        item.type === "white"
-                          ? "text-gray-700"
-                          : "text-white/90"
-                      }`}
-                    >
-                      {item.description}
-                    </p>
-
-                    {/* ARROW ← CENTER */}
-                    <div
-                      className={`absolute top-1/2 -translate-y-1/2 w-7 h-7 rotate-45 ${
-                        item.type === "blue"
-                          ? "bg-primary"
-                          : "bg-white border-b border-l border-primary"
-                      } -left-3.5`}
-                    />
-                  </div>
-                )}
-              </div>
+                            {/* MOBILE CARD */}
+                            <div className="w-full pl-16 md:hidden">
+                                <div
+                                    data-aos="fade-up"
+                                    className={`rounded-md p-6 ${item.type === 'blue' ? 'bg-primary text-white' : 'border border-primary bg-white'}`}
+                                >
+                                    <h3 className="text-xl font-bold">{item.title}</h3>
+                                    <p className="mt-2">{item.description}</p>
+                                </div>
+                            </div>
+                        </div>
+                    );
+                })}
             </div>
-          );
-        })}
-      </div>
-    </div>
-  );
+        </div>
+    );
 }

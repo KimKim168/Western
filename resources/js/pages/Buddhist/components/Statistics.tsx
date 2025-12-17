@@ -50,7 +50,7 @@ const Statistics = () => {
     ];
 
     return (
-        <div className="pt-12">
+        <div className="mt-8 md:mt-12">
             {statisticsData.map((item) => {
                 const mainTitle = locale === 'kh' ? item.title_kh : item.title;
 

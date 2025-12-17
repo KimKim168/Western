@@ -198,9 +198,19 @@ const CardSectionTextFisrt = () => {
                 </div>
             </Carousel>
 
-            <AlertDialogContent className="rounded-none sm:max-w-full">
+            <AlertDialogContent className="overflow-scroll overflow-y-scroll rounded-none p-4 sm:max-w-full md:p-6"
+                style={{
+                    maxHeight: '90vh', // limits the height on mobile
+                    overflowY: 'auto', // enable vertical scroll
+                }}>
                 <div className="flex justify-end">
-                    <AlertDialogPrimitive.Cancel className={buttonVariants({ variant: 'ghost', size: 'icon', className: 'h-10 w-10' })}>
+                    <AlertDialogPrimitive.Cancel
+                        className={buttonVariants({
+                            variant: 'ghost',
+                            size: 'icon',
+                            className: 'h-2 w-2 md:h-10 md:w-10',
+                        })}
+                    >
                         <X />
                     </AlertDialogPrimitive.Cancel>
                 </div>
@@ -208,7 +218,7 @@ const CardSectionTextFisrt = () => {
                 {selectedItem && (
                     <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
                         {/* Text */}
-                        <div className="flex flex-col gap-4">
+                        <div className="flex flex-col md:gap-4">
                             <h2 className="inline-block bg-primary p-4 text-xl font-bold text-white md:text-3xl lg:text-4xl">{selectedItem.title}</h2>
                             <p className="mt-6 text-xl text-gray-800" dangerouslySetInnerHTML={{ __html: selectedItem.long_description }} />
                         </div>
