@@ -83,7 +83,7 @@ import {
     },
     {
       title: "News And Blogs",
-      href:"/news",
+      href:"/news_and_blogs",
       description: "Get deals and tips on air travel.",
     },
    

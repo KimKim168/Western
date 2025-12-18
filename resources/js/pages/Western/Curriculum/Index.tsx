@@ -1,3 +1,4 @@
+import Header from '@/pages/Buddhist/components/Header';
 import HeaderAllPage from '../components/HeaderAllPage';
 import WesternLayout2 from '../WesternLayout2';
 
@@ -105,16 +106,13 @@ This comprehensive curriculum design creates a multilingual advantage by preserv
                 <HeaderAllPage data={Data} />
             </div>
 
-            <div className="section-container mt-8">
+            <div className="section-container mt-4 md:mt-8">
                 {/* <Header title={child?.title} /> */}
-                <div className="flex justify-center">
-                    <p className="relative mx-auto inline-block text-center text-3xl font-bold text-primary after:absolute after:bottom-0 after:left-1/2 after:h-[2px] after:w-[90%] after:-translate-x-1/2 after:translate-y-1 after:rounded-full after:bg-primary after:content-[''] md:text-[28px]">
-                        Comprehensive K-12 Bilingual Curriculum Overview for Western International School
-                    </p>
-                </div>
+             
+                <Header title={`Comprehensive K-12 Bilingual Curriculum Overview for Western International School`} mainClass='text-xl md:text-[28px]'/>
                 <div className="flex items-center justify-center">
                     <div className="w-full">
-                        <div className="mx-auto mt-8 w-full space-y-10">
+                        <div className="mx-auto mt-4 md:mt-8 w-full space-y-10">
                             {admissions.map((feature, index) => (
                                 <div key={index} className="flex flex-col items-stretch justify-center gap-y-0 md:flex-row md:even:flex-row-reverse">
                                     {/* Image Section */}

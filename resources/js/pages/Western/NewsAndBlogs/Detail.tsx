@@ -4,18 +4,12 @@ import WesternLayout2 from '../WesternLayout2';
 const Detail = () => {
     return (
         <WesternLayout2>
-            <div className="section-container mt-26 md:mt-36">
+            <div className="section-container mt-28 md:mt-36">
+               <h3 className="text-xl md:text-2xl font-bold text-primary">Sub Texts</h3>
                 <div
-                    className="prose max-w-none prose-p:my-0 prose-img:my-4"
+                    className="prose max-w-none prose-p:my-0 prose-img:my-2"
                     dangerouslySetInnerHTML={{
-                        __html: `
-
-    <div>
-      <h3 class=" text-2xl font-bold text-primary">Sub Texts</h3>
-      
-    </div>
-
-    <div>
+                        __html: ` <div>
       <img
         src="/assets/buddhist/image1.jpg"
         alt="Content Image"

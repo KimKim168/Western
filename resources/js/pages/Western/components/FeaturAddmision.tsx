@@ -52,7 +52,7 @@ const FeatureAddmision = () => {
                     {admissions.map((feature, index) => (
                         <div key={index} className="flex flex-col items-stretch justify-center gap-y-0 md:flex-row md:even:flex-row-reverse">
                             {/* Text */}
-                            <div className="flex shrink-0 basis-1/2 flex-col justify-center border-8 border-y-8 border-primary p-8 text-primary md:order-none">
+                            <div className="flex shrink-0 basis-1/2 flex-col justify-center border-8 border-y-8 border-primary p-4 md:p-8 text-primary md:order-none">
                                 <h4 className="my-3 text-center text-2xl font-semibold tracking-[-0.02em]">{feature.title}</h4>
                                 <p className="text-base">{feature.short_description}</p>
                                 <div className="prose text-base text-primary" dangerouslySetInnerHTML={{ __html: feature.long_description }}></div>

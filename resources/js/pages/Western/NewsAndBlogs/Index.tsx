@@ -7,7 +7,7 @@ const Index = () => {
     const data = [
         {
             id: 1,
-            title: 'Title',
+            title: 'Title First',
             badges: 'Community',
             images: ['/assets/buddhist/image1.jpg', '/assets/buddhist/image2.jpg', '/assets/buddhist/image3.jpg', '/assets/buddhist/hero.JPG'],
             short_description: '',
@@ -36,7 +36,7 @@ const Index = () => {
         },
         {
             id: 2,
-            title: 'Title',
+            title: 'Second',
             badges: 'Learning',
             images: ['/assets/buddhist/image1.jpg', '/assets/buddhist/image2.jpg', '/assets/buddhist/image3.jpg', '/assets/buddhist/hero.JPG'],
             long_description: `<p>
@@ -64,7 +64,7 @@ const Index = () => {
         },
         {
             id: 3,
-            title: 'Title',
+            title: 'Third',
             badges: 'Alumni',
             images: ['/assets/buddhist/image1.jpg', '/assets/buddhist/image2.jpg', '/assets/buddhist/image3.jpg', '/assets/buddhist/hero.JPG'],
             long_description: `<p>
@@ -149,11 +149,11 @@ const Index = () => {
     ];
     return (
         <WesternLayout2>
-            <div className="section-container mt-26 md:mt-36">
+            <div className="section-container mt-28 md:mt-36">
                 <p className="relative inline-block text-3xl font-bold text-primary after:absolute after:bottom-0 after:left-1/2 after:h-[1.5px] after:w-4/5 after:-translate-x-1/2 md:text-5xl">
                     News And Blogs
                 </p>
-                <div className="mt-4 max-w-2xl md:text-lg">
+                <div className="mt-2 max-w-2xl md:text-lg">
                     We are a busy school and there's always something happening! Take a look at our recent news to learn more about school and
                     community life.
                 </div>

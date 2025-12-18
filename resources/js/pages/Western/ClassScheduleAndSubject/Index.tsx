@@ -224,7 +224,7 @@ const Index = () => {
 
     return (
         <WesternLayout2>
-            <div className="mt-28 space-y-10">
+            <div className=" space-y-10">
                 {ClassSchedule.map((item) => (
                     <div key={item.id}>
                         <HeaderAllPage data={item} />

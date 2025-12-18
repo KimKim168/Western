@@ -2,7 +2,6 @@ import { AlertDialog, AlertDialogContent, AlertDialogTrigger } from '@/component
 import { buttonVariants } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
-import ButtonSimple from '@/pages/Sesor/components/Bottons/ButtonSimple';
 import { X } from 'lucide-react';
 import { AlertDialog as AlertDialogPrimitive } from 'radix-ui';
 import { useState } from 'react';
@@ -182,8 +181,10 @@ const CardSectionTextFisrt = () => {
                                         <CardContent className="px-3 pb-4">
                                             <h3 className="inline-block bg-white p-1.5 text-xl font-semibold text-primary">{item.title}</h3>
                                             <p className="text-lg">{item.short_description}</p>
-                                            <div className="mt-16 text-center ">
-                                                <p className='button w-[120px] bg-primary-two hover:bg-primary-two rounded-none p-2 text-[13px] text-white transition-all md:text-[15px]'>Read More</p>
+                                            <div className="mt-16 text-center">
+                                                <p className="button w-[120px] rounded-none bg-primary-two p-2 text-[13px] text-white transition-all hover:bg-primary-two md:text-[15px]">
+                                                    Read More
+                                                </p>
                                             </div>
                                         </CardContent>
                                     </Card>
@@ -198,11 +199,13 @@ const CardSectionTextFisrt = () => {
                 </div>
             </Carousel>
 
-            <AlertDialogContent className="overflow-scroll overflow-y-scroll rounded-none p-4 sm:max-w-full md:p-6"
+            <AlertDialogContent
+                className="overflow-scroll overflow-y-scroll rounded-none p-4 sm:max-w-full md:p-6"
                 style={{
                     maxHeight: '90vh', // limits the height on mobile
                     overflowY: 'auto', // enable vertical scroll
-                }}>
+                }}
+            >
                 <div className="flex justify-end">
                     <AlertDialogPrimitive.Cancel
                         className={buttonVariants({
@@ -214,23 +217,16 @@ const CardSectionTextFisrt = () => {
                         <X />
                     </AlertDialogPrimitive.Cancel>
                 </div>
-
                 {selectedItem && (
                     <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
-                        {/* Text */}
-                        <div className="flex flex-col md:gap-4">
-                            <h2 className="inline-block bg-primary p-4 text-xl font-bold text-white md:text-3xl lg:text-4xl">{selectedItem.title}</h2>
-                            <p className="mt-6 text-xl text-gray-800" dangerouslySetInnerHTML={{ __html: selectedItem.long_description }} />
-                        </div>
-
-                        {/* Image Gallery */}
+                        {/* Image Gallery – FIRST on mobile */}
                         <PhotoProvider>
-                            <div className="relative flex flex-col items-center">
+                            <div className="relative order-1 flex flex-col items-center lg:order-2">
                                 {/* Main Image */}
                                 <div className="relative w-full max-w-xl">
                                     <button
                                         onClick={prevImage}
-                                        className="absolute top-1/2 left-0 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center bg-primary/80 text-white transition hover:bg-primary"
+                                        className="absolute top-1/2 left-0 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center bg-primary/80 text-white hover:bg-primary"
                                     >
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
@@ -244,7 +240,8 @@ const CardSectionTextFisrt = () => {
                                             strokeLinejoin="round"
                                             className="lucide lucide-chevron-left"
                                         >
-                                            <path d="m15 18-6-6 6-6" />
+                                            {' '}
+                                            <path d="m15 18-6-6 6-6" />{' '}
                                         </svg>
                                     </button>
 
@@ -255,7 +252,7 @@ const CardSectionTextFisrt = () => {
 
                                     <button
                                         onClick={nextImage}
-                                        className="absolute top-1/2 right-0 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center bg-primary/80 text-white transition hover:bg-primary"
+                                        className="absolute top-1/2 right-0 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center bg-primary/80 text-white hover:bg-primary"
                                     >
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
@@ -269,7 +266,8 @@ const CardSectionTextFisrt = () => {
                                             strokeLinejoin="round"
                                             className="lucide lucide-chevron-right"
                                         >
-                                            <path d="m9 6 6 6-6 6" />
+                                            {' '}
+                                            <path d="m9 6 6 6-6 6" />{' '}
                                         </svg>
                                     </button>
                                 </div>
@@ -281,7 +279,7 @@ const CardSectionTextFisrt = () => {
                                             key={index}
                                             src={src}
                                             onClick={() => setMainImageIndex(index)}
-                                            className={`h-20 w-20 cursor-pointer object-cover transition ${
+                                            className={`h-16 w-16 cursor-pointer object-cover transition sm:h-20 sm:w-20 ${
                                                 index === mainImageIndex ? 'border-2 border-primary shadow-md' : 'opacity-70 hover:opacity-100'
                                             }`}
                                         />
@@ -289,6 +287,15 @@ const CardSectionTextFisrt = () => {
                                 </div>
                             </div>
                         </PhotoProvider>
+
+                        {/* Text – SECOND on mobile */}
+                        <div className="order-2 flex flex-col gap-4 lg:order-1 inline-block">
+                            <h2 className="inline-block bg-primary p-2 text-lg font-bold text-white md:p-4 md:text-3xl lg:text-4xl">
+                                {selectedItem.title}
+                            </h2>
+
+                            <p className="text-black md:text-xl mt-2" dangerouslySetInnerHTML={{ __html: selectedItem.long_description }} />
+                        </div>
                     </div>
                 )}
             </AlertDialogContent>

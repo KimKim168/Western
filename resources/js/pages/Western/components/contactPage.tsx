@@ -4,9 +4,9 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { ArrowUpRight } from 'lucide-react';
 const ContactPage = () => (
-    <div className="mt-8 md:mt-10">
+    <div className="mt-6 md:mt-10">
         <div className="flex justify-center">
-            <p className="relative mx-auto inline-block text-center text-3xl font-bold text-primary after:absolute after:bottom-0 after:left-1/2 after:h-[1.5px] after:w-[90%] after:-translate-x-1/2 after:translate-y-1 after:rounded-full after:bg-primary after:content-[''] md:text-5xl">
+            <p className="relative mx-auto inline-block text-center text-2xl font-bold text-primary after:absolute after:bottom-0 after:left-1/2 after:h-[1.5px] after:w-1/2 md:after:w-[90%] after:-translate-x-1/2 after:translate-y-1 after:rounded-full after:bg-primary after:content-[''] md:text-4xl">
                 Have a Question? Reach Out to Us!
             </p>
         </div>
@@ -95,7 +95,7 @@ const ContactPage = () => (
         </div>
         <div>
             <div className="flex flex-col justify-center">
-                <p className="relative mx-auto inline-block text-center text-3xl font-bold text-primary after:absolute after:bottom-0 after:left-1/2 after:h-[1.5px] after:w-[70%] after:-translate-x-1/2 after:translate-y-1 after:rounded-full after:bg-primary after:content-[''] md:text-5xl">
+                <p className="relative mx-auto inline-block text-center text-3xl font-bold text-primary after:absolute after:bottom-0 after:left-1/2 after:h-[1.5px] after:w-[70%] after:-translate-x-1/2 after:translate-y-1 after:rounded-full after:bg-primary after:content-[''] md:text-4xl">
                     Contact
                 </p>
                 <div className="mx-auto mt-4 max-w-3xl text-center md:text-lg">

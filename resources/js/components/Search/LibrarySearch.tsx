@@ -14,7 +14,7 @@ const LibrarySearch = ({ debounceSearch = true }: LibrarySearchProps) => {
     const initialQueryParams = typeof window !== 'undefined' ? new URLSearchParams(window.location.search) : new URLSearchParams();
     const [search, setSearch] = useState(initialQueryParams.get('search') || '');
     const currentPath = typeof window !== 'undefined' ? window.location.pathname : '';
-    const isOnLibrariesPage = currentPath === '/libraries';
+    const isOnLibrariesPage = currentPath === '/news_and_blogs';
 
     // Only debounce if enabled
     const debouncedSearch = useCallback(
@@ -39,7 +39,7 @@ const LibrarySearch = ({ debounceSearch = true }: LibrarySearchProps) => {
         } else {
             const queryParams = new URLSearchParams();
             if (search) queryParams.set('search', search);
-            router.get(`/libraries?${queryParams.toString()}`);
+            router.get(`/news_and_blogs?${queryParams.toString()}`);
         }
     };
 
@@ -69,7 +69,7 @@ const LibrarySearch = ({ debounceSearch = true }: LibrarySearchProps) => {
                         if (isOnLibrariesPage && debounceSearch) debouncedSearch(e.target.value);
                     }}
                     onKeyDown={handleKeyDown}
-                    placeholder="Search libraries by name, institution, address..."
+                    placeholder="Search New And Blog by name...."
                     className="flex-1 border-0 bg-transparent pl-2 text-base shadow-none focus-visible:ring-0 sm:pl-3 sm:text-lg"
                 />
 

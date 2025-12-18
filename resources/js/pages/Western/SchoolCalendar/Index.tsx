@@ -46,7 +46,7 @@ const Index = () => {
 
                     {tabs.map((tab) => (
                         <TabsContent key={tab.value} value={tab.value}>
-                             <img src={tab.image} className='mt-2'/>
+                             <img src={tab.image} className='mt-4'/>
                         </TabsContent>
                     ))}
                 </Tabs>

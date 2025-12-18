@@ -25,7 +25,7 @@ const Index = () => {
         <div className=''><HeaderAllPage data={Data}/></div>
          <div className='section-container'>
             {/*  */}
-            <div className='mt-10 max-w-3xl mx-auto'>
+            <div className='mt-8 md:mt-10 max-w-3xl mx-auto'>
                 <Header title={'Western International School provides'} short_description={'Modern, safe, and inspiring facilities that help students learn, create, and grow. Click on an image to see more!'}/>
             </div>
             <AlertDetial/>

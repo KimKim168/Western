@@ -46,28 +46,15 @@ const GalleryCard = ({ item }) => {
                         <X />
                     </AlertDialogPrimitive.Cancel>
                 </div>
-
                 <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
-                    {/* Text */}
-                    <div className="flex inline-block flex-col gap-4">
-                        <h2 className="inline-block bg-primary p-2 text-lg font-bold text-white md:p-4 md:text-3xl lg:text-4xl">{item.title}</h2>
-                        <p
-                            className="mt-2 text-black md:text-xl"
-                            dangerouslySetInnerHTML={{
-                                __html: item.long_description,
-                            }}
-                        />
-                    </div>
-
-                    {/* Image Gallery */}
+                    {/* Image Gallery – FIRST on mobile */}
                     <PhotoProvider>
-                        <div className="relative flex flex-col items-center">
-                            {/* Main Image Container */}
+                        <div className="relative order-1 flex flex-col items-center lg:order-2">
+                            {/* Main Image */}
                             <div className="relative w-full max-w-xl">
-                                {/* Prev Button */}
                                 <button
                                     onClick={prevImage}
-                                    className="absolute top-1/2 left-0 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center bg-primary/80 text-white transition hover:bg-primary"
+                                    className="absolute top-1/2 left-0 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center bg-primary/80 text-white hover:bg-primary"
                                 >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -76,35 +63,36 @@ const GalleryCard = ({ item }) => {
                                         viewBox="0 0 24 24"
                                         fill="none"
                                         stroke="currentColor"
-                                        stroke-width="2"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
+                                        strokeWidth="2"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
                                         className="lucide lucide-chevron-left"
                                     >
-                                        <path d="m15 18-6-6 6-6"></path>
+                                        {' '}
+                                        <path d="m15 18-6-6 6-6" />{' '}
                                     </svg>
                                 </button>
 
-                                {/* Main Image */}
-                                <img src={mainImage} className="max-h-[500px] w-full cursor-pointer object-cover shadow" />
+                                <img src={item.images[mainImageIndex]} className="max-h-[500px] w-full cursor-pointer object-cover shadow" />
 
-                                {/* Next Button */}
                                 <button
                                     onClick={nextImage}
-                                    className="absolute top-1/2 right-0 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center bg-primary/80 text-white transition hover:bg-primary"
+                                    className="absolute top-1/2 right-0 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center bg-primary/80 text-white hover:bg-primary"
                                 >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
-                                        width="22"
-                                        height="22"
+                                        width="24"
+                                        height="24"
                                         viewBox="0 0 24 24"
                                         fill="none"
                                         stroke="currentColor"
                                         strokeWidth="2"
                                         strokeLinecap="round"
                                         strokeLinejoin="round"
+                                        className="lucide lucide-chevron-right"
                                     >
-                                        <path d="m9 18 6-6-6-6" />
+                                        {' '}
+                                        <path d="m9 6 6 6-6 6" />{' '}
                                     </svg>
                                 </button>
                             </div>
@@ -116,7 +104,7 @@ const GalleryCard = ({ item }) => {
                                         key={index}
                                         src={src}
                                         onClick={() => setMainImageIndex(index)}
-                                        className={`h-20 w-20 cursor-pointer object-cover transition ${
+                                        className={`h-16 w-16 cursor-pointer object-cover transition sm:h-20 sm:w-20 ${
                                             index === mainImageIndex ? 'border-2 border-primary shadow-md' : 'opacity-70 hover:opacity-100'
                                         }`}
                                     />
@@ -124,6 +112,13 @@ const GalleryCard = ({ item }) => {
                             </div>
                         </div>
                     </PhotoProvider>
+
+                    {/* Text – SECOND on mobile */}
+                    <div className="order-2 flex inline-block flex-col gap-4 lg:order-1">
+                        <h2 className="inline-block bg-primary p-2 text-lg font-bold text-white md:p-4 md:text-3xl lg:text-4xl">{item.title}</h2>
+
+                        <p className="mt-2 text-black md:text-xl" dangerouslySetInnerHTML={{ __html: item.long_description }} />
+                    </div>
                 </div>
             </AlertDialogContent>
         </AlertDialog>

@@ -7,10 +7,10 @@ const footerSections = [
   {
     title: "Quick Links",
     links: [
-      { title: "Home", href: "#" },
-      { title: "History And Values", href: "#" },
-      { title: "Admission", href: "#" },
-      { title: "Contact", href: "#" },
+      { title: "Home", href: "/" },
+      { title: "History And Values", href: "/history_and_values" },
+      { title: "Admission", href: "/admissions" },
+      { title: "Contact", href: "/contact" },
       { title: "Job Opportunities", href: "#" },
     ],
   },

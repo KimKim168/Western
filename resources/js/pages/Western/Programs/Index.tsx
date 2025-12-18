@@ -156,7 +156,6 @@ const Index = () => {
 
   return (
     <WesternLayout2>
-      {/* ✅ Add this — the main program content */}
       <ExchangeProgram children={Data.children} />
     </WesternLayout2>
   );

@@ -196,7 +196,7 @@ const SchoolFees = () => {
             {schoolFees.map((item) => (
                 <div key={item.id} className="mt-6">
                     {/* Title */}
-                    <h1 className="mb-8 text-3xl font-bold text-primary md:text-5xl">{item.title}</h1>
+                    <h1 className="md:mb-8 text-3xl text-center md:text-start font-bold text-primary md:text-5xl">{item.title}</h1>
 
                     {/* Render long_description HTML */}
                     <div className="prose max-w-none overflow-scroll" dangerouslySetInnerHTML={{ __html: item.long_description }} />

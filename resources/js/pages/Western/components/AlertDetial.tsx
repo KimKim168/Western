@@ -84,7 +84,7 @@ is also provided for students to enhance their dancing skills.`,
     const secondRow = school.slice(3, 7); // next 4 items
 
     return (
-        <div className="section-container mt-10 space-y-6">
+        <div className="mt-10 space-y-6">
             {/* FIRST ROW — 3 columns */}
             <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
                 {firstRow.map((item) => (

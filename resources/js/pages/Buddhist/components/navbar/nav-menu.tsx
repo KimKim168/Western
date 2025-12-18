@@ -11,7 +11,7 @@ export function MyNavMenu({ className }: { className?: string }) {
     return (
         <div className={cn('mx-auto w-full', className)}>
             <div className="flex h-full items-center justify-end">
-                <div className="hidden xl:block">
+                <div className="hidden lg:block">
                     <div className="flex items-center gap-2">
                         <Menu setActive={setActive}>
                             <Link href={`/`}>

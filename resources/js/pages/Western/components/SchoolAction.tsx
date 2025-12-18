@@ -91,7 +91,7 @@ const SchoolAction = () => {
                 after:absolute after:bottom-0 after:left-1/2 after:h-[1.5px] 
                 after:w-4/5 after:-translate-x-1/2 after:translate-y-1 
                 after:rounded-full after:bg-primary after:content-[''] 
-                md:text-5xl">
+                md:text-4xl">
                 Student Council In Action
             </p>
 
@@ -106,7 +106,7 @@ const SchoolAction = () => {
                             >
                                 {/* Text Section */}
                                 <div className="flex shrink-0 basis-[70%] flex-col w-full justify-center 
-                                    border-8 border-primary p-8 text-primary">
+                                    border-8 border-primary p-4 md:p-8 text-primary">
                                     <h4 className="my-3 text-center text-2xl font-semibold">
                                         {feature.title}
                                     </h4>
