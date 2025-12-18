@@ -49,16 +49,16 @@ const NavbarPage = () => {
             <Logo />
 
             {/* DESKTOP MENU */}
-          <div className="hidden md:flex gap-6">
+          <div className="hidden lg:flex lg:gap-6">
               <MyNavMenu />
               <MySearch/>
             </div>
-            <div className="hidden md:flex gap-6">
+            <div className="hidden lg:flex lg:gap-6">
               <LanguageSwitcher/>
             </div>
 
             {/* MOBILE MENU */}
-            <div className="md:hidden flex items-center gap-2">
+            <div className="lg:hidden flex items-center gap-2">
               <MySearch/>
               <LanguageSwitcher/>
               <NavigationSheet />
