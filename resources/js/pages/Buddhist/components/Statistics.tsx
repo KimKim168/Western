@@ -1,6 +1,8 @@
 import { usePage } from '@inertiajs/react';
+import Header from './Header';
 
 const Statistics = () => {
+    const { statisticHeader, keyValueData } = usePage().props;
     const { locale } = usePage().props;
 
     const statisticsData = [
@@ -51,62 +53,59 @@ const Statistics = () => {
 
     return (
         <div className="mt-8 md:mt-12">
-            {statisticsData.map((item) => {
-                const mainTitle = locale === 'kh' ? item.title_kh : item.title;
+            <Header
+                title={locale === 'kh' ? statisticHeader?.name_kh || statisticHeader?.name : statisticHeader?.name}
+                short_description={
+                    locale === 'kh' ? statisticHeader?.short_description_kh || statisticHeader?.short_description : statisticHeader?.short_description
+                }
+            />
+            {/* <div className="flex justify-center text-center">
+                <p className="relative inline-block text-2xl font-bold text-primary after:absolute after:bottom-0 after:left-1/2 after:h-[1.5px] after:w-[60%] after:-translate-x-1/2 after:translate-y-1 after:rounded-full after:bg-primary after:content-[''] md:text-4xl lg:after:w-4/5">
+                    Statistics
+                </p>
+            </div> */}
+            <div>
+                <div
+                    className="relative mx-auto mt-6 h-[140px] w-full md:h-[220px]"
+                    style={{
+                        backgroundImage: "url('/assets/buddhist/image1.jpg')",
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                    }}
+                >
+                    {/* Blue Overlay */}
+                    <div className="absolute inset-0 bg-primary/60"></div>
 
-                return (
-                    <div key={item.id}>
-                        <div className="flex justify-center text-center">
-                            <p className="relative inline-block text-2xl font-bold text-primary after:absolute after:bottom-0 after:left-1/2 after:h-[1.5px] after:w-[60%] after:-translate-x-1/2 after:translate-y-1 after:rounded-full after:bg-primary after:content-[''] md:text-4xl lg:after:w-4/5">
-                                Statistics
-                            </p>
-                        </div>
+                    {/* Content */}
+                    <div className="relative mx-auto grid h-full grid-cols-2 items-center gap-2 px-4 md:grid-cols-4 md:gap-6">
+                        {keyValueData?.map((item) => {
+                            const desc = locale === 'kh' ? item.short_description_kh || item.short_description : item.short_description;
 
-                        <div
-                            className="relative mx-auto mt-6 h-[140px] w-full md:h-[220px]"
-                            style={{
-                                backgroundImage: "url('/assets/buddhist/image1.jpg')",
-                                backgroundSize: 'cover',
-                                backgroundPosition: 'center',
-                            }}
-                        >
-                            {/* Blue Overlay */}
-                            <div className="absolute inset-0 bg-primary/60"></div>
+                            return (
+                                <div key={item.id} className="flex flex-col items-center justify-center space-y-2 text-white md:flex-row md:gap-4">
+                                    {/* ICON */}
+                                    <img
+                                        src={`/assets/images/key_values/thumb/${item.image}`}
+                                        alt={item?.name || 'icon'}
+                                        className="w-8 transition-all duration-500 hover:scale-110 md:w-14"
+                                    />
 
-                            {/* Content */}
-                            <div className="relative mx-auto grid h-full grid-cols-4 items-center justify-between gap-2 px-4 md:grid-cols-4 md:gap-6">
-                                {item.children.map((val) => {
-                                    const childTitle = locale === 'kh' ? val.title_kh : val.title;
-                                    const childDesc = locale === 'kh' ? val.short_description_kh : val.short_description;
+                                    <div className="flex flex-col items-center md:items-start">
+                                        {/* VALUE */}
+                                        <p className="text-xs font-bold md:text-3xl">{item?.value}</p>
 
-                                    return (
-                                        <a
-                                            href={val.link}
-                                            key={val.id}
-                                            className="flex flex-col items-center justify-center space-y-2 text-white md:flex-row md:gap-4"
-                                        >
-                                            {/* ICON */}
-                                            <img
-                                                src={`/assets/buddhist/${val.image}`}
-                                                alt={childTitle}
-                                                className="w-8 transition-all duration-500 hover:scale-110 md:w-14"
-                                            />
+                                        {/* NAME */}
+                                        <p className="text-xs md:text-2xl">{item?.name}</p>
 
-                                            <div className="flex flex-col items-center md:items-start">
-                                                {/* TITLE */}
-                                                <p className="text-xs font-bold md:text-3xl">{childTitle}</p>
-
-                                                {/* DESCRIPTION */}
-                                                <p className="text-xs md:text-2xl" dangerouslySetInnerHTML={{ __html: childDesc }} />
-                                            </div>
-                                        </a>
-                                    );
-                                })}
-                            </div>
-                        </div>
+                                        {/* DESCRIPTION */}
+                                        {desc && <p className="text-xs md:text-2xl" dangerouslySetInnerHTML={{ __html: desc }} />}
+                                    </div>
+                                </div>
+                            );
+                        })}
                     </div>
-                );
-            })}
+                </div>
+            </div>
         </div>
     );
 };

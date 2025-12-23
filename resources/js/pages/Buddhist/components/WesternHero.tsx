@@ -73,7 +73,7 @@ const WesternHero = () => {
                     <div className="mx-auto flex flex-col items-start bg-primary/60 p-4 shadow-lg lg:flex-row lg:items-center dark:shadow-foreground/10">
                         <h3 className="mb-2 text-xl font-bold tracking-tight text-white md:text-[40px]">{studentCouncil.title}</h3>
                         <div className="flex w-full flex-1 flex-col gap-2 break-words sm:flex-row sm:gap-4">
-                            <div className="h-auto w-full sm:w-6 border bg-white"></div>
+                            <div className="h-auto w-full border bg-white sm:w-6"></div>
                             <div
                                 className="ck-content prose max-w-none bg-background p-4 py-6 text-[14px] leading-relaxed text-primary xl:text-base dark:prose-invert"
                                 dangerouslySetInnerHTML={{ __html: studentCouncil.long_description }}

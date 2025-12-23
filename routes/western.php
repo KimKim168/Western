@@ -1,14 +1,13 @@
 <?php
 
+use App\Http\Controllers\WesternFrontPageController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::get('/', function () {
-    return Inertia::render('Western/Index');
-});
-Route::get('/history_and_values', function () {
-    return Inertia::render('Western/HistoryAndValuse/Index');
-})->name('history_and_values');
+
+Route::get('/', [WesternFrontPageController::class, 'index']);
+Route::get('/history_and_values', [WesternFrontPageController::class, 'history_and_values']);
+
 Route::get('/school_facilities', function () {
     return Inertia::render('Western/SchoolFacilities/Index');
 })->name('school_facilities');

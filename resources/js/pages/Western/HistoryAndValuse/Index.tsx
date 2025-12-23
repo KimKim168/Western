@@ -1,13 +1,19 @@
 import Header from '@/pages/Buddhist/components/Header';
+import { usePage } from '@inertiajs/react';
 import ValuseWisCare from '../components/ActivitiAndEvent/ValuseWisCare';
 import Timeline from '../components/TimeLine';
 import VisionAndMission from '../components/VisionAndMission';
 import WesternLayout2 from '../WesternLayout2';
 
 const Index = () => {
+    const { historyAndValueHeader, timeLine, locale } = usePage<any>().props;
     return (
         <WesternLayout2>
             <div className="section-container mt-28 md:mt-36">
+                {/* <Header
+                    title={locale === 'kh' ? (historyAndValueHeader?.name_kh || historyAndValueHeader?.name) : historyAndValueHeader?.name}
+                    short_description={locale === 'kh' ? (historyAndValueHeader?.long_description_kh || historyAndValueHeader?.long_description) : historyAndValueHeader?.long_description}
+                /> */}
                 <Header
                     title={'Western International School History'}
                     short_description={

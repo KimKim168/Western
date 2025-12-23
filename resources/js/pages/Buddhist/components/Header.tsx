@@ -1,16 +1,8 @@
 import { cn } from "@/lib/utils";
 import React, { useRef, useEffect, useState } from "react";
 
-const Header = ({ title, short_description, className, mainClass }) => {
+const Header = ({ title, short_description, className, mainClass }:any) => {
   const textRef = useRef(null);
-  const [lineWidth, setLineWidth] = useState(0);
-
-  useEffect(() => {
-    if (textRef.current) {
-      const textWidth = textRef.current.offsetWidth;
-      setLineWidth(textWidth * 0.70); // 15% wider than title
-    }
-  }, [title]);
 
   return (
     <div className={cn('flex flex-col items-center text-center', className)}>
@@ -23,9 +15,9 @@ const Header = ({ title, short_description, className, mainClass }) => {
       </p>
 
       {/* Underline (dynamic width) */}
-      <div className="md:text-lg mt-4">
-        {short_description}
-      </div>
+      <div className="md:text-lg mt-4" dangerouslySetInnerHTML={{__html:short_description}}/>
+      {/* <div className="md:text-lg mt-4" >{short_description}</div> */}
+      
     </div>
   );
 };

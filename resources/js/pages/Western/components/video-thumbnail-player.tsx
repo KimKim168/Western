@@ -1,11 +1,12 @@
 import { cn } from '@/lib/utils';
-import { Play, X } from 'lucide-react';
+import { X } from 'lucide-react';
 import * as React from 'react';
+import AnimetionPlay from './AnimetionPlay';
 
 // Interface for component props
 interface VideoPlayerProps extends React.HTMLAttributes<HTMLDivElement> {
     thumbnailUrl: string;
-    videoUrl: string;
+    videoUrl: string;   
     title: string;
     description?: string;
     aspectRatio?: '16/9' | '4/3' | '1/1';
@@ -64,13 +65,14 @@ const VideoPlayer = React.forwardRef<HTMLDivElement, VideoPlayerProps>(
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
 
                     {/* Play Button */}
-                    <div className="absolute bottom-0 right-0 left-0 inset-10 sm:inset-0 flex items-center justify-center">
+                    <div className="absolute inset-10 right-0 bottom-0 left-0 flex items-center justify-center sm:inset-0">
                         {/* Center group */}
                         <div className="flex flex-col items-center text-center md:gap-4">
                             {/* Play Button */}
-                            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/30 backdrop-blur-sm transition-all duration-300 group-hover:scale-110 group-hover:bg-white/30 md:h-16 md:w-16">
+                            {/* <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/30 backdrop-blur-sm transition-all duration-300 group-hover:scale-110 group-hover:bg-white/30 md:h-16 md:w-16">
                                 <Play className="h-8 w-8 fill-white text-white" />
-                            </div>
+                            </div> */}
+                            <AnimetionPlay />
 
                             {/* Text */}
                             <div>

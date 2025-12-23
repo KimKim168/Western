@@ -67,7 +67,7 @@ const CampusDialog = ({ item }) => {
                     {/* Image Gallery */}
                     <PhotoProvider>
                         <div className="flex flex-col items-center">
-                            <div className="relative w-full max-w-xl">
+                            <div className="relative w-full ">
                                 <button
                                     onClick={prevImage}
                                     className="absolute top-1/2 left-0 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center bg-primary/80 text-white transition hover:bg-primary"

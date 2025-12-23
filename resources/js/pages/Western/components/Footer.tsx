@@ -37,7 +37,7 @@ const Footer = () => {
       <div className="section-container" 
        
       >
-        <div className="py-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 gap-y-10 ">
+        <div className="py-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 gap-y-10">
           {/* Logo */}
             <Logo />
 
@@ -45,7 +45,7 @@ const Footer = () => {
           {footerSections.map(({ title, links }) => (
             <div key={title}>
               <h6 className="font-bold text-xl">{title}</h6>
-              <ul className="mt-6 space-y-2">
+              <ul className="mt-2 space-y-2">
                 {links.map(({ title, href }) => (
                   <li key={title}>
                     <Link href={href} className="hover:underline">
@@ -60,7 +60,7 @@ const Footer = () => {
           {/* Social Media */}
           <div>
             <h6 className="font-bold text-xl">Social Media</h6>
-            <div className="mt-6 flex gap-2">
+            <div className="mt-2 flex gap-2">
               {socialMedia.map((item, idx) => (
                 <a key={idx} href={item.href} target="_blank" className="bg-white p-2 rounded-full" >
                   <img
