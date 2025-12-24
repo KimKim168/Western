@@ -23,10 +23,10 @@ class WesternFrontPageController extends Controller
      */
     public function index()
     {
-        $statisticHeader = Page::where('code','western-international-school-statistic')->first();
+        $statisticHeader = Page::where('code', 'western-international-school-statistic')->first();
         $keyValueData = KeyValue::all();
-        
-        $Hero = Page::where('code','welcome-to-western-international-school')->with('images')->first();
+
+        $Hero = Page::where('code', 'welcome-to-western-international-school')->with('images')->first();
         // return ($Hero);
         return Inertia::render('Western/Index', [
             'statisticHeader' => $statisticHeader,
@@ -37,16 +37,57 @@ class WesternFrontPageController extends Controller
 
     public function history_and_values()
     {
-        $historyAndValueHeader = Page::where('code', 'western-international-school-history')->first();
+        $historyAndValue = Page::where('code', 'history-and-value')->first();
         $timeLine = Page::where('code', 'western-international-school-campuses-timeLine')
-        ->with('children.children')
-        ->orderBy('id', 'desc')
-        ->firstOrFail();
+            ->with('children')
+            ->orderBy('order_index')
+            ->first();
+        $ourVision = Page::where('code', 'our-vision')->first();
+        $ourMission = Page::where('code', 'our-mission')->first();
+        $valuesWiscare = Page::where('code', 'valuse-wiscare')->with('children.images')->first();
 
-        // return ($timeLine);
+        // return ($valuesWiscare);
         return Inertia::render('Western/HistoryAndValuse/Index', [
-            'historyAndValueHeader' => $historyAndValueHeader,
+            'historyAndValue' => $historyAndValue,
+            'ourVision' => $ourVision,
+            'ourMission' => $ourMission,
+            'valuesWiscare' => $valuesWiscare,
             'timeLine' => $timeLine,
+        ]);
+    }
+    public function school_facilities()
+    {
+        $schoolFacilties = Page::where('code', 'school-facilities')
+            ->with('images')
+            ->with('children.images')
+            ->orderBy('order_index')
+            ->first();
+
+        // return ($schoolFacilties);
+        return Inertia::render('Western/SchoolFacilities/Index', [
+            'schoolFacilties' => $schoolFacilties,
+        ]);
+    }
+    public function our_campuses()
+    {
+        $ourCampuses = Page::where('code', 'our-campuses')
+            ->with('images')
+            ->with('children.images')
+            ->orderBy('order_index')
+            ->first();
+        // return ($ourCampuses);
+        return Inertia::render('Western/OurCampuses/Index', [
+            'ourCampuses' => $ourCampuses,
+        ]);
+    }
+    public function admissions()
+    {
+        $howToEnrollYourChild = Page::where('code', 'how-to-enroll-your-child')->with('children.images')->with('images')->first();
+        $schoolFees = Page::where('code', 'school-fees')->with('children.images')->with('images')->first();
+        // return ($schoolFees);
+        return Inertia::render('Western/Admissions/Index', [
+            'howToEnrollYourChild' => $howToEnrollYourChild,
+            'schoolFees' => $schoolFees,
         ]);
     }
 

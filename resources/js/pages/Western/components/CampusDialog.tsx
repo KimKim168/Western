@@ -1,11 +1,12 @@
 import { AlertDialog, AlertDialogContent, AlertDialogTrigger } from '@/components/ui/alert-dialog';
 import { buttonVariants } from '@/components/ui/button';
+import useTranslation from '@/hooks/use-translation';
 import { MapPin, X } from 'lucide-react';
 import { AlertDialog as AlertDialogPrimitive } from 'radix-ui';
 import { useState } from 'react';
 import { PhotoProvider } from 'react-photo-view';
 
-const CampusDialog = ({ item }) => {
+const CampusDialog = ({ item }: { item: any }) => {
     const [mainImageIndex, setMainImageIndex] = useState(0);
     const mainImage = item.images[mainImageIndex];
 
@@ -16,6 +17,7 @@ const CampusDialog = ({ item }) => {
     const nextImage = () => {
         setMainImageIndex((prev) => (prev === item.images.length - 1 ? 0 : prev + 1));
     };
+    const { t, currentLocale } = useTranslation();
 
     return (
         <AlertDialog>
@@ -23,32 +25,34 @@ const CampusDialog = ({ item }) => {
                 <div className="group relative cursor-pointer">
                     <div className="relative overflow-hidden border border-white/60 bg-white">
                         <img
-                            src={item.images?.[0].image}
-                            alt={item.title}
+                            src={`/assets/images/pages/${item.images?.[0]?.image}`}
                             className="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-105"
                         />
                         <div className="absolute bottom-4 left-4 opacity-0 transition group-hover:opacity-100">
-                            <p className="rounded bg-primary px-4 py-2 text-base font-semibold text-white">View</p>
+                            <p className="rounded bg-primary px-4 py-2 text-base font-semibold text-white">{t('View')}</p>
                         </div>
                     </div>
 
                     <div className="mt-1">
                         <p className="relative inline-block font-semibold text-primary after:absolute after:bottom-0 after:left-1/2 after:h-[2px] after:w-2/3 after:-translate-x-1/2 after:rounded-full after:bg-primary">
-                            {item.title}
+                            {currentLocale == 'kh' ? item?.name_kh || item?.name : item?.name}
                         </p>
                     </div>
                 </div>
             </AlertDialogTrigger>
 
             {/* ===== Dialog ===== */}
-            <AlertDialogContent className="rounded-none border-none px-0 pt-0 sm:max-w-full gap-0" style={{
+            <AlertDialogContent
+                className="gap-0 rounded-none border-none px-0 pt-0 sm:max-w-full"
+                style={{
                     maxHeight: '90vh', // limits the height on mobile
                     overflowY: 'auto', // enable vertical scroll
-                }}>
+                }}
+            >
                 {/* Header */}
                 <div className="flex items-center justify-between bg-primary px-4 py-4 sm:px-8">
                     <h2 className="text-lg font-bold text-white sm:text-3xl lg:text-4xl">
-                        {item.title}
+                        {currentLocale == 'kh' ? item?.name_kh || item?.name : item?.name}
                     </h2>
 
                     <AlertDialogPrimitive.Cancel
@@ -67,7 +71,7 @@ const CampusDialog = ({ item }) => {
                     {/* Image Gallery */}
                     <PhotoProvider>
                         <div className="flex flex-col items-center">
-                            <div className="relative w-full ">
+                            <div className="relative w-full">
                                 <button
                                     onClick={prevImage}
                                     className="absolute top-1/2 left-0 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center bg-primary/80 text-white transition hover:bg-primary"
@@ -89,7 +93,10 @@ const CampusDialog = ({ item }) => {
                                 </button>
 
                                 {/* Main Image */}
-                                <img src={mainImage.image} className="max-h-[500px] w-full cursor-pointer object-cover shadow" />
+                                <img
+                                    src={`/assets/images/pages/${mainImage?.image}`}
+                                    className="max-h-[500px] w-full cursor-pointer object-cover shadow"
+                                />
 
                                 {/* Next Button */}
                                 <button
@@ -113,15 +120,13 @@ const CampusDialog = ({ item }) => {
                             </div>
 
                             <div className="mt-4 flex flex-wrap justify-center gap-3">
-                                {item.images.map((src, index) => (
+                                {item.images.map((src: any, index: number) => (
                                     <img
                                         key={index}
-                                        src={src.image}
+                                        src={`/assets/images/pages/${src?.image}`}
                                         onClick={() => setMainImageIndex(index)}
-                                        className={`h-16 w-16 sm:h-20 sm:w-20 cursor-pointer object-cover ${
-                                            index === mainImageIndex
-                                                ? 'border-2 border-primary'
-                                                : 'opacity-70 hover:opacity-100'
+                                        className={`h-16 w-16 cursor-pointer object-cover sm:h-20 sm:w-20 ${
+                                            index === mainImageIndex ? 'border-2 border-primary' : 'opacity-70 hover:opacity-100'
                                         }`}
                                     />
                                 ))}
@@ -130,30 +135,31 @@ const CampusDialog = ({ item }) => {
                     </PhotoProvider>
 
                     {/* Info */}
-                    <div className="flex flex-col justify-between h-[80%] gap-6">
+                    <div className="flex h-[80%] flex-col justify-between gap-6">
                         <div>
-                            <h2 className="text-lg font-bold text-primary sm:text-2xl">Address:</h2>
-                            <p className="text-base sm:text-xl">{item.address}</p>
+                            <h2 className="text-lg font-bold text-primary sm:text-2xl">{t('Address')}:</h2>
+                            <p className="text-base sm:text-xl">
+                                {currentLocale == 'kh' ? item?.short_description_kh || item?.short_description : item?.short_description}
+                            </p>
 
                             <div className="mt-4">
-                                <h2 className="text-lg font-bold text-primary sm:text-2xl">
-                                    Phone Number:
-                                </h2>
-                                {item.phoneNumber.split('<br/>').map((num, i) => (
-                                    <p key={i} className="text-base sm:text-xl">
-                                        {num.trim()}
-                                    </p>
-                                ))}
+                                <h2 className="text-lg font-bold text-primary sm:text-2xl">{t('Phone Number')}:</h2>
+                                <p
+                                    className="text-base sm:text-xl"
+                                    dangerouslySetInnerHTML={{
+                                        __html: currentLocale == 'kh' ? item?.long_description_kh || item?.long_description : item?.long_description,
+                                    }}
+                                ></p>
                             </div>
                         </div>
 
                         <a
-                            href={item.linkLocation}
+                            href={item.link || '#'}
                             target="_blank"
-                            className="inline-flex w-fit items-center gap-2 bg-primary px-4 py-2 text-base sm:text-xl text-white"
+                            className="inline-flex w-fit cursor-pointer items-center gap-2 bg-primary px-4 py-2 text-base text-white sm:text-xl"
                         >
                             <MapPin className="h-5 w-5" />
-                            Directions
+                            {t('Directions')}
                         </a>
                     </div>
                 </div>

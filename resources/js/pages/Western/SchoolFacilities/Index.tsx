@@ -1,6 +1,6 @@
-import React from 'react';
-import WesternLayout from '../WesternLayout';
+import useTranslation from '@/hooks/use-translation';
 import Header from '@/pages/Buddhist/components/Header';
+import { usePage } from '@inertiajs/react';
 import AlertDetial from '../components/AlertDetial';
 import HeaderAllPage from '../components/HeaderAllPage';
 import WesternLayout2 from '../WesternLayout2';
@@ -12,24 +12,37 @@ interface StudentCouncil {
 }
 
 const Index = () => {
-    const  Data = {
+    const Data = {
         title: 'School Facilities',
         long_description: '',
-        images: [
-            { image: 'hero.JPG' }, 
-        ],
+        images: [{ image: 'hero.JPG' }],
     };
+    const { schoolFacilties } = usePage<any>().props;
+    const { t, currentLocale } = useTranslation();
 
     return (
         <WesternLayout2>
-        <div className=''><HeaderAllPage data={Data}/></div>
-         <div className='section-container'>
-            {/*  */}
-            <div className='mt-8 md:mt-10 max-w-3xl mx-auto'>
-                <Header title={'Western International School provides'} short_description={'Modern, safe, and inspiring facilities that help students learn, create, and grow. Click on an image to see more!'}/>
+            <div className="">
+                <HeaderAllPage data={schoolFacilties} />
             </div>
-            <AlertDetial/>
-         </div>
+            <div className="section-container">
+                {/*  */}
+                <div className="mx-auto mt-8 max-w-3xl md:mt-10">
+                    <Header
+                        title={
+                            currentLocale == 'kh'
+                                ? schoolFacilties?.short_description_kh || schoolFacilties?.short_description
+                                : schoolFacilties?.short_description
+                        }
+                        short_description={
+                            currentLocale == 'kh'
+                                ? schoolFacilties?.long_description_kh || schoolFacilties?.long_description
+                                : schoolFacilties?.long_description
+                        }
+                    />
+                </div>
+                <AlertDetial data={schoolFacilties.children} />
+            </div>
         </WesternLayout2>
     );
 };

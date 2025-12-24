@@ -1,37 +1,43 @@
-import React from 'react'
+import useTranslation from '@/hooks/use-translation';
+import { usePage } from '@inertiajs/react';
 
 const VisionAndMission = () => {
-  return (
-    <div className='mt-12'>
-        <div className="flex flex-col items-center text-center">
-      {/* Title */}
-      <p
-        className="text-3xl font-bold text-primary inline-block"
-      >
-        Our Vision
+    const { ourVision, ourMission } = usePage<any>().props;
 
-      </p>
-      {/* Underline (dynamic width) */}
-      
-      <div className="md:text-lg">
-        Western International School aims to be the leading and most progressive bilingual international school in Cambodia.
-      </div>
-    </div>
-    <div className="flex flex-col items-center text-center mt-4">
-      <p
-        className="text-3xl font-bold text-primary inline-block"
-      >
-        Our Mission
+    const { t, currentLocale } = useTranslation();
 
-      </p>
-      {/* Underline (dynamic width) */}
-      
-      <div className="md:text-lg text-start">
-        1. To build student discipline for lifelong success.<br/>2. To provide the best education system for our students.<br/>3. To be committed to retaining the best qualified staff and teachers.<br/>4. To continue to improve your education, care, and grooming.<br/>5. To strengthen students knowledge of both Khmer and English.<br/>6. To provide learning materials and an environment that fosters student learning.
-      </div>
-    </div>
-    </div>
-  )
-}
+    return (
+        <div className="mt-12">
+            <div className="flex flex-col items-center text-center">
+                {/* Title */}
+                <p className="inline-block text-3xl font-bold text-primary">
+                    {currentLocale === 'kh' ? ourVision?.name_kh || ourVision?.name : ourVision?.name}
+                </p>
+                {/* Underline (dynamic width) */}
 
-export default VisionAndMission
+                <div
+                    className="prose max-w-none md:text-lg"
+                    dangerouslySetInnerHTML={{
+                        __html: currentLocale === 'kh' ? ourVision?.long_description_kh || ourVision?.long_description : ourVision?.long_description,
+                    }}
+                ></div>
+            </div>
+            <div className="mt-4 flex flex-col items-center text-center">
+                <p className="inline-block text-3xl font-bold text-primary">
+                    {currentLocale === 'kh' ? ourMission?.name_kh || ourMission?.name : ourMission?.name}
+                </p>
+                {/* Underline (dynamic width) */}
+
+                <div
+                    className="prose max-w-none text-left md:text-lg"
+                    dangerouslySetInnerHTML={{
+                        __html:
+                            currentLocale === 'kh' ? ourMission?.long_description_kh || ourMission?.long_description : ourMission?.long_description,
+                    }}
+                ></div>
+            </div>
+        </div>
+    );
+};
+
+export default VisionAndMission;

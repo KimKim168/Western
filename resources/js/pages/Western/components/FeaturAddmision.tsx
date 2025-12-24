@@ -1,3 +1,5 @@
+import useTranslation from '@/hooks/use-translation';
+
 const admissions = [
     {
         id: 1,
@@ -44,23 +46,32 @@ Have valid credentials from previous school:<br/><br/>
     },
 ];
 
-const FeatureAddmision = () => {
+const FeatureAddmision = ({ data }: { data: any }) => {
+    const { t, currentLocale } = useTranslation();
+
     return (
         <div className="flex items-center justify-center">
             <div className="w-full">
-                <div className="mx-auto mt-8 w-full space-y-10 md:mt-16">
-                    {admissions.map((feature, index) => (
-                        <div key={index} className="flex flex-col items-stretch justify-center gap-y-0 md:flex-row md:even:flex-row-reverse">
+                <div className="mx-auto mt-8 w-full space-y-10">
+                    {data.map((item: any) => (
+                        <div key={item.id} className="flex flex-col items-stretch justify-center gap-y-0 md:flex-row md:even:flex-row-reverse">
                             {/* Text */}
-                            <div className="flex shrink-0 basis-1/2 flex-col justify-center border-8 border-y-8 border-primary p-4 md:p-8 text-primary md:order-none">
-                                <h4 className="my-3 text-center text-2xl font-semibold tracking-[-0.02em]">{feature.title}</h4>
-                                <p className="text-base">{feature.short_description}</p>
-                                <div className="prose text-base text-primary" dangerouslySetInnerHTML={{ __html: feature.long_description }}></div>
+                            <div className="flex shrink-0 basis-1/2 flex-col justify-center border-8 border-y-8 border-primary p-4 text-primary md:order-none md:p-8">
+                                <h4 className="my-3 text-center text-2xl font-semibold tracking-[-0.02em]">
+                                    {currentLocale == 'kh' ? item?.name_kh || item?.name : item?.name}
+                                </h4>
+                                <p className="text-base">{item.short_description}</p>
+                                <div
+                                    className="prose text-base text-primary"
+                                    dangerouslySetInnerHTML={{
+                                        __html: currentLocale == 'kh' ? item?.long_description_kh || item?.long_description : item?.long_description,
+                                    }}
+                                ></div>
                             </div>
 
                             {/* Image */}
                             <div className="shrink-0 basis-1/2">
-                                <img src={feature?.images?.[0].image} className="h-full w-full object-cover" />
+                                <img src={`/assets/images/pages/${item?.images?.[0].image}`} className="h-full w-full object-cover" />
                             </div>
                         </div>
                     ))}

@@ -6,14 +6,15 @@ use Inertia\Inertia;
 
 
 Route::get('/', [WesternFrontPageController::class, 'index']);
-Route::get('/history_and_values', [WesternFrontPageController::class, 'history_and_values']);
 
-Route::get('/school_facilities', function () {
-    return Inertia::render('Western/SchoolFacilities/Index');
-})->name('school_facilities');
-Route::get('/our_campuses', function () {
-    return Inertia::render('Western/OurCampuses/Index');
-})->name('our_campuses');
+Route::get('/admissions', [WesternFrontPageController::class, 'admissions']);
+
+// About Page
+Route::get('/history_and_values', [WesternFrontPageController::class, 'history_and_values']);
+Route::get('/school_facilities', [WesternFrontPageController::class, 'school_facilities']);
+Route::get('/our_campuses', [WesternFrontPageController::class, 'our_campuses']);
+
+  
 Route::get('/curriculum', function () {
     return Inertia::render('Western/Curriculum/Index');
 })->name('curriculum');
@@ -26,9 +27,8 @@ Route::get('/school_calendar', function () {
 Route::get('/class_schedules_and_subjects', function () {
     return Inertia::render('Western/ClassScheduleAndSubject/Index');
 })->name('class_schedules_and_subjects');
-Route::get('/admissions', function () {
-    return Inertia::render('Western/Admissions/Index');
-})->name('admissions');
+ 
+
 Route::get('/student_services', function () {
     return Inertia::render('Western/StudentServices/Index');
 })->name('student_services');
