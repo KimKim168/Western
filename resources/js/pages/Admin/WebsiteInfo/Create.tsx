@@ -254,14 +254,21 @@ export default function Create({ editData, readOnly }: { editData?: any; readOnl
                             error={errors.keywords}
                             containerClassName="col-span-2"
                         />
-
-                        <FormField
+                        <FormFieldTextArea
                             id="phone"
                             name="phone"
                             label="Phone"
                             value={data.phone}
                             onChange={(val) => setData('phone', val)}
                             error={errors.phone}
+                        />
+                        <FormFieldTextArea
+                            id="working_hours"
+                            name="working_hours"
+                            label="Working Hours"
+                            value={data.working_hours}
+                            onChange={(val) => setData('working_hours', val)}
+                            error={errors.working_hours}
                         />
 
                         <FormField
@@ -272,24 +279,16 @@ export default function Create({ editData, readOnly }: { editData?: any; readOnl
                             onChange={(val) => setData('email', val)}
                             error={errors.email}
                         />
+                        
 
-                        <FormField
-                            id="working_hours"
-                            name="working_hours"
-                            label="Working Hours"
-                            value={data.working_hours}
-                            onChange={(val) => setData('working_hours', val)}
-                            error={errors.working_hours}
-                        />
-
-                        <FormField
+                        {/* <FormField
                             id="working_days"
                             name="working_days"
                             label="Working Days"
                             value={data.working_days}
                             onChange={(val) => setData('working_days', val)}
                             error={errors.working_days}
-                        />
+                        /> */}
 
                         <FormField
                             id="copyright"
