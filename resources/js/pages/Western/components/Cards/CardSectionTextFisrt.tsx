@@ -166,30 +166,30 @@ const CardSectionTextFisrt = () => {
                 <CarouselContent>
                     {data.map((item, index) => (
                         <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                            <AlertDialogTrigger asChild>
-                                <div
-                                    onClick={() => {
-                                        setSelectedItem(item);
-                                        setMainImageIndex(0);
-                                    }}
-                                    className="cursor-pointer"
-                                >
-                                    <Card className="gap-2 rounded-none bg-primary py-0 text-white shadow-none">
-                                        <CardHeader className="p-0">
-                                            <img src={item.images[0]} className="aspect-square w-full object-cover" alt={item.title} />
-                                        </CardHeader>
-                                        <CardContent className="px-3 pb-4">
-                                            <h3 className="inline-block bg-white p-1.5 text-xl font-semibold text-primary">{item.title}</h3>
-                                            <p className="text-lg">{item.short_description}</p>
+                            <div
+                                onClick={() => {
+                                    setSelectedItem(item);
+                                    setMainImageIndex(0);
+                                }}
+                                className="cursor-pointer"
+                            >
+                                <Card className="gap-2 rounded-none bg-primary py-0 text-white shadow-none">
+                                    <CardHeader className="p-0">
+                                        <img src={item.images[0]} className="aspect-square w-full object-cover" alt={item.title} />
+                                    </CardHeader>
+                                    <CardContent className="px-3 pb-4">
+                                        <h3 className="inline-block bg-white p-1.5 text-xl font-semibold text-primary">{item.title}</h3>
+                                        <p className="text-lg">{item.short_description}</p>
+                                        <AlertDialogTrigger asChild>
                                             <div className="mt-16 text-center">
                                                 <p className="button w-[120px] rounded-none bg-primary-two p-2 text-[13px] text-white transition-all hover:bg-primary-two md:text-[15px]">
                                                     Read More
                                                 </p>
                                             </div>
-                                        </CardContent>
-                                    </Card>
-                                </div>
-                            </AlertDialogTrigger>
+                                        </AlertDialogTrigger>
+                                    </CardContent>
+                                </Card>
+                            </div>
                         </CarouselItem>
                     ))}
                 </CarouselContent>
@@ -200,13 +200,13 @@ const CardSectionTextFisrt = () => {
             </Carousel>
 
             <AlertDialogContent
-                className="overflow-scroll overflow-y-scroll rounded-none p-4 sm:max-w-full md:p-6"
+                className="overflow-scroll overflow-y-scroll rounded-none p-4 sm:max-w-full md:pl-6 md:py-6 md:pr-0"
                 style={{
                     maxHeight: '90vh', // limits the height on mobile
                     overflowY: 'auto', // enable vertical scroll
                 }}
             >
-                <div className="flex justify-end">
+                <div className="flex justify-end px-6">
                     <AlertDialogPrimitive.Cancel
                         className={buttonVariants({
                             variant: 'ghost',
@@ -218,12 +218,12 @@ const CardSectionTextFisrt = () => {
                     </AlertDialogPrimitive.Cancel>
                 </div>
                 {selectedItem && (
-                    <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
+                    <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
                         {/* Image Gallery – FIRST on mobile */}
                         <PhotoProvider>
                             <div className="relative order-1 flex flex-col items-center lg:order-2">
                                 {/* Main Image */}
-                                <div className="relative w-full max-w-xl">
+                                <div className="relative w-full max-w-2xl">
                                     <button
                                         onClick={prevImage}
                                         className="absolute top-1/2 left-0 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center bg-primary/80 text-white hover:bg-primary"
@@ -289,12 +289,12 @@ const CardSectionTextFisrt = () => {
                         </PhotoProvider>
 
                         {/* Text – SECOND on mobile */}
-                        <div className="order-2 flex flex-col gap-4 lg:order-1 inline-block">
+                        <div className="order-2 flex inline-block flex-col gap-4 lg:order-1">
                             <h2 className="inline-block bg-primary p-2 text-lg font-bold text-white md:p-4 md:text-3xl lg:text-4xl">
                                 {selectedItem.title}
                             </h2>
 
-                            <p className="text-black md:text-xl mt-2" dangerouslySetInnerHTML={{ __html: selectedItem.long_description }} />
+                            <p className="mt-4 md:mt-4.5 text-black md:text-lg" dangerouslySetInnerHTML={{ __html: selectedItem.long_description }} />
                         </div>
                     </div>
                 )}
