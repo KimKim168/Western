@@ -23,14 +23,22 @@ class WesternFrontPageController extends Controller
      */
     public function index()
     {
-        $statisticHeader = Page::where('code', 'western-international-school-statistic')->first();
-        $keyValueData = KeyValue::all();
-
+        $statistics = Page::where('code', 'statistics')->with('images')->with('children')->first();
+        $ourCampuses = Page::where('code', 'our-campuses-home-page')->first();
+        $activitiAndEvent = Page::where('code', 'activities-and-events')
+            ->with(['children' => function ($query) {
+                $query->orderBy('order_index', 'desc'); // or orderBy('order_index') if you prefer
+            }, 'children.images'])
+            ->first();
+        $contactUs = Page::where('code', 'contact-us')->with('images')->first();
+        
         $Hero = Page::where('code', 'welcome-to-western-international-school')->with('images')->first();
-        // return ($Hero);
+        // return ($activitiAndEvent);
         return Inertia::render('Western/Index', [
-            'statisticHeader' => $statisticHeader,
-            'keyValueData' => $keyValueData,
+            'statistics' => $statistics,
+            'ourCampuses' => $ourCampuses,
+            'activitiAndEvent' => $activitiAndEvent,
+            'contactUs' => $contactUs,
             'Hero' => $Hero,
         ]);
     }

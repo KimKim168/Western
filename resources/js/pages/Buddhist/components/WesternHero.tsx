@@ -1,84 +1,94 @@
-interface StudentCouncil {
-    title: string;
-    long_description: string;
-    images: { image: string }[];
-}
+import useTranslation from '@/hooks/use-translation';
+import { usePage } from '@inertiajs/react';
 
 const WesternHero = () => {
-    // Static data
-    const studentCouncil: StudentCouncil = {
-        title: 'Western International School',
-        long_description: `
-      <p>Western International School began to help shape the children's future in the year 2003 when it first opened. Since then, we have been continuously aiming to be Cambodia's leading and most progressive bilingual international school.
-<p>We establish our students' educational background by providing a bilingual education program to build their literacy skills and attain proficiency in the English language. We also have summer classes and exchange programs which provide quality education or the students, preparing them to pursue their secondary education anywhere in the world.</p>
-      
-    `,
-        images: [
-            { image: 'hero.JPG' }, // Place this image in public/assets/images/pages/
-        ],
-    };
+    const { Hero } = usePage<any>().props;
+    const { currentLocale } = useTranslation();
+
+    const title =
+        currentLocale === 'kh'
+            ? Hero?.name_kh || Hero?.name
+            : Hero?.name;
+
+    const description =
+        currentLocale === 'kh'
+            ? Hero?.long_description_kh || Hero?.long_description
+            : Hero?.long_description;
+
+    const image = Hero?.images?.[0]?.image;
 
     return (
         <div className="mt-8 md:mt-12">
+            {/* Title */}
             <div className="flex justify-center text-center">
-                <p className="relative inline-block text-2xl font-bold text-primary after:absolute after:bottom-0 after:left-1/2 after:h-[1.5px] after:w-[60%] after:-translate-x-1/2 after:translate-y-1 after:rounded-full after:bg-primary after:content-[''] md:text-4xl lg:after:w-4/5">
-                    Welcome to Western International School
+                <p className="relative inline-block text-2xl font-bold text-primary
+                    after:absolute after:bottom-0 after:left-1/2 after:h-[1.5px]
+                    after:w-[60%] after:-translate-x-1/2 after:translate-y-1
+                    after:rounded-full after:bg-primary after:content-['']
+                    md:text-4xl lg:after:w-4/5">
+                    {title}
                 </p>
             </div>
+
+            {/* Desktop */}
             <div className="relative mx-auto mt-8 hidden flex-col px-4 sm:px-6 lg:flex lg:px-0">
-                {/* Hero Image */}
+                {/* Image */}
                 <div className="relative w-full">
-                    {studentCouncil.images?.[0]?.image ? (
+                    {image && (
                         <img
-                            src={`/assets/buddhist/${studentCouncil.images[0].image}`}
+                            src={`/assets/images/pages/${image}`}
                             className="aspect-[21/8] w-full object-cover"
-                            alt={studentCouncil.title}
+                            alt={title}
                         />
-                    ) : (
-                        <div className="w-full sm:h-20"></div>
                     )}
                 </div>
 
-                {/* Description Card */}
+                {/* Description */}
                 <div className="absolute bottom-0 z-10 w-full px-4 sm:px-6 lg:px-0">
-                    <div className="mx-auto flex flex-col items-start gap-[50px] bg-primary/60 p-4 px-8 shadow-lg lg:flex-row lg:items-center dark:shadow-foreground/10">
-                        <h3 className="mb-4 text-xl font-bold tracking-tight text-white xl:text-[40px]">{studentCouncil.title}</h3>
-                        <div className="flex w-full flex-1 flex-col gap-4 break-words sm:flex-row sm:gap-4">
-                            <div className="h-auto w-6 border bg-white"></div>
+                    <div className="mx-auto flex flex-col items-start gap-[50px]
+                        bg-primary/60 p-4 px-8 shadow-lg
+                        lg:flex-row lg:items-center dark:shadow-foreground/10">
+
+                        <h3 className="mb-4 text-xl font-bold text-white xl:text-[40px]">
+                            {Hero?.short_description}
+                        </h3>
+
+                        <div className="flex w-full flex-1 gap-4">
+                            <div className="w-6 bg-white" />
                             <div
-                                className="ck-content prose max-w-none bg-background p-4 py-6 text-xs leading-relaxed text-primary xl:text-base dark:prose-invert"
-                                dangerouslySetInnerHTML={{ __html: studentCouncil.long_description }}
+                                className="ck-content prose max-w-none bg-background
+                                    p-4 py-6 text-xs text-primary
+                                    xl:text-base dark:prose-invert"
+                                dangerouslySetInnerHTML={{ __html: description }}
                             />
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div className="mx-auto mt-8 flex-col px-4 sm:px-6 lg:hidden lg:px-0">
-                {/* Hero Image */}
-                <div className="w-full">
-                    {studentCouncil.images?.[0]?.image ? (
-                        <img
-                            src={`/assets/buddhist/${studentCouncil.images[0].image}`}
-                            className="aspect-[21/8] w-full object-cover"
-                            alt={studentCouncil.title}
-                        />
-                    ) : (
-                        <div className="w-full sm:h-20"></div>
-                    )}
-                </div>
+            {/* Mobile */}
+            <div className="mx-auto mt-8 flex-col px-4 sm:px-6 lg:hidden">
+                {image && (
+                    <img
+                        src={`/assets/images/pages/${image}`}
+                        className="aspect-[21/8] w-full object-cover"
+                        alt={title}
+                    />
+                )}
 
-                {/* Description Card */}
-                <div className="w-full">
-                    <div className="mx-auto flex flex-col items-start bg-primary/60 p-4 shadow-lg lg:flex-row lg:items-center dark:shadow-foreground/10">
-                        <h3 className="mb-2 text-xl font-bold tracking-tight text-white md:text-[40px]">{studentCouncil.title}</h3>
-                        <div className="flex w-full flex-1 flex-col gap-2 break-words sm:flex-row sm:gap-4">
-                            <div className="h-auto w-full border bg-white sm:w-6"></div>
-                            <div
-                                className="ck-content prose max-w-none bg-background p-4 py-6 text-[14px] leading-relaxed text-primary xl:text-base dark:prose-invert"
-                                dangerouslySetInnerHTML={{ __html: studentCouncil.long_description }}
-                            />
-                        </div>
+                <div className="bg-primary/60 p-4 shadow-lg">
+                    <h3 className="mb-2 text-xl font-bold text-white">
+                        {Hero?.short_description}
+                    </h3>
+
+                    <div className="flex flex-col gap-2">
+                        <div className="h-[2px] w-full bg-white" />
+                        <div
+                            className="ck-content prose max-w-none bg-background
+                                p-4 py-6 text-[14px] text-primary
+                                dark:prose-invert"
+                            dangerouslySetInnerHTML={{ __html: description }}
+                        />
                     </div>
                 </div>
             </div>
