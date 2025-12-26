@@ -309,7 +309,10 @@ class WesternFrontPageController extends Controller
 
     public function contact(Request $request)
     {
-        return Inertia::render('TODO_PATH/Contact');
+        $contact = Page::where('code', 'contact')->with('images')->first();
+        return Inertia::render('Western/Contact',[
+            'contact' => $contact,
+        ]);
     }
 
     public function posts(Request $request)
@@ -388,10 +391,10 @@ class WesternFrontPageController extends Controller
 
         $tableData = $query->paginate($perPage)->onEachSide(2);
 
-        // $tableData =  $query->limit(2)->get();
-        // return $tableData;
+        $tableData =  $query->limit(2)->get();
+        return ($tableData);
 
-        return Inertia::render('Buddhist/Posts/Index', [
+        return Inertia::render('Western/NewsAndBlogs/Index', [
             'tableData' => $tableData,
         ]);
     }

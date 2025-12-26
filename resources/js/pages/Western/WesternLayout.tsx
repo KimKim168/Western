@@ -9,7 +9,6 @@ interface LayoutProps {
 const WesternLayout = ({ children }: LayoutProps) => {
     return (
         <>
-           
             {/* PAGE CONTENT */}
             <main className="relative z-10 mx-auto min-h-screen bg-white">{children}</main>
             <Footer/>

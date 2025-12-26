@@ -25,12 +25,10 @@ Route::get('/extracurricular_activities', [WesternFrontPageController::class, 'e
 Route::get('/outreach_programs', [WesternFrontPageController::class, 'outreach_programs']);
 Route::get('/student_council', [WesternFrontPageController::class, 'student_council']);
  
-Route::get('/news_and_blogs', function () {
-    return Inertia::render('Western/NewsAndBlogs/Index');
-})->name('news_and_blogs');
+Route::get('/contact', [WesternFrontPageController::class, 'contact']);
+
+Route::get('/news_and_blogs', [WesternFrontPageController::class, 'posts']);
 Route::get('/detail', function () {
     return Inertia::render('Western/NewsAndBlogs/Detail');
 });
-Route::get('/contact', function () {
-    return Inertia::render('Western/Contact');
-})->name('contact');
+

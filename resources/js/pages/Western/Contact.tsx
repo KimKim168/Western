@@ -1,19 +1,25 @@
-import React from 'react'
-import WesternLayout from './WesternLayout'
-import ContactPage from './components/contactPage'
-import WesternLayout2 from './WesternLayout2'
+import { usePage } from '@inertiajs/react';
+import ContactPage from './components/contactPage';
+import WesternLayout2 from './WesternLayout2';
 
 const Contact = () => {
-  return (
-    <WesternLayout2>
-         <div className="relative w-full mt-24 md:mt-28">
-            <img src={`/assets/buddhist/image1.jpg`} className="aspect-[21/6] w-full object-cover" alt={''} />
-        </div>
-        <div className='section-container'>
-            <ContactPage/>
-        </div>
-    </WesternLayout2>
-  )
-}
+    const { contact } = usePage().props;
+    return (
+        <WesternLayout2>
+            <div className="relative mt-24 w-full md:mt-28">
+                {contact?.images?.length > 0 && (
+                    <img
+                        src={`/assets/images/pages/${contact.images[0].image}`}
+                        className="aspect-[21/6] w-full object-cover"
+                        alt="Contact page banner"
+                    />
+                )}
+            </div>
+            <div className="section-container">
+                <ContactPage />
+            </div>
+        </WesternLayout2>
+    );
+};
 
-export default Contact
+export default Contact;

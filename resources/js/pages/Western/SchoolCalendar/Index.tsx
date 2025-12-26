@@ -4,7 +4,6 @@ import { usePage } from '@inertiajs/react';
 import WesternLayout2 from '../WesternLayout2';
 
 const Index = () => {
-    
     const { schoolCalendar } = usePage<any>().props;
     const { t, currentLocale } = useTranslation();
 
