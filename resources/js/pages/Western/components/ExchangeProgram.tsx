@@ -2,15 +2,15 @@ import { usePage } from '@inertiajs/react';
 import { useState } from 'react';
 
 const ExchangeProgram = ({ children }: { children: any[] }) => {
-    const [activeTitle, setActiveTitle] = useState(children[0]?.title);
-    const activeItem = children.find((item) => item.title === activeTitle);
+    const [activeTitle, setActiveTitle] = useState(children[0]?.name);
+    const activeItem = children.find((item) => item.name === activeTitle);
     const { locale } = usePage().props;
 
     return (
         <div className="mt-28 px-4 md:mt-32 md:px-0">
             {/* Title */}
             <h1 className="mb-4 text-xl font-bold text-primary sm:text-3xl md:mb-6 md:ml-[75px] lg:text-4xl">
-                {locale === 'kh' ? (activeItem.title_kh ?? activeItem.title) : activeItem.title}
+                {locale === 'kh' ? (activeItem.name_kh ?? activeItem.name) : activeItem.name}
             </h1>
 
             <div className="flex flex-col gap-10 lg:flex-row">
@@ -18,9 +18,9 @@ const ExchangeProgram = ({ children }: { children: any[] }) => {
                 <div className="flex-1">
                     {/* Image under the title */}
                     <img
-                        src={`/assets/buddhist/${activeItem.images[0]?.image}`}
-                        alt={activeItem.title}
-                        className="aspect-[18/9] w-full object-cover md:mb-6"
+                        src={`/assets/images/pages/${activeItem.images[0]?.image}`}
+                        alt={activeItem.name}
+                        className="w-full object-cover md:mb-6"
                     />
 
                     {/* Description under the image */}
@@ -36,17 +36,17 @@ const ExchangeProgram = ({ children }: { children: any[] }) => {
                 <div className="w-full md:mr-[75px] lg:w-72">
                     <div className="overflow-hidden border border-black lg:sticky lg:top-36">
                         {children.map((item) => {
-                            const isActive = item.title === activeTitle;
+                            const isActive = item.name === activeTitle;
 
                             return (
                                 <button
                                     key={item.id}
-                                    onClick={() => setActiveTitle(item.title)}
-                                    className={`w-full border-b border-black px-4 py-3 text-left text-lg transition last:border-0 ${
+                                    onClick={() => setActiveTitle(item.name)}
+                                    className={`w-full cursor-pointer border-b border-black px-4 py-3 text-left text-lg transition last:border-0 ${
                                         isActive ? 'bg-primary text-white' : 'bg-white text-black hover:bg-primary hover:text-white'
                                     }`}
                                 >
-                                    {locale === 'kh' ? (item.title_kh ?? item.title) : item.title}
+                                    {locale === 'kh' ? (item.name_kh ?? item.name) : item.name}
                                 </button>
                             );
                         })}

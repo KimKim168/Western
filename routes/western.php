@@ -14,31 +14,15 @@ Route::get('/history_and_values', [WesternFrontPageController::class, 'history_a
 Route::get('/school_facilities', [WesternFrontPageController::class, 'school_facilities']);
 Route::get('/our_campuses', [WesternFrontPageController::class, 'our_campuses']);
 Route::get('/curriculum', [WesternFrontPageController::class, 'curriculum']);
+Route::get('/programs', [WesternFrontPageController::class, 'programs']);
+Route::get('/class_schedules_and_subjects', [WesternFrontPageController::class, 'class_schedules_and_subjects']);
+Route::get('/school_calendar', [WesternFrontPageController::class, 'school_calendar']);
 
+// School Life
+Route::get('/student_services', [WesternFrontPageController::class, 'student_services']);
+Route::get('/activities_and_events', [WesternFrontPageController::class, 'activities_and_events']);
+Route::get('/extracurricular_activities', [WesternFrontPageController::class, 'extracurricular_activities']);
   
-
-Route::get('/programs', function () {
-    return Inertia::render('Western/Programs/Index');
-})->name('programs');
-Route::get('/school_calendar', function () {
-    return Inertia::render('Western/SchoolCalendar/Index');
-})->name(name: 'school_calendar');
-Route::get('/class_schedules_and_subjects', function () {
-    return Inertia::render('Western/ClassScheduleAndSubject/Index');
-})->name('class_schedules_and_subjects');
- 
-
-Route::get('/student_services', function () {
-    return Inertia::render('Western/StudentServices/Index');
-})->name('student_services');
-// 
-Route::get('/activities_and_events', function () {
-    return Inertia::render('Western/ActivitiesAndSvents/Index');
-})->name('activities_and_events');
-// 
-Route::get('/extracurricular_activities', function () {
-    return Inertia::render('Western/ExtracurricularActivities/Index');
-})->name('extracurricular_activities');
 Route::get('/outreach_programs', function () {
     return Inertia::render('Western/OutreachPrograms/Index');
 })->name('outreach_programs');

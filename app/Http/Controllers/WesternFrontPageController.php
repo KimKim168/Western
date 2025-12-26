@@ -31,7 +31,7 @@ class WesternFrontPageController extends Controller
             }, 'children.images'])
             ->first();
         $contactUs = Page::where('code', 'contact-us')->with('images')->first();
-        
+
         $Hero = Page::where('code', 'welcome-to-western-international-school')->with('images')->first();
         // return ($activitiAndEvent);
         return Inertia::render('Western/Index', [
@@ -52,7 +52,12 @@ class WesternFrontPageController extends Controller
             ->first();
         $ourVision = Page::where('code', 'our-vision')->first();
         $ourMission = Page::where('code', 'our-mission')->first();
-        $valuesWiscare = Page::where('code', 'valuse-wiscare')->with('children.images')->first();
+        $valuesWiscare = Page::where('code', 'valuse-wiscare')->with([
+            'children' => function ($q) {
+                $q->orderBy('order_index');
+            },
+            'children.images'
+        ])->first();
 
         // return ($valuesWiscare);
         return Inertia::render('Western/HistoryAndValuse/Index', [
@@ -67,7 +72,12 @@ class WesternFrontPageController extends Controller
     {
         $schoolFacilties = Page::where('code', 'school-facilities')
             ->with('images')
-            ->with('children.images')
+            ->with([
+                'children' => function ($q) {
+                    $q->orderBy('order_index');
+                },
+                'children.images'
+            ])
             ->orderBy('order_index')
             ->first();
 
@@ -80,7 +90,12 @@ class WesternFrontPageController extends Controller
     {
         $ourCampuses = Page::where('code', 'our-campuses')
             ->with('images')
-            ->with('children.images')
+            ->with([
+                'children' => function ($q) {
+                    $q->orderBy('order_index');
+                },
+                'children.images'
+            ])
             ->orderBy('order_index')
             ->first();
         // return ($ourCampuses);
@@ -92,18 +107,135 @@ class WesternFrontPageController extends Controller
     {
         $curriculum = Page::where('code', 'curriculum')
             ->with('images')
-            ->with('children.images')
+            ->with([
+                'children' => function ($q) {
+                    $q->orderBy('order_index');
+                },
+                'children.images'
+            ])
             ->orderBy('order_index')
             ->first();
-        // return ($ourCampuses);
+        // return ($curriculum);
         return Inertia::render('Western/Curriculum/Index', [
             'curriculum' => $curriculum,
         ]);
     }
+    public function programs()
+    {
+        $programs = Page::where('code', 'programs')
+            ->with('images')
+            ->with([
+                'children' => function ($q) {
+                    $q->orderBy('order_index');
+                },
+                'children.images'
+            ])
+            ->orderBy('order_index')
+            ->first();
+        // return ($programs);
+        return Inertia::render('Western/Programs/Index', [
+            'programs' => $programs
+        ]);
+    }
+    public function class_schedules_and_subjects()
+    {
+        $classSchedulesndSubjects = Page::where('code', 'class-schedule-and-subjects')
+            ->with('images')
+            ->with([
+                'children' => function ($q) {
+                    $q->orderBy('order_index');
+                },
+                'children.images'
+            ])
+            ->orderBy('order_index')
+            ->first();
+        // return ($classSchedulesndSubjects);
+        return Inertia::render('Western/ClassScheduleAndSubject/Index', [
+            'classSchedulesndSubjects' => $classSchedulesndSubjects,
+        ]);
+    }
+    public function student_services()
+    {
+        $studentServices = Page::where('code', 'student-services')
+            ->with('images')
+            ->with([
+                'children' => function ($q) {
+                    $q->orderBy('order_index');
+                },
+                'children.images'
+            ])
+            ->orderBy('order_index')
+            ->first();
+        // return ($studentServices);
+        return Inertia::render('Western/StudentServices/Index', [
+            'studentServices' => $studentServices,
+        ]);
+    }
+    public function activities_and_events()
+    {
+        $activitiesAndEvents = Page::where('code', 'activities-and-events')
+            ->with('images')
+            ->with([
+                'children' => function ($q) {
+                    $q->orderBy('order_index');
+                },
+                'children.images'
+            ])
+            ->orderBy('order_index')
+            ->first();
+        // return ($activitiesAndEvents);
+        return Inertia::render('Western/ActivitiesAndSvents/Index', [
+            'activitiesAndEvents' => $activitiesAndEvents,
+        ]);
+    }
+    public function extracurricular_activities()
+    {
+        $extracurricularActivities = Page::where('code', 'extracurricular-activities')
+            ->with('images')
+            ->with([
+                'children' => function ($q) {
+                    $q->orderBy('order_index');
+                },
+                'children.images'
+            ])
+            ->orderBy('order_index')
+            ->first();
+        // return ($extracurricularActivities);
+        return Inertia::render('Western/ExtracurricularActivities/Index', [
+            'extracurricularActivities' => $extracurricularActivities,
+        ]);
+    }
+    public function school_calendar()
+    {
+        $schoolCalendar = Page::where('code', 'school-calendar')
+            ->with('images')
+            ->with([
+                'children' => function ($q) {
+                    $q->orderBy('order_index');
+                },
+                'children.images'
+            ])
+            ->orderBy('order_index')
+            ->first();
+        // return ($schoolCalendar);
+        return Inertia::render('Western/SchoolCalendar/Index', [
+            'schoolCalendar' => $schoolCalendar,
+        ]);
+    }
     public function admissions()
     {
-        $howToEnrollYourChild = Page::where('code', 'how-to-enroll-your-child')->with('children.images')->with('images')->first();
-        $schoolFees = Page::where('code', 'school-fees')->with('children.images')->with('images')->first();
+        $howToEnrollYourChild = Page::where('code', 'how-to-enroll-your-child')->with([
+            'children' => function ($q) {
+                $q->orderBy('order_index');
+            },
+            'children.images'
+        ])->with('images')->first();
+        $schoolFees = Page::where('code', 'school-fees')->with([
+            'children' => function ($q) {
+                $q->orderBy('order_index');
+            },
+            'children.images'
+        ])->with('images')->first();
         // return ($schoolFees);
         return Inertia::render('Western/Admissions/Index', [
             'howToEnrollYourChild' => $howToEnrollYourChild,

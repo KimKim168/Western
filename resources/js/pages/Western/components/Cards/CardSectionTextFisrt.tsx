@@ -2,153 +2,17 @@ import { AlertDialog, AlertDialogContent, AlertDialogTrigger } from '@/component
 import { buttonVariants } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
+import useTranslation from '@/hooks/use-translation';
 import { X } from 'lucide-react';
 import { AlertDialog as AlertDialogPrimitive } from 'radix-ui';
 import { useState } from 'react';
 import { PhotoProvider } from 'react-photo-view';
 import { styled } from 'styled-components';
 
-const CardSectionTextFisrt = () => {
-    const data = [
-        {
-            id: 1,
-            title: 'Educational Field Trips',
-            images: ['/assets/buddhist/image1.jpg', '/assets/buddhist/image2.jpg', '/assets/buddhist/image3.jpg', '/assets/buddhist/hero.JPG'],
-            short_description: '',
-            long_description: `<p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
-  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-  veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-  commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-  velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-
-<p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tristique
-  senectus et netus et malesuada fames ac turpis egestas. Maecenas non
-  facilisis dui, sit amet volutpat nunc. Integer vitae ipsum nulla. Sed
-  faucibus, ipsum at fermentum consectetur, nulla lorem dapibus velit,
-  eu convallis erat nibh eu odio.
-</p>
-
-<p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio
-  sed libero ultrices egestas. Aliquam erat volutpat. Nullam eget gravida
-  augue. In hac habitasse platea dictumst. Sed vehicula, erat id volutpat
-  vestibulum, risus lorem scelerisque elit, sed lacinia purus nunc eget sem.
-</p>`,
-        },
-        {
-            id: 2,
-            title: 'International Study Trips',
-            images: ['/assets/buddhist/image1.jpg', '/assets/buddhist/image2.jpg', '/assets/buddhist/image3.jpg', '/assets/buddhist/hero.JPG'],
-            long_description: `<p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
-  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-  veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-  commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-  velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-
-<p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tristique
-  senectus et netus et malesuada fames ac turpis egestas. Maecenas non
-  facilisis dui, sit amet volutpat nunc. Integer vitae ipsum nulla. Sed
-  faucibus, ipsum at fermentum consectetur, nulla lorem dapibus velit,
-  eu convallis erat nibh eu odio.
-</p>
-
-<p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio
-  sed libero ultrices egestas. Aliquam erat volutpat. Nullam eget gravida
-  augue. In hac habitasse platea dictumst. Sed vehicula, erat id volutpat
-  vestibulum, risus lorem scelerisque elit, sed lacinia purus nunc eget sem.
-</p>`,
-        },
-        {
-            id: 3,
-            title: 'International Competitions',
-            images: ['/assets/buddhist/image1.jpg', '/assets/buddhist/image2.jpg', '/assets/buddhist/image3.jpg', '/assets/buddhist/hero.JPG'],
-            long_description: `<p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
-  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-  veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-  commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-  velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-
-<p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tristique
-  senectus et netus et malesuada fames ac turpis egestas. Maecenas non
-  facilisis dui, sit amet volutpat nunc. Integer vitae ipsum nulla. Sed
-  faucibus, ipsum at fermentum consectetur, nulla lorem dapibus velit,
-  eu convallis erat nibh eu odio.
-</p>
-
-<p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio
-  sed libero ultrices egestas. Aliquam erat volutpat. Nullam eget gravida
-  augue. In hac habitasse platea dictumst. Sed vehicula, erat id volutpat
-  vestibulum, risus lorem scelerisque elit, sed lacinia purus nunc eget sem.
-</p>`,
-        },
-        {
-            id: 4,
-            title: 'Sports Tournaments',
-            images: ['/assets/buddhist/image1.jpg', '/assets/buddhist/image2.jpg', '/assets/buddhist/image3.jpg', '/assets/buddhist/hero.JPG'],
-            long_description: `<p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
-  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-  veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-  commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-  velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-
-<p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tristique
-  senectus et netus et malesuada fames ac turpis egestas. Maecenas non
-  facilisis dui, sit amet volutpat nunc. Integer vitae ipsum nulla. Sed
-  faucibus, ipsum at fermentum consectetur, nulla lorem dapibus velit,
-  eu convallis erat nibh eu odio.
-</p>
-
-<p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio
-  sed libero ultrices egestas. Aliquam erat volutpat. Nullam eget gravida
-  augue. In hac habitasse platea dictumst. Sed vehicula, erat id volutpat
-  vestibulum, risus lorem scelerisque elit, sed lacinia purus nunc eget sem.
-</p>`,
-        },
-        {
-            id: 5,
-            title: 'Prom Night',
-            images: ['/assets/buddhist/image1.jpg', '/assets/buddhist/image2.jpg', '/assets/buddhist/image3.jpg', '/assets/buddhist/hero.JPG'],
-            long_description: `<p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
-  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-  veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-  commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-  velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-
-<p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tristique
-  senectus et netus et malesuada fames ac turpis egestas. Maecenas non
-  facilisis dui, sit amet volutpat nunc. Integer vitae ipsum nulla. Sed
-  faucibus, ipsum at fermentum consectetur, nulla lorem dapibus velit,
-  eu convallis erat nibh eu odio.
-</p>
-
-<p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio
-  sed libero ultrices egestas. Aliquam erat volutpat. Nullam eget gravida
-  augue. In hac habitasse platea dictumst. Sed vehicula, erat id volutpat
-  vestibulum, risus lorem scelerisque elit, sed lacinia purus nunc eget sem.
-</p>`,
-        },
-    ];
-    const [selectedItem, setSelectedItem] = useState(null);
+const CardSectionTextFisrt = ({ data }: { data: any }) => {
+    const [selectedItem, setSelectedItem] = useState<any>(null);
     const [mainImageIndex, setMainImageIndex] = useState(0);
+    const { t, currentLocale } = useTranslation();
 
     const prevImage = () => {
         if (!selectedItem) return;
@@ -164,26 +28,38 @@ const CardSectionTextFisrt = () => {
         <AlertDialog>
             <Carousel opts={{ align: 'start' }} className="relative mt-4 w-full">
                 <CarouselContent>
-                    {data.map((item, index) => (
+                    {data.map((item: any, index) => (
                         <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                             <div
                                 onClick={() => {
                                     setSelectedItem(item);
                                     setMainImageIndex(0);
                                 }}
-                                className="cursor-pointer"
+                                className="h-full cursor-pointer"
                             >
-                                <Card className="gap-2 rounded-none bg-primary py-0 text-white shadow-none">
+                                <Card className="h-full gap-2 rounded-none bg-primary py-0 text-white shadow-none">
                                     <CardHeader className="p-0">
-                                        <img src={item.images[0]} className="aspect-square w-full object-cover" alt={item.title} />
+                                        <img
+                                            src={`/assets/images/pages/${item.images[0]?.image}`}
+                                            className="aspect-square w-full object-cover"
+                                            alt={item.name}
+                                        />
                                     </CardHeader>
-                                    <CardContent className="px-3 pb-4">
-                                        <h3 className="inline-block bg-white p-1.5 text-xl font-semibold text-primary">{item.title}</h3>
-                                        <p className="text-lg">{item.short_description}</p>
+                                    <CardContent className="flex h-full flex-col justify-between px-3 pb-4">
+                                        <div>
+                                            <h3 className="inline-block bg-white p-1.5 text-xl font-semibold text-primary">
+                                                {currentLocale == 'kh' ? item?.name_kh || item?.name : item?.name}
+                                            </h3>
+                                            <p className="text-lg">
+                                                {currentLocale == 'kh'
+                                                    ? item?.short_description_kh || item?.short_description
+                                                    : item?.short_description}
+                                            </p>
+                                        </div>
                                         <AlertDialogTrigger asChild>
                                             <div className="mt-16 text-center">
                                                 <p className="button w-[120px] rounded-none bg-primary-two p-2 text-[13px] text-white transition-all hover:bg-primary-two md:text-[15px]">
-                                                    Read More
+                                                    {t('Read More')}
                                                 </p>
                                             </div>
                                         </AlertDialogTrigger>
@@ -200,7 +76,7 @@ const CardSectionTextFisrt = () => {
             </Carousel>
 
             <AlertDialogContent
-                className="overflow-scroll overflow-y-scroll rounded-none p-4 sm:max-w-full md:pl-6 md:py-6 md:pr-0"
+                className="overflow-scroll overflow-y-scroll rounded-none p-4 sm:max-w-full md:py-6 md:pr-0 md:pl-6"
                 style={{
                     maxHeight: '90vh', // limits the height on mobile
                     overflowY: 'auto', // enable vertical scroll
@@ -246,7 +122,7 @@ const CardSectionTextFisrt = () => {
                                     </button>
 
                                     <img
-                                        src={selectedItem.images[mainImageIndex]}
+                                        src={`/assets/images/pages/${selectedItem.images[mainImageIndex]?.image}`}
                                         className="max-h-[500px] w-full cursor-pointer object-cover shadow"
                                     />
 
@@ -274,10 +150,10 @@ const CardSectionTextFisrt = () => {
 
                                 {/* Thumbnails */}
                                 <div className="mt-4 flex flex-wrap justify-center gap-3">
-                                    {selectedItem.images.map((src, index) => (
+                                    {selectedItem.images.map((src: any, index) => (
                                         <img
                                             key={index}
-                                            src={src}
+                                            src={`/assets/images/pages/${src.image}`}
                                             onClick={() => setMainImageIndex(index)}
                                             className={`h-16 w-16 cursor-pointer object-cover transition sm:h-20 sm:w-20 ${
                                                 index === mainImageIndex ? 'border-2 border-primary shadow-md' : 'opacity-70 hover:opacity-100'
@@ -291,10 +167,18 @@ const CardSectionTextFisrt = () => {
                         {/* Text – SECOND on mobile */}
                         <div className="order-2 flex inline-block flex-col gap-4 lg:order-1">
                             <h2 className="inline-block bg-primary p-2 text-lg font-bold text-white md:p-4 md:text-3xl lg:text-4xl">
-                                {selectedItem.title}
+                                {currentLocale == 'kh' ? selectedItem?.name_kh || selectedItem?.name : selectedItem?.name}
                             </h2>
 
-                            <p className="mt-4 md:mt-4.5 text-black md:text-lg" dangerouslySetInnerHTML={{ __html: selectedItem.long_description }} />
+                            <p
+                                className="mt-4 text-black md:mt-4.5 md:text-lg"
+                                dangerouslySetInnerHTML={{
+                                    __html:
+                                        currentLocale == 'kh'
+                                            ? selectedItem?.long_description_kh || selectedItem?.long_description
+                                            : selectedItem?.long_description,
+                                }}
+                            />
                         </div>
                     </div>
                 )}

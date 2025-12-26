@@ -1,20 +1,28 @@
-import WesternLayout from '../WesternLayout';
+import useTranslation from '@/hooks/use-translation';
+import { usePage } from '@inertiajs/react';
 import WesternLayout2 from '../WesternLayout2';
 import CardSectionTextFisrt from '../components/Cards/CardSectionTextFisrt';
 
 const Index = () => {
+    const { extracurricularActivities } = usePage<any>().props;
+    const { t, currentLocale } = useTranslation();
     return (
         <WesternLayout2>
-            <div className="section-container mt-26 md:mt-36">
+            <div className="section-container mt-28 md:mt-36">
                 <p className="relative inline-block text-3xl font-bold text-primary after:absolute after:bottom-0 after:left-1/2 after:h-[1.5px] after:w-4/5 after:-translate-x-1/2 md:text-5xl">
-                    Extracurricular Activities
+                    {currentLocale == 'kh' ? extracurricularActivities?.name_kh || extracurricularActivities?.name : extracurricularActivities?.name}
                 </p>
-                <div className="mt-4 max-w-5xl md:text-lg">
-                    Our students also participate in other activities that help them build teamwork, communication, and relationship. It helps
-                    students explore their interests and create a broader perspective of the worldview.
-                </div>
+                <div
+                    className="prose mt-2 max-w-5xl md:mt-4 md:text-lg"
+                    dangerouslySetInnerHTML={{
+                        __html:
+                            currentLocale == 'kh'
+                                ? extracurricularActivities?.long_description_kh || extracurricularActivities?.long_description
+                                : extracurricularActivities?.long_description,
+                    }}
+                />
                 {/* Card with dielog */}
-                <CardSectionTextFisrt />
+                <CardSectionTextFisrt data={extracurricularActivities?.children} />
             </div>
         </WesternLayout2>
     );
