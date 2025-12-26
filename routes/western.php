@@ -13,11 +13,10 @@ Route::get('/admissions', [WesternFrontPageController::class, 'admissions']);
 Route::get('/history_and_values', [WesternFrontPageController::class, 'history_and_values']);
 Route::get('/school_facilities', [WesternFrontPageController::class, 'school_facilities']);
 Route::get('/our_campuses', [WesternFrontPageController::class, 'our_campuses']);
+Route::get('/curriculum', [WesternFrontPageController::class, 'curriculum']);
 
   
-Route::get('/curriculum', function () {
-    return Inertia::render('Western/Curriculum/Index');
-})->name('curriculum');
+
 Route::get('/programs', function () {
     return Inertia::render('Western/Programs/Index');
 })->name('programs');

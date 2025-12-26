@@ -88,6 +88,18 @@ class WesternFrontPageController extends Controller
             'ourCampuses' => $ourCampuses,
         ]);
     }
+    public function curriculum()
+    {
+        $curriculum = Page::where('code', 'curriculum')
+            ->with('images')
+            ->with('children.images')
+            ->orderBy('order_index')
+            ->first();
+        // return ($ourCampuses);
+        return Inertia::render('Western/Curriculum/Index', [
+            'curriculum' => $curriculum,
+        ]);
+    }
     public function admissions()
     {
         $howToEnrollYourChild = Page::where('code', 'how-to-enroll-your-child')->with('children.images')->with('images')->first();
