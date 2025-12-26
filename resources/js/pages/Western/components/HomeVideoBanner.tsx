@@ -35,8 +35,8 @@ const HomeVideoBanner = React.forwardRef<HTMLDivElement, HomeVideoBannerProps>(
 
                 {/* Centered Text */}
                 {(title || description) && (
-                    <div className="absolute right-0 bottom-40 left-0 z-10 flex items-center justify-center px-4 text-center">
-                        <div className="space-y-2 sm:space-y-4">
+                    <div className="absolute right-0 bottom-4 md:bottom-40 left-0 z-10 flex items-center justify-center px-4 text-center">
+                        <div className="space-y-0 sm:space-y-4">
                             {title && <h3 className="text-xl font-bold text-white sm:text-5xl">{title}</h3>}
                             {description && <p className="text-base text-white sm:text-3xl">{description}</p>}
                         </div>

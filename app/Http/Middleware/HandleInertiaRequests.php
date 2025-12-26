@@ -69,10 +69,10 @@ class HandleInertiaRequests extends Middleware
 
             // Global Website Info
             'website_info' => WebsiteInfo::first(),
-             'nav_bar' => Page::where('parent_code')
-    ->with('children.children')
-    ->orderBy('order_index')
-    ->get(),
+            'nav_bar' => Page::where('parent_code')
+                ->with('children.children')
+                ->orderBy('order_index')
+                ->get(),
             'media_links' => Link::whereIn('type_code', ['social-media', 'contact'])->get(),
 
             // Buddhist Global Info
