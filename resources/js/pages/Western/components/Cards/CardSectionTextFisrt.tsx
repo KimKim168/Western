@@ -123,7 +123,7 @@ const CardSectionTextFisrt = ({ data }: { data: any }) => {
 
                                     <img
                                         src={`/assets/images/pages/${selectedItem.images[mainImageIndex]?.image}`}
-                                        className="max-h-[500px] w-full cursor-pointer object-cover shadow"
+                                        className="aspect-video max-h-[500px] w-full cursor-pointer object-cover shadow"
                                     />
 
                                     <button

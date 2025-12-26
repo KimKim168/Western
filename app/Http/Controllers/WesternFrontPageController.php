@@ -222,6 +222,70 @@ class WesternFrontPageController extends Controller
             'schoolCalendar' => $schoolCalendar,
         ]);
     }
+    public function outreach_programs()
+    {
+        $outreachPrograms = Page::where('code', 'outreach-programs')
+            ->with('images')
+            ->with([
+                'children' => function ($q) {
+                    $q->orderBy('order_index');
+                },
+                'children.images'
+            ])
+            ->orderBy('order_index')
+            ->first();
+        // return ($outreachPrograms);
+        return Inertia::render('Western/OutreachPrograms/Index', [
+            'outreachPrograms' => $outreachPrograms,
+        ]);
+    }
+    public function student_council()
+    {
+        $studentCouncil = Page::where('code', 'student-council')
+            ->with('images')
+            ->with([
+                'images'
+            ])
+            ->orderBy('order_index')
+            ->first();
+        $gradeLevelLeaders = Page::where('code', 'grade-level-leaders')
+            ->with('images')
+            ->with([
+                'children' => function ($q) {
+                    $q->orderBy('order_index');
+                },
+                'children.images'
+            ])
+            ->orderBy('order_index')
+            ->first();
+        $campusRepresentatives = Page::where('code', 'campus-representatives')
+            ->with('images')
+            ->with([
+                'children' => function ($q) {
+                    $q->orderBy('order_index');
+                },
+                'children.images'
+            ])
+            ->orderBy('order_index')
+            ->first();
+        $studentCouncilInAction = Page::where('code', 'student-council-in-action')
+            ->with('images')
+            ->with([
+                'children' => function ($q) {
+                    $q->orderBy('order_index');
+                },
+                'children.images'
+            ])
+            ->orderBy('order_index')
+            ->first();
+        // return ($outreachPrograms);
+        return Inertia::render('Western/StudentCouncil/Index', [
+            'studentCouncil' => $studentCouncil,
+            'gradeLevelLeaders' => $gradeLevelLeaders,
+            'campusRepresentatives' => $campusRepresentatives,
+            'studentCouncilInAction' => $studentCouncilInAction,
+        ]);
+    }
     public function admissions()
     {
         $howToEnrollYourChild = Page::where('code', 'how-to-enroll-your-child')->with([

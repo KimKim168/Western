@@ -1,9 +1,12 @@
+import useTranslation from '@/hooks/use-translation';
+import { usePage } from '@inertiajs/react';
 import { useState } from 'react';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
-import WesternLayout from '../WesternLayout';
 import WesternLayout2 from '../WesternLayout2';
 
 const Index = () => {
+    const { outreachPrograms } = usePage<any>().props;
+    const { t, currentLocale } = useTranslation();
     const data = [
         {
             id: 1,
@@ -17,7 +20,7 @@ const Index = () => {
         },
     ];
 
-    const [selectedItem, setSelectedItem] = useState(data[0]);
+    const [selectedItem, setSelectedItem] = useState(outreachPrograms);
 
     const [mainImageIndex, setMainImageIndex] = useState(0);
 
@@ -33,15 +36,18 @@ const Index = () => {
         <WesternLayout2>
             <div className="section-container mt-26 md:mt-36">
                 <p className="relative inline-block text-3xl font-bold text-primary after:absolute after:bottom-0 after:left-1/2 after:h-[1.5px] after:w-4/5 after:-translate-x-1/2 after:translate-y-1 after:rounded-full after:bg-primary after:content-[''] md:text-5xl">
-                    Outreach Programs
+                    {currentLocale == 'kh' ? outreachPrograms?.name_kh || outreachPrograms?.name : outreachPrograms?.name}
                 </p>
 
-                <div className="mt-4 max-w-5xl md:text-lg">
-                    Western International School management and students participate in Outreach Programs and help provide schools with necessary
-                    materials such as books, bags, water filters, and others that will be helpful for the children's studies. Our students feel the
-                    joy of sharing their love through this outreach and we hope that these programs will help them understand the importance of
-                    sharing and reaching out to those who are in need.
-                </div>
+                <div
+                    className="prose mt-4 max-w-5xl md:text-lg"
+                    dangerouslySetInnerHTML={{
+                        __html:
+                            currentLocale == 'kh'
+                                ? outreachPrograms?.long_description_kh || outreachPrograms?.long_description
+                                : outreachPrograms?.long_description,
+                    }}
+                ></div>
 
                 {/* Gallery */}
                 <PhotoProvider>
@@ -68,8 +74,11 @@ const Index = () => {
                                 </svg>
                             </button>
 
-                            <PhotoView src={selectedItem.images[mainImageIndex]}>
-                                <img src={selectedItem.images[mainImageIndex]} className="aspect-[18/9] w-full cursor-pointer object-cover" />
+                            <PhotoView src={`/assets/images/pages/${selectedItem.images[mainImageIndex]?.image}`}>
+                                <img
+                                    src={`/assets/images/pages/${selectedItem.images[mainImageIndex]?.image}`}
+                                    className="aspect-[18/9] w-full cursor-pointer object-cover"
+                                />
                             </PhotoView>
 
                             <button
@@ -95,10 +104,10 @@ const Index = () => {
 
                         {/* Thumbnails */}
                         <div className="mt-4 flex flex-wrap justify-center gap-3">
-                            {selectedItem.images.map((src, index) => (
+                            {selectedItem.images.map((src: any, index) => (
                                 <img
                                     key={index}
-                                    src={src}
+                                    src={`/assets/images/pages/${src?.image}`}
                                     onClick={() => setMainImageIndex(index)}
                                     className={`h-20 w-40 cursor-pointer object-cover transition ${
                                         index === mainImageIndex ? 'border-2 border-primary shadow-md' : 'opacity-70 hover:opacity-100'

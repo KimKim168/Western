@@ -4,21 +4,7 @@ import { usePage } from '@inertiajs/react';
 import WesternLayout2 from '../WesternLayout2';
 
 const Index = () => {
-    const tabs = [
-        {
-            title: 'For Kindergarten',
-            value: 'For Kindergarten',
-            content: 'For Kindergarten dlx shadcn@latest add tabs',
-            image: '/assets/buddhist/image4.png',
-        },
-        {
-            title: 'For Grades',
-            value: 'For Grades',
-            content: 'npx shadcn@latest add tabs',
-            image: '/assets/buddhist/image5.png',
-        },
-    ];
-
+    
     const { schoolCalendar } = usePage<any>().props;
     const { t, currentLocale } = useTranslation();
 
