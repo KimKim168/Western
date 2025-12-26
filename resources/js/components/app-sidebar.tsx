@@ -9,6 +9,7 @@ import {
     FilesIcon,
     Folder,
     LanguagesIcon,
+    Layers,
     LayoutGrid,
     LayoutList,
     LucideIcon,
@@ -106,6 +107,13 @@ const mainNavItems: {
         ],
     },
     {
+        title: 'Pages',
+        url: '/admin/pages',
+        icon: Layers,
+        activeList: ['/admin/pages'],
+        permission: 'page view',
+    },
+    {
         title: 'Website Settings',
         url: '/admin/website-infos',
         icon: SettingsIcon,
@@ -116,11 +124,11 @@ const mainNavItems: {
                 url: '/admin/website-infos',
                 permission: 'website_info view',
             },
-            {
-                title: 'Pages',
-                url: '/admin/pages',
-                permission: 'page view',
-            },
+            // {
+            //     title: 'Pages',
+            //     url: '/admin/pages',
+            //     permission: 'page view',
+            // },
             {
                 title: 'Links',
                 url: '/admin/links',

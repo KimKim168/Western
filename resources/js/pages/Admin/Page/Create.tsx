@@ -151,14 +151,14 @@ export default function Create({ editData, readOnly }: { editData?: any; readOnl
                             containerClassName="col-span-2"
                         />
 
-                        <FormField
+                        {/* <FormField
                             id="button_title_kh"
                             name="button_title_kh"
                             label="Button title khmer"
                             value={data.button_title_kh || ''}
                             onChange={(val) => setData('button_title_kh', val)}
                             error={errors.button_title_kh}
-                        />
+                        /> */}
 
                         <div className="col-span-2 grid content-start gap-2">
                             <FormLabel label="Long Description Khmer" />
@@ -166,9 +166,10 @@ export default function Create({ editData, readOnly }: { editData?: any; readOnl
                         </div>
                     </div>
                 ) : (
-                    <div className="form-field-container">
+                    <div className="form-field-container ">
                         <FormField
-                            disable={editData?.children_count}
+                            // disable={editData?.children_count}
+                            disable={editData?.id}
                             id="code"
                             name="code"
                             label="Code"
@@ -176,6 +177,7 @@ export default function Create({ editData, readOnly }: { editData?: any; readOnl
                             onChange={(val: string) => setData('code', toSlug(val))}
                             error={errors.code}
                             description={editData?.children_count > 0 ? `Page has children — cannot update code.` : `Example: my-item-code`}
+                            containerClassName="col-span-2 md:col-span-1"
                         />
 
                         <FormField
@@ -217,10 +219,12 @@ export default function Create({ editData, readOnly }: { editData?: any; readOnl
                                 onChange={(val) => setData('parent_code', val)}
                                 error={errors.parent_code}
                                 description="Select the parent page where this page belongs to."
+                                className="col-span-2 md:col-span-1"
+                                
                             />
                         )}
 
-                        {types?.length > 0 && (
+                        {/* {types?.length > 0 && (
                             <FormCombobox
                                 name="type_code"
                                 label="Type"
@@ -232,16 +236,16 @@ export default function Create({ editData, readOnly }: { editData?: any; readOnl
                                 onChange={(val) => setData('type_code', val)}
                                 error={errors.type_code}
                             />
-                        )}
+                        )} */}
 
-                        <FormField
+                        {/* <FormField
                             id="button_title"
                             name="button_title"
                             label="Button title"
                             value={data.button_title || ''}
                             onChange={(val) => setData('button_title', val)}
                             error={errors.button_title}
-                        />
+                        /> */}
 
                         <FormField
                             id="link"
@@ -250,6 +254,7 @@ export default function Create({ editData, readOnly }: { editData?: any; readOnl
                             value={data.link || ''}
                             onChange={(val) => setData('link', val)}
                             error={errors.link}
+                            containerClassName="col-span-2 md:col-span-1"
                         />
 
                         <FormField
@@ -262,6 +267,7 @@ export default function Create({ editData, readOnly }: { editData?: any; readOnl
                             onChange={(val) => setData('order_index', Number(val))}
                             error={errors.order_index}
                             description="Lower number has higher priority."
+                            containerClassName="col-span-2 md:col-span-1"
                         />
                         <div className="col-span-2 grid content-start gap-2">
                             <FormLabel label="Long Description" />

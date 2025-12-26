@@ -78,11 +78,11 @@ class PageController extends Controller implements HasMiddleware
 
         $query->orderBy('id', 'desc');
 
-        $query->with('created_user', 'updated_user', 'type');
+        $query->with('created_user', 'updated_user', 'type','images');
 
 
         $tableData = $query->paginate($perPage)->onEachSide(1);
-
+        // return ($tableData);
         return Inertia::render('Admin/Page/Index', [
             'tableData' => $tableData,
             'selectedPage' => $selectedPage,

@@ -186,24 +186,24 @@ export default function Create({ editData, readOnly }: { editData?: any; readOnl
                             error={errors.keywords_kh}
                             containerClassName="col-span-2"
                         />
-
-                        <FormField
+                        <FormFieldTextArea
                             id="working_hours_kh"
                             name="working_hours_kh"
                             label="Working Hours Khmer"
                             value={data.working_hours_kh}
                             onChange={(val) => setData('working_hours_kh', val)}
                             error={errors.working_hours_kh}
+                            containerClassName="col-span-2"
                         />
 
-                        <FormField
+                        {/* <FormField
                             id="working_days_kh"
                             name="working_days_kh"
                             label="Working Days Khmer"
                             value={data.working_days_kh}
                             onChange={(val) => setData('working_days_kh', val)}
                             error={errors.working_days_kh}
-                        />
+                        /> */}
 
                         <FormField
                             id="copyright_kh"

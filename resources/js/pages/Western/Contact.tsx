@@ -6,7 +6,7 @@ const Contact = () => {
     const { contact } = usePage().props;
     return (
         <WesternLayout2>
-            <div className="relative mt-24 w-full md:mt-28">
+            <div className="relative w-full">
                 {contact?.images?.length > 0 && (
                     <img
                         src={`/assets/images/pages/${contact.images[0].image}`}

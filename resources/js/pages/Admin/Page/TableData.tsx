@@ -21,6 +21,7 @@ const TableData = () => {
                         <TableRow>
                             <TableHeadWithSort field="id" label="ID" />
                             <TableHeadWithSort label="Action" />
+                            <TableHeadWithSort label="Icon" />
                             <TableHeadWithSort label="Image" />
                             <TableHeadWithSort field="code" label="Code" />
                             <TableHeadWithSort field="name" label="Name" />
@@ -64,11 +65,18 @@ const TableData = () => {
                                         </>
                                     )}
                                 </TableCellActions>
-                                <TableCell>
+                                 <TableCell>
                                     <TableCellAvatar
                                         className="rounded-none border-none object-contain"
                                         alt={item.name}
                                         image={`/assets/images/pages/thumb/${item.icon}`}
+                                    />
+                                </TableCell>
+                                <TableCell>
+                                    <TableCellAvatar
+                                        className="rounded-none border-none object-contain"
+                                        alt={item.name}
+                                        image={`/assets/images/pages/thumb/${item.images?.[0]?.image}`}
                                     />
                                 </TableCell>
                                 <TableCellText value={item.code} />

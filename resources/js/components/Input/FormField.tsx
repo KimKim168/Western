@@ -18,6 +18,7 @@ interface FormFieldProps {
     onChange: (val: string) => void;
     className?: string;
     containerClassName?: string;
+    labelClassName?: string;
     required?: boolean;
     disable?: boolean;
 }
@@ -34,13 +35,14 @@ export const FormField: React.FC<FormFieldProps> = ({
     onChange,
     className,
     containerClassName,
+    labelClassName,
     required = false,
     disable = false,
 }) => {
     const { t } = useTranslation();
     return (
         <div className={cn('grid content-start gap-2', containerClassName)}>
-            <FormLabel id={id} label={label} required={required} />
+            <FormLabel id={id} label={label} required={required} labelClassName={labelClassName}/>
             <Input
                 disabled={disable}
                 type={type}
