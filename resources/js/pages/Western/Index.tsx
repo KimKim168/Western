@@ -20,7 +20,7 @@ const Index = () => {
                     <NavbarPage />
                 </div>
                 {/* HERO SECTION */}
-                {homeVideoBanner?.video_file_name && (
+                {homeVideoBanner?.video_file_name ? (
                     <div className="mx-auto w-full">
                         {/* <VideoPlayer
                         thumbnailUrl="https://images.unsplash.com/photo-1593642532454-e138e28a63f4?q=80&w=2069&auto=format&fit=crop"
@@ -39,6 +39,8 @@ const Index = () => {
                             videoUrl={`/assets/videos/banners/${homeVideoBanner?.video_file_name}`}
                         />
                     </div>
+                ) : (
+                    <div className="h-18 bg-primary xl:h-28"></div>
                 )}
             </div>
             <WesternHero />
