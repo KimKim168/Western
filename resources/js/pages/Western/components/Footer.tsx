@@ -16,15 +16,6 @@ const footerSections = [
     },
 ];
 
-const socialMedia = [
-    { image: '/assets/buddhist/facebook.png', href: '#' },
-    { image: '/assets/buddhist/instagram.png', href: '#' },
-    { image: '/assets/buddhist/telegram.png', href: '#' },
-    { image: '/assets/buddhist/linkedin.png', href: '#' },
-    { image: '/assets/buddhist/tiktok.png', href: '#' },
-    { image: '/assets/buddhist/youtube.png', href: '#' },
-];
-
 const Footer = () => {
     const { media_links, website_info } = usePage<any>().props;
     const { t, currentLocale } = useTranslation();
@@ -63,7 +54,7 @@ const Footer = () => {
 
                     {/* Social Media */}
                     <div>
-                        <h6 className="text-xl font-bold">Social Media</h6>
+                        <h6 className="text-xl font-bold">{t("Social Media")}</h6>
                         <div className="mt-2 flex gap-2">
                             {media_links.map((item: any) => (
                                 <a

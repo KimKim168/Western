@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\TelegramHelper;
 use App\Models\Banner;
 use App\Models\Faq;
 use App\Models\KeyValue;
@@ -310,9 +311,34 @@ class WesternFrontPageController extends Controller
     public function contact(Request $request)
     {
         $contact = Page::where('code', 'contact')->with('images')->first();
-        return Inertia::render('Western/Contact',[
+        return Inertia::render('Western/Contact', [
             'contact' => $contact,
         ]);
+    }
+    public function sent_message(Request $request)
+    {
+        $validated = $request->validate([
+            'name'     => 'required|string|min:2|max:255',
+            'phone'    => 'required|string|min:8|max:20',
+            'email'    => 'nullable|email|max:255',
+            'messages' => 'required|string|min:5|max:2000',
+        ]);
+
+
+        try {
+
+            $message = (object) [
+                'name'    => $validated['name'],
+                'phone'   => $validated['phone'],
+                'email'   => $validated['email'] ?? '---',
+                'message' => $validated['messages'],
+            ];
+            TelegramHelper::sendMessage($message);
+
+            return redirect()->back()->with('success', 'Message sent successfully!');
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors('Failed to send message: ' . $e->getMessage());
+        }
     }
 
     public function posts(Request $request)

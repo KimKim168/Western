@@ -1,5 +1,6 @@
 <?php
 
+use App\Helpers\TelegramHelper;
 use App\Http\Controllers\WesternFrontPageController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -24,11 +25,24 @@ Route::get('/activities_and_events', [WesternFrontPageController::class, 'activi
 Route::get('/extracurricular_activities', [WesternFrontPageController::class, 'extracurricular_activities']);
 Route::get('/outreach_programs', [WesternFrontPageController::class, 'outreach_programs']);
 Route::get('/student_council', [WesternFrontPageController::class, 'student_council']);
- 
+
 Route::get('/contact', [WesternFrontPageController::class, 'contact']);
+Route::post('/sent_message', [WesternFrontPageController::class, 'sent_message']);
+
 
 Route::get('/news_and_blogs', [WesternFrontPageController::class, 'posts']);
 Route::get('/detail', function () {
     return Inertia::render('Western/NewsAndBlogs/Detail');
 });
 
+
+Route::get('/test_message', function () {
+    $message = (object) [
+        'name'    => 'Long Soeng',
+        'phone'   => '+855 12 345 678',
+        'email'   => 'longsoeng@example.com',
+        'message' => 'Hello, I want more info about your service.'
+    ];
+
+    TelegramHelper::sendMessage($message);
+});

@@ -1,10 +1,6 @@
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
 import useTranslation from '@/hooks/use-translation';
 import { usePage } from '@inertiajs/react';
-import { ArrowUpRight } from 'lucide-react';
+import ContactMessage from './SentMessageForm';
 
 const ContactPage = () => {
     const { contact, website_info } = usePage<any>().props;
@@ -21,7 +17,8 @@ const ContactPage = () => {
             <div className="my-8 flex flex-col md:gap-16 lg:flex-row">
                 {/* Form */}
                 <div className="w-full lg:w-1/2">
-                    <form>
+                    <ContactMessage />
+                    {/* <form>
                         <div className="grid gap-x-8 gap-y-6 md:grid-cols-2">
                             <div className="md:col-span-2">
                                 <Label htmlFor="name" className="text-xl">
@@ -55,7 +52,7 @@ const ContactPage = () => {
                         <Button className="mt-6 flex w-[180px] items-center justify-between gap-2 rounded-none" size="lg">
                             Send Message <ArrowUpRight className="h-6 w-6" />
                         </Button>
-                    </form>
+                    </form> */}
                 </div>
 
                 {/* Contact Info */}
