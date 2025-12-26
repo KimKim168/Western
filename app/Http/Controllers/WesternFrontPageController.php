@@ -33,19 +33,19 @@ class WesternFrontPageController extends Controller
         $contactUs = Page::where('code', 'contact-us')->with('images')->first();
 
         $Hero = Page::where('code', 'welcome-to-western-international-school')->with('images')->first();
-        
-    //    $navBar = Page::where('parent_code')
-    // ->with('children.children')
-    // ->orderBy('order_index')
-    // ->get();
+        // $navBar = Page::where('parent_code')
+        // ->with('children.children')
+        // ->orderBy('order_index')
+        // ->get();
 
-    //     return ($navBar);
+        $homeVideoBanner = Banner::where('type_code', 'home-video-banner')->first();
         return Inertia::render('Western/Index', [
             'statistics' => $statistics,
             'ourCampuses' => $ourCampuses,
             'activitiAndEvent' => $activitiAndEvent,
             'contactUs' => $contactUs,
             'Hero' => $Hero,
+            'homeVideoBanner' => $homeVideoBanner,
         ]);
     }
 

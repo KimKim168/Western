@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Banner;
 use App\Models\Link;
 use App\Models\Page;
 use App\Models\PostCategory;
@@ -75,9 +76,9 @@ class HandleInertiaRequests extends Middleware
             'media_links' => Link::whereIn('type_code', ['social-media', 'contact'])->get(),
 
             // Buddhist Global Info
-            'post_categories' => PostCategory::orderBy('order_index')->orderBy('name')->get(),
-            'active_category_code' => $active_category_code,
-            'selected_category' => PostCategory::where('code', $active_category_code)->first(),
+            // 'post_categories' => PostCategory::orderBy('order_index')->orderBy('name')->get(),
+            // 'active_category_code' => $active_category_code,
+            // 'selected_category' => PostCategory::where('code', $active_category_code)->first(),
         ];
     }
 }

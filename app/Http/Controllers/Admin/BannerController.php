@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\FileHelper;
 use App\Helpers\ImageHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Banner;
@@ -103,7 +104,9 @@ class BannerController extends Controller implements HasMiddleware
             'short_description_kh' => 'nullable|string',
             'long_description' => 'nullable|string',
             'long_description_kh' => 'nullable|string',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,webp,svg|max:4096',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp,svg|max:4096',
+            'video' => 'nullable|file|mimes:mp4|max:60000',
+
         ]);
         // dd($request->all());
 
@@ -121,6 +124,14 @@ class BannerController extends Controller implements HasMiddleware
                     1280
                 );
                 $validated['image'] = $imageName;
+            }
+
+            $videFile = $request->file('video');
+            unset($validated['video']);
+            if ($videFile) {
+                $video_created_file_name = FileHelper::uploadFile($videFile, 'assets/videos/banners', true);
+
+                $validated['video_file_name'] = $video_created_file_name;
             }
 
             // Create the Banner
@@ -180,6 +191,7 @@ class BannerController extends Controller implements HasMiddleware
             'long_description' => 'nullable|string',
             'long_description_kh' => 'nullable|string',
             'image' => 'nullable|mimes:jpeg,png,jpg,gif,webp,svg|max:4096',
+            'video' => 'nullable|file|mimes:mp4|max:60000',
         ]);
 
         // dd($validated);
@@ -205,6 +217,15 @@ class BannerController extends Controller implements HasMiddleware
                     ImageHelper::deleteImage($banner->image, 'assets/images/banners');
                 }
             }
+
+            $videFile = $request->file('video');
+            unset($validated['video']);
+            if ($videFile) {
+                $video_created_file_name = FileHelper::uploadFile($videFile, 'assets/videos/banners', true);
+
+                $validated['video_file_name'] = $video_created_file_name;
+            }
+
 
             // Update
             $banner->update($validated);

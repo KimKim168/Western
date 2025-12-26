@@ -28,6 +28,7 @@ interface TypeGroupForm {
     long_description?: string;
     long_description_kh?: string;
     image?: string | null;
+    video_file_name?: string | null;
 }
 
 export default function Create({ editData, readOnly }: { editData?: any; readOnly?: boolean }) {
@@ -41,6 +42,7 @@ export default function Create({ editData, readOnly }: { editData?: any; readOnl
     const { types } = usePage<any>().props;
 
     const [files, setFiles] = useState<File[] | null>(null);
+    const [filesVideos, setFilesVideos] = useState<File[] | null>(null);
 
     const { data, setData, post, processing, transform, progress, errors, reset } = useForm<TypeGroupForm>({
         type_code: editData?.type_code || types[0]?.code || '',
@@ -56,17 +58,19 @@ export default function Create({ editData, readOnly }: { editData?: any; readOnl
         long_description: editData?.long_description || '',
         long_description_kh: editData?.long_description_kh || '',
         image: editData?.image || null,
+        video_file_name: editData?.video_file_name || null,
     });
 
     const onSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
-        transform(() => ({ ...data, image: files ? files[0] : null }));
+        transform(() => ({ ...data, image: files ? files[0] : null, video: filesVideos ? filesVideos[0] : null }));
 
         if (editData?.id) {
             post(`/admin/banners/${editData.id}/update`, {
                 onSuccess: (page: any) => {
                     setFiles(null);
+                    setFilesVideos(null);
                     setFlashMessage({ message: page.props.flash?.success, type: 'success' });
                 },
             });
@@ -75,6 +79,7 @@ export default function Create({ editData, readOnly }: { editData?: any; readOnl
                 onSuccess: (page: any) => {
                     reset();
                     setFiles(null);
+                    setFilesVideos(null);
                     setFlashMessage({ message: page.props.flash?.success, type: 'success' });
                 },
             });
@@ -229,13 +234,47 @@ export default function Create({ editData, readOnly }: { editData?: any; readOnl
                             error={errors.order_index}
                             description="Lower number has higher priority."
                         />
+                        {data.type_code == 'home-video-banner' ? (
+                            <div className="col-span-2">
+                                <FormFileUpload
+                                    error={errors.video_file_name}
+                                    key={editData?.video_file_name}
+                                    id="video"
+                                    label="Video"
+                                    dropzoneOptions={{
+                                        maxFiles: 1,
+                                        maxSize: 1024 * 1024 * 50, // 10MB (videos are heavy, be real)
+                                        multiple: false,
+                                        accept: {
+                                            'video/mp4': ['.mp4'],
+                                        },
+                                    }}
+                                    files={filesVideos}
+                                    setFiles={setFilesVideos}
+                                />
 
-                        <div className="col-span-2">
-                            <FormFileUpload error={errors.image} key={editData?.image} id="image" label="Image" files={files} setFiles={setFiles} />
-                            {editData?.image && (
-                                <UploadedImage label="Uploaded Image" images={editData?.image} basePath="/assets/images/banners/thumb/" />
-                            )}
-                        </div>
+                                {editData?.video_file_name && (
+                                    <div className="mt-2">
+                                        <label className="mb-1 block text-sm font-medium">{t("Uploaded Video")}</label>
+                                        <video controls className="w-full rounded max-w-lg" src={`/assets/videos/banners/${editData.video_file_name}`} />
+                                    </div>
+                                )}
+                            </div>
+                        ) : (
+                            <div className="col-span-2">
+                                <FormFileUpload
+                                    error={errors.image}
+                                    key={editData?.image}
+                                    id="image"
+                                    label="Image"
+                                    files={files}
+                                    setFiles={setFiles}
+                                />
+                                {editData?.image && (
+                                    <UploadedImage label="Uploaded Image" images={editData?.image} basePath="/assets/images/banners/thumb/" />
+                                )}
+                            </div>
+                        )}
                     </div>
                 )}
 

@@ -21,7 +21,7 @@ const TableData = () => {
                         <TableRow>
                             <TableHeadWithSort field="id" label="ID" />
                             <TableHeadWithSort label="Action" />
-                            <TableHeadWithSort label="Image" />
+                            <TableHeadWithSort label="File" />
                             <TableHeadWithSort field="type_code" label="Type" />
                             <TableHeadWithSort field="name" label="Name" />
                             <TableHeadWithSort field="name_kh" label="Name Khmer" />
@@ -60,12 +60,18 @@ const TableData = () => {
                                     )}
                                 </TableCellActions>
                                 <TableCell>
-                                    <TableCellAvatar
-                                        className="rounded-none border-none"
-                                        imageClassName="object-contain"
-                                        alt={item.name}
-                                        image={`/assets/images/banners/thumb/${item.image}`}
-                                    />
+                                    {item.image ? (
+                                        <TableCellAvatar
+                                            className="rounded-none border-none"
+                                            imageClassName="object-contain"
+                                            alt={item.name}
+                                            image={`/assets/images/banners/thumb/${item.image}`}
+                                        />
+                                    ) : (
+                                        <a target="_blank" href={`/assets/videos/banners/${item.video_file_name}`}>
+                                            <video className="w-full rounded" src={`/assets/videos/banners/${item.video_file_name}`} />
+                                        </a>
+                                    )}
                                 </TableCell>
                                 <TableCellText value={item.type_code} />
                                 <TableCellText value={item.name} />
