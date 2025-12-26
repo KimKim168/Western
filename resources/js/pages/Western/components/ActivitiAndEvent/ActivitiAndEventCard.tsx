@@ -9,7 +9,7 @@ import { useState } from 'react';
 import { PhotoProvider } from 'react-photo-view';
 
 export default function ActivitiAndEventCard({ data }: { data: any[] }) {
-    const { currentLocale } = useTranslation();
+    const {t, currentLocale } = useTranslation();
 
     const [selectedItem, setSelectedItem] = useState<any>(null);
     const [mainImageIndex, setMainImageIndex] = useState(0);
@@ -60,7 +60,7 @@ export default function ActivitiAndEventCard({ data }: { data: any[] }) {
                                             }}
                                         >
                                             <p className="button w-[100px] cursor-pointer rounded-none bg-primary-two p-2 text-[13px] text-white transition-all hover:bg-primary-two md:text-[15px]">
-                                                Read More
+                                                {t("Read More")}
                                             </p>
                                         </div>
                                     </AlertDialogTrigger>
@@ -92,7 +92,7 @@ export default function ActivitiAndEventCard({ data }: { data: any[] }) {
                                                     }}
                                                 >
                                                     <p className="button w-[100px] cursor-pointer rounded-none bg-primary-two p-2 text-[13px] text-white transition-all hover:bg-primary-two md:text-[15px]">
-                                                        Read More
+                                                        {t("Read More")}
                                                     </p>
                                                 </div>
                                             </AlertDialogTrigger>

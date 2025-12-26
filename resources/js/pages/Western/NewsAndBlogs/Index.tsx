@@ -1,188 +1,58 @@
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import ButtonSimple from '@/pages/Sesor/components/Bottons/ButtonSimple';
-import WesternLayout from '../WesternLayout';
+import { usePage } from '@inertiajs/react';
 import WesternLayout2 from '../WesternLayout2';
+import useTranslation from '@/hooks/use-translation';
+
 const Index = () => {
-    const data = [
-        {
-            id: 1,
-            title: 'Title First',
-            badges: 'Community',
-            images: ['/assets/buddhist/image1.jpg', '/assets/buddhist/image2.jpg', '/assets/buddhist/image3.jpg', '/assets/buddhist/hero.JPG'],
-            short_description: '',
-            long_description: `<p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
-  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-  veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-  commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-  velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<img/>
-<p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tristique
-  senectus et netus et malesuada fames ac turpis egestas. Maecenas non
-  facilisis dui, sit amet volutpat nunc. Integer vitae ipsum nulla. Sed
-  faucibus, ipsum at fermentum consectetur, nulla lorem dapibus velit,
-  eu convallis erat nibh eu odio.
-</p>
-
-<p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio
-  sed libero ultrices egestas. Aliquam erat volutpat. Nullam eget gravida
-  augue. In hac habitasse platea dictumst. Sed vehicula, erat id volutpat
-  vestibulum, risus lorem scelerisque elit, sed lacinia purus nunc eget sem.
-</p>`,
-        },
-        {
-            id: 2,
-            title: 'Second',
-            badges: 'Learning',
-            images: ['/assets/buddhist/image1.jpg', '/assets/buddhist/image2.jpg', '/assets/buddhist/image3.jpg', '/assets/buddhist/hero.JPG'],
-            long_description: `<p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
-  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-  veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-  commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-  velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-
-<p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tristique
-  senectus et netus et malesuada fames ac turpis egestas. Maecenas non
-  facilisis dui, sit amet volutpat nunc. Integer vitae ipsum nulla. Sed
-  faucibus, ipsum at fermentum consectetur, nulla lorem dapibus velit,
-  eu convallis erat nibh eu odio.
-</p>
-
-<p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio
-  sed libero ultrices egestas. Aliquam erat volutpat. Nullam eget gravida
-  augue. In hac habitasse platea dictumst. Sed vehicula, erat id volutpat
-  vestibulum, risus lorem scelerisque elit, sed lacinia purus nunc eget sem.
-</p>`,
-        },
-        {
-            id: 3,
-            title: 'Third',
-            badges: 'Alumni',
-            images: ['/assets/buddhist/image1.jpg', '/assets/buddhist/image2.jpg', '/assets/buddhist/image3.jpg', '/assets/buddhist/hero.JPG'],
-            long_description: `<p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
-  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-  veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-  commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-  velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-
-<p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tristique
-  senectus et netus et malesuada fames ac turpis egestas. Maecenas non
-  facilisis dui, sit amet volutpat nunc. Integer vitae ipsum nulla. Sed
-  faucibus, ipsum at fermentum consectetur, nulla lorem dapibus velit,
-  eu convallis erat nibh eu odio.
-</p>
-
-<p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio
-  sed libero ultrices egestas. Aliquam erat volutpat. Nullam eget gravida
-  augue. In hac habitasse platea dictumst. Sed vehicula, erat id volutpat
-  vestibulum, risus lorem scelerisque elit, sed lacinia purus nunc eget sem.
-</p>`,
-        },
-        {
-            id: 4,
-            title: 'Title',
-            badges: 'Community',
-            images: ['/assets/buddhist/image1.jpg', '/assets/buddhist/image2.jpg', '/assets/buddhist/image3.jpg', '/assets/buddhist/hero.JPG'],
-            long_description: `<p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
-  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-  veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-  commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-  velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-
-<p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tristique
-  senectus et netus et malesuada fames ac turpis egestas. Maecenas non
-  facilisis dui, sit amet volutpat nunc. Integer vitae ipsum nulla. Sed
-  faucibus, ipsum at fermentum consectetur, nulla lorem dapibus velit,
-  eu convallis erat nibh eu odio.
-</p>
-
-<p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio
-  sed libero ultrices egestas. Aliquam erat volutpat. Nullam eget gravida
-  augue. In hac habitasse platea dictumst. Sed vehicula, erat id volutpat
-  vestibulum, risus lorem scelerisque elit, sed lacinia purus nunc eget sem.
-</p>`,
-        },
-        {
-            id: 5,
-            title: 'Title',
-            badges: 'Alumni',
-            images: ['/assets/buddhist/image1.jpg', '/assets/buddhist/image2.jpg', '/assets/buddhist/image3.jpg', '/assets/buddhist/hero.JPG'],
-            long_description: `<p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
-  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-  veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-  commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-  velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-
-<p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tristique
-  senectus et netus et malesuada fames ac turpis egestas. Maecenas non
-  facilisis dui, sit amet volutpat nunc. Integer vitae ipsum nulla. Sed
-  faucibus, ipsum at fermentum consectetur, nulla lorem dapibus velit,
-  eu convallis erat nibh eu odio.
-</p>
-
-<p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio
-  sed libero ultrices egestas. Aliquam erat volutpat. Nullam eget gravida
-  augue. In hac habitasse platea dictumst. Sed vehicula, erat id volutpat
-  vestibulum, risus lorem scelerisque elit, sed lacinia purus nunc eget sem.
-</p>`,
-        },
-    ];
+    const { tableData, header } = usePage<any>().props;
+    const {t, currentLocale } = useTranslation();
     return (
         <WesternLayout2>
             <div className="section-container mt-28 md:mt-36">
                 <p className="relative inline-block text-3xl font-bold text-primary after:absolute after:bottom-0 after:left-1/2 after:h-[1.5px] after:w-4/5 after:-translate-x-1/2 md:text-5xl">
-                    News And Blogs
+                    {currentLocale === 'kh' ? (header?.name_kh || header?.name) : header?.name}
                 </p>
-                <div className="mt-2 max-w-2xl md:text-lg">
-                    We are a busy school and there's always something happening! Take a look at our recent news to learn more about school and
-                    community life.
-                </div>
+
+                <div className="mt-2 max-w-2xl md:text-lg" dangerouslySetInnerHTML={{ __html: currentLocale === 'kh' ? (header?.long_description_kh || header?.long_description) : header?.long_description }}></div>
+
                 <Carousel opts={{ align: 'start' }} className="relative mt-4 w-full">
                     <CarouselContent>
-                        {data.map((item, index) => (
-                            <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                                <div className="cursor-pointer">
-                                    <Card className="gap-2 rounded-none bg-primary py-0 text-white shadow-none">
-                                        <CardHeader className="p-0 relative">
-                                            <img src={item.images[0]} className="aspect-square w-full object-cover" alt={item.title} />
-                                            {item.badges && (
-                                                <div className="absolute bottom-3 left-3 flex flex-wrap gap-2">
-                                                    <span className="bg-primary px-2 py-1 text-base font-semibold text-white">{item.badges}</span>
-                                                </div>
-                                            )}
-                                        </CardHeader>
-                                        <CardContent className="px-3 pb-4">
-                                            <h3 className="inline-block bg-white p-1.5 text-xl font-semibold text-primary">{item.title}</h3>
-                                            <p className="text-lg">{item.short_description}</p>
-                                            <div className="mt-16">
-                                                <ButtonSimple title="Read More" link={`/detail`} />
+                        {tableData?.map((item) => (
+                            <CarouselItem key={item.id} className="md:basis-1/2 lg:basis-1/3">
+                                <Card className="h-full rounded-none bg-primary py-0 text-white shadow-none">
+                                    {/* Image */}
+                                    <CardHeader className="relative p-0">
+                                        <img
+                                            src={`/assets/images/posts/${item.thumbnail}`}
+                                            className="aspect-square w-full object-cover"
+                                            alt={item.title}
+                                        />
+
+                                        {/* Category */}
+                                        {item.category?.name && (
+                                            <div className="absolute bottom-3 left-3">
+                                                <span className="bg-primary px-2 py-1 text-base font-semibold text-white">{item?.category.name}</span>
                                             </div>
-                                        </CardContent>
-                                    </Card>
-                                </div>
+                                        )}
+                                    </CardHeader>
+
+                                    {/* Content */}
+                                    <CardContent className="px-3 pb-4">
+                                        <h3 className="inline-block bg-white p-1.5 text-xl font-semibold text-primary">{item?.title}</h3>
+
+                                        <p className="mt-2 text-lg">{item?.short_description}</p>
+
+                                        <div className="mt-16">
+                                            <ButtonSimple title={t("Read More")} link={`/news_and_blog/${item?.id}`} />
+                                        </div>
+                                    </CardContent>
+                                </Card>
                             </CarouselItem>
                         ))}
                     </CarouselContent>
+
                     <div className="mt-4 flex justify-center gap-3 pr-2 text-primary">
                         <CarouselPrevious className="static translate-y-0 rounded-none" />
                         <CarouselNext className="static translate-y-0 rounded-none" />

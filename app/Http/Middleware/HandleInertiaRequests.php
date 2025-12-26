@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use App\Models\Link;
+use App\Models\Page;
 use App\Models\PostCategory;
 use App\Models\WebsiteInfo;
 use Illuminate\Foundation\Inspiring;
@@ -67,6 +68,10 @@ class HandleInertiaRequests extends Middleware
 
             // Global Website Info
             'website_info' => WebsiteInfo::first(),
+             'nav_bar' => Page::where('parent_code')
+    ->with('children.children')
+    ->orderBy('order_index')
+    ->get(),
             'media_links' => Link::whereIn('type_code', ['social-media', 'contact'])->get(),
 
             // Buddhist Global Info

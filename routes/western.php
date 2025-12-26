@@ -31,9 +31,8 @@ Route::post('/sent_message', [WesternFrontPageController::class, 'sent_message']
 
 
 Route::get('/news_and_blogs', [WesternFrontPageController::class, 'posts']);
-Route::get('/detail', function () {
-    return Inertia::render('Western/NewsAndBlogs/Detail');
-});
+Route::get('/news_and_blog/{id}', [WesternFrontPageController::class, 'post_show']);
+
 
 
 Route::get('/test_message', function () {

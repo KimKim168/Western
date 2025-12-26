@@ -4,13 +4,12 @@ import { usePage } from '@inertiajs/react';
 
 const Campush = () => {
     const { ourCampuses } = usePage<any>().props;
-    const { currentLocale } = useTranslation();
+    const {t, currentLocale } = useTranslation();
 
     const title = currentLocale === 'kh' ? ourCampuses?.name_kh || ourCampuses?.name : ourCampuses?.name;
 
     const description = currentLocale === 'kh' ? ourCampuses?.short_description_kh || ourCampuses?.short_description : ourCampuses?.short_description;
 
-    const buttonTitle = currentLocale === 'kh' ? ourCampuses?.button_title_kh || ourCampuses?.button_title : ourCampuses?.button_title;
 
     return (
         <div
@@ -33,9 +32,9 @@ const Campush = () => {
                     {description && <p className="mt-4 text-base text-white drop-shadow-lg sm:text-lg md:text-xl">{description}</p>}
 
                     {/* Button */}
-                    {buttonTitle && ourCampuses?.link && (
+                    {ourCampuses?.link && (
                         <div className="mt-6 sm:mt-8 md:mt-26">
-                            <ButtonSimple title={buttonTitle} link={ourCampuses.link} />
+                            <ButtonSimple title={t('View photos')} link={ourCampuses?.link} />
                         </div>
                     )}
                 </div>

@@ -11,7 +11,6 @@ use App\Models\Location;
 use App\Models\Page;
 use App\Models\Post;
 use App\Models\PostCategory;
-use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
@@ -28,13 +27,19 @@ class WesternFrontPageController extends Controller
         $ourCampuses = Page::where('code', 'our-campuses-home-page')->first();
         $activitiAndEvent = Page::where('code', 'activities-and-events')
             ->with(['children' => function ($query) {
-                $query->orderBy('order_index', 'desc'); // or orderBy('order_index') if you prefer
+                $query->orderBy('order_index'); // or orderBy('order_index') if you prefer
             }, 'children.images'])
             ->first();
         $contactUs = Page::where('code', 'contact-us')->with('images')->first();
 
         $Hero = Page::where('code', 'welcome-to-western-international-school')->with('images')->first();
-        // return ($activitiAndEvent);
+        
+    //    $navBar = Page::where('parent_code')
+    // ->with('children.children')
+    // ->orderBy('order_index')
+    // ->get();
+
+    //     return ($navBar);
         return Inertia::render('Western/Index', [
             'statistics' => $statistics,
             'ourCampuses' => $ourCampuses,
@@ -350,6 +355,7 @@ class WesternFrontPageController extends Controller
         $sort_by = $request->input('sort_by');
         $sortDirection = $request->input('sortDirection', 'desc');
 
+        $header = Page::where('code', 'news-and-blogs')->first();
         $query = Post::query();
 
         // Exclude 'about' by selecting all other columns
@@ -415,13 +421,14 @@ class WesternFrontPageController extends Controller
 
         $query->with('category');
 
-        $tableData = $query->paginate($perPage)->onEachSide(2);
+        // $tableData = $query->paginate($perPage)->onEachSide(2);
 
-        $tableData =  $query->limit(2)->get();
-        return ($tableData);
+        $tableData =  $query->get();
+        // return ($header);
 
         return Inertia::render('Western/NewsAndBlogs/Index', [
             'tableData' => $tableData,
+            'header' => $header,
         ]);
     }
 
@@ -431,28 +438,9 @@ class WesternFrontPageController extends Controller
         $showData->increment('total_view_count');
 
         $query = Post::query();
-        $columns = Schema::getColumnListing('posts');
-        $columns = array_diff($columns, ['long_description']);
-
-        // First related items
-        $relatedItems = (clone $query)
-            ->select($columns)
-            ->where('category_code', $showData->category_code)
-            ->inRandomOrder()
-            ->limit(5)
-            ->get();
-
-        // Second related items, excluding the first set
-        $relatedItemsTwo = (clone $query)
-            ->select($columns)
-            ->where('category_code', $showData->category_code)
-            ->whereNotIn('id', $relatedItems->pluck('id')) // exclude first items
-            ->inRandomOrder()
-            ->limit(5)
-            ->get();
-
-        // Increase view count
-        // return $relatedItems;
-        return Inertia::render('Buddhist/Posts/Show', ['showData' => $showData, 'relatedItems' => $relatedItems, 'relatedItemsTwo' => $relatedItemsTwo]);
+        // return $showData;
+        return Inertia::render('Western/NewsAndBlogs/Detail', [
+            'showData' => $showData
+        ]);
     }
 }

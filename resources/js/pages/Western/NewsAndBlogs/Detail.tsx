@@ -1,80 +1,34 @@
-import WesternLayout from '../WesternLayout';
+import { usePage } from '@inertiajs/react';
 import WesternLayout2 from '../WesternLayout2';
 
 const Detail = () => {
-    return (
-        <WesternLayout2>
-            <div className="section-container mt-28 md:mt-36">
-               <h3 className="text-xl md:text-2xl font-bold text-primary">Sub Texts</h3>
-                <div
-                    className="prose max-w-none prose-p:my-0 prose-img:my-2"
-                    dangerouslySetInnerHTML={{
-                        __html: ` <div>
-      <img
-        src="/assets/buddhist/image1.jpg"
-        alt="Content Image"
-        class="w-full object-cover"
-      />
-    </div>
-    <p class="text-lg">
-        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-        nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-        volutpat.
-      </p>
-      <p>
-        Ut wisi enim ad minim veniam, quis nostrud exercitation ullamcorper
-        suscipit lobortis nisi ut aliquip ex ea commodo consequat.
-      </p>
-      <p>
-        Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse
-        molestie consequat.
-      </p>
+  const { showData } = usePage<any>().props;
 
-    <div>
-    <div>
-      <p class="text-lg">
-        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-        nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-        volutpat.
-      </p>
-      <p>
-        Ut wisi enim ad minim veniam, quis nostrud exercitation ullamcorper
-        suscipit lobortis nisi ut aliquip ex ea commodo consequat.
-      </p>
-      <p>
-        Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse
-        molestie consequat.
-      </p>
-    </div>
-      <img
-        src="/assets/buddhist/image1.jpg"
-        alt="Content Image"
-        class="w-full object-cover"
-      />
-    </div>
+  return (
+    <WesternLayout2>
+      <div className="section-container mt-28 md:mt-36">
+        {/* Title */}
+        <h3 className=" md:mb-4 text-xl font-bold text-primary md:text-3xl">
+          {showData?.title}
+        </h3>
 
-    <div>
-      <p class="text-lg">
-        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-        nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-        volutpat.
-      </p>
-      <p>
-        Ut wisi enim ad minim veniam, quis nostrud exercitation ullamcorper
-        suscipit lobortis nisi ut aliquip ex ea commodo consequat.
-      </p>
-      <p>
-        Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse
-        molestie consequat.
-      </p>
-    </div>
+        {/* Category */}
+        {/* {showData?.category?.name && (
+          <p className="mb-6 text-sm font-semibold text-primary">
+            {showData?.category.name}
+          </p>
+        )} */}
 
-            `,
-                    }}
-                />
-            </div>
-        </WesternLayout2>
-    );
+        {/* Content */}
+        <div
+          className="prose max-w-none prose-p:my-2 prose-img:my-2 md:prose-img:my-4 prose-img:w-full"
+          dangerouslySetInnerHTML={{
+            __html: showData?.long_description,
+          }}
+        />
+      </div>
+    </WesternLayout2>
+  );
 };
 
 export default Detail;

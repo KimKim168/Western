@@ -1,12 +1,13 @@
+import useTranslation from '@/hooks/use-translation';
 import { cn } from '@/lib/utils';
 import { Link, usePage } from '@inertiajs/react';
 import { useState } from 'react';
-import useTranslation from '@/hooks/use-translation';
-import {HoveredLink, Menu, MenuItem } from '../ui/navbar-menu';
+import { HoveredLink, Menu, MenuItem } from '../ui/navbar-menu';
 
 export function MyNavMenu({ className }: { className?: string }) {
     const [active, setActive] = useState<string | null>(null);
-    const { t } = useTranslation();
+    const { nav_bar } = usePage().props; // your data from backend
+    const { t, currentLocale } = useTranslation();
 
     return (
         <div className={cn('mx-auto w-full', className)}>
@@ -14,91 +15,39 @@ export function MyNavMenu({ className }: { className?: string }) {
                 <div className="hidden lg:block">
                     <div className="flex items-center gap-2">
                         <Menu setActive={setActive}>
-                            <Link href={`/`}>
-                                <MenuItem
-                                    setActive={setActive}
-                                    active={active}
-                                    item={t('Home')}
-                                    subRoutes={['/']}
-                                    className={``}
-                                />
-                            </Link>
-                            <Link href={`#`}>
-                                <MenuItem
-                                    setActive={setActive}
-                                    active={active}
-                                    item={t('About')}
-                                    subRoutes={['/history_and_values', '/school_facilities', '/campuses']}
-                                    className={''}
-                                >
-                                    <div className={`flex flex-col space-y-4 text-sm `}>
-                                        <HoveredLink href="/history_and_values" >{t('History and Values')}</HoveredLink>
-                                        <HoveredLink href="/school_facilities">{t('School Facilities')}</HoveredLink>
-                                        <HoveredLink href="/our_campuses">{t('Our Campuses')}</HoveredLink>
-                                    </div>
-                                </MenuItem>
-                            </Link>
-                            <Link href={`#`}>
-                                <MenuItem
-                                    setActive={setActive}
-                                    active={active}
-                                    item={t('Academics')}
-                                    subRoutes={['/curriculum', '/programs', '/class_schedules_and_subjects', '/school_calendar']}
-                                    className={''}
-                                >
-                                    <div className={`flex flex-col space-y-4 text-sm `}>
-                                        <HoveredLink href="/curriculum">{t('Curriculum')}</HoveredLink>
-                                        <HoveredLink href="/programs">{t('Programs')}</HoveredLink>
-                                        <HoveredLink href="/class_schedules_and_subjects">{t('Class Schedules And Subjects')}</HoveredLink>
-                                        <HoveredLink href="/school_calendar">{t('School Calendar')}</HoveredLink>
-                                    </div>
-                                </MenuItem>
-                            </Link>
-                            <Link href={`/admissions`}>
-                                <MenuItem
-                                    setActive={setActive}
-                                    active={active}
-                                    item={t('Admissions')}
-                                    subRoutes={['/admissions']}
-                                    className={''}
-                                />
-                            </Link>
-                            <Link href={`#`}>
-                                <MenuItem
-                                    setActive={setActive}
-                                    active={active}
-                                    item={t('School Life')}
-                                    subRoutes={[
-                                        '/student_services',
-                                        '/activities_and_events',
-                                        '/extracurricular_activities',
-                                        '/outreach_programs',
-                                        '/student_council',
-                                        '/news_and_blogs',
-                                    ]}
-                                    className={''}
-                                >
-                                    <div className={`flex flex-col space-y-4 text-sm `}>
-                                        <HoveredLink href="/student_services">{t('Student Services')}</HoveredLink>
-                                        <HoveredLink href="/activities_and_events">{t('Activities And Events')}</HoveredLink>
-                                        <HoveredLink href="/extracurricular_activities">{t('Extracurricular Activities')}</HoveredLink>
-                                        <HoveredLink href="/outreach_programs">{t('Outreach Programs')}</HoveredLink>
-                                        <HoveredLink href="/student_council">{t('Student Council')}</HoveredLink>
-                                        <HoveredLink href="/news_and_blogs">{t('News And Blogs')}</HoveredLink>
-                                    </div>
-                                </MenuItem>
-                            </Link>
-                            <Link href={`/contact`}>
-                                <MenuItem
-                                    setActive={setActive}
-                                    active={active}
-                                    item={t('Contact')}
-                                    subRoutes={['/contact']}
-                                    className={''}
-                                />
-                            </Link>
+                            {nav_bar?.map((item) => {
+                                const skipDropdown = item.code === 'home' || item.code === 'admissions';
+                                const hasChildren = item.children && item.children.length > 0 && !skipDropdown;
+
+                                return hasChildren ? (
+                                    // Item with children → show dropdown
+                                    <MenuItem
+                                        key={item.id}
+                                        setActive={setActive}
+                                        active={active}
+                                        item={currentLocale === 'kh' ? (item.name_kh || item.name) : item.name}
+                                        subRoutes={item.children.map((c) => c.link).filter(Boolean)}
+                                    >
+                                        <div className="flex flex-col space-y-2 text-sm">
+                                            {item.children
+                                                .filter((child) => child.link)
+                                                .map((child) => (
+                                                    <HoveredLink key={child.id} href={child.link!}>
+                                                        {currentLocale === 'kh' ? (child.name_kh || child.name) : child.name}
+                                                    </HoveredLink>
+                                                ))}
+                                        </div>
+                                    </MenuItem>
+                                ) : (
+                                    // Item without children or Home/Admissions → just clickable
+                                    <Link key={item.id} href={item.link || '#'}>
+                                        <div className={`mx-6 cursor-pointer text-base font-semibold text-white hover:opacity-90`}>
+                                            {currentLocale === 'kh' ? (item.name_kh || item.name) : item.name}
+                                        </div>
+                                    </Link>
+                                );
+                            })}
                         </Menu>
-                       
                     </div>
                 </div>
             </div>
