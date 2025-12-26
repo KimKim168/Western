@@ -124,8 +124,8 @@ export default function Timeline({ data }: { data: any }) {
                                     data-aos="fade-up"
                                     className={`rounded-md p-6 ${type === 'blue' ? 'bg-primary text-white' : 'border border-primary bg-white'}`}
                                 >
-                                    <h3 className="text-xl font-bold">{item.title}</h3>
-                                    <p className="mt-2">{item.description}</p>
+                                    <h3 className="text-xl font-bold">{currentLocale === 'kh' ? item?.name_kh || item?.name : item?.name}</h3>
+                                    <p className="mt-2">{currentLocale === 'kh' ? item?.short_description_kh || item?.short_description : item?.short_description}</p>
                                 </div>
                             </div>
                         </div>
