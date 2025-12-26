@@ -20,24 +20,26 @@ const Index = () => {
                     <NavbarPage />
                 </div>
                 {/* HERO SECTION */}
-                <div className="mx-auto w-full">
-                    {/* <VideoPlayer
+                {homeVideoBanner?.video_file_name && (
+                    <div className="mx-auto w-full">
+                        {/* <VideoPlayer
                         thumbnailUrl="https://images.unsplash.com/photo-1593642532454-e138e28a63f4?q=80&w=2069&auto=format&fit=crop"
                         videoUrl="https://www.youtube.com/embed/qh3NGpYRG3I?si=4rb-zSdDkVK9qxxb" // Example: YouTube embed URL with autoplay
                         title="Western International School"
                         description="Start Your Future Today!"
                         className="rounded-none"
                     /> */}
-                    <HomeVideoBanner
-                        title={currentLocale === 'kh' ? homeVideoBanner?.name_kh || homeVideoBanner?.name : homeVideoBanner?.name}
-                        description={
-                            currentLocale === 'kh'
-                                ? homeVideoBanner?.short_description_kh || homeVideoBanner?.short_description
-                                : homeVideoBanner?.short_description
-                        }
-                        videoUrl={`/assets/videos/banners/${homeVideoBanner?.video_file_name}`}
-                    />
-                </div>
+                        <HomeVideoBanner
+                            title={currentLocale === 'kh' ? homeVideoBanner?.name_kh || homeVideoBanner?.name : homeVideoBanner?.name}
+                            description={
+                                currentLocale === 'kh'
+                                    ? homeVideoBanner?.short_description_kh || homeVideoBanner?.short_description
+                                    : homeVideoBanner?.short_description
+                            }
+                            videoUrl={`/assets/videos/banners/${homeVideoBanner?.video_file_name}`}
+                        />
+                    </div>
+                )}
             </div>
             <WesternHero />
             <Statistics />
