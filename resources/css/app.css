@@ -25,7 +25,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #655eb3b8;
+    background-color: #05369F;
     /* Tailwind violet-500 */
     border-radius: 9999px;
 }
@@ -53,7 +53,7 @@
     animation: none;
     mix-blend-mode: normal;
 }
-/* End Smooth Animate Dark Mode Switch */
+/* End Smooth Animate Dark Mode Switch */   
 @theme {
     --animate-background: background-move ease infinite;
 

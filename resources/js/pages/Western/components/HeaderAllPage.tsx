@@ -11,7 +11,7 @@ const HeaderAllPage = ({ data }: { data: any }) => {
                     <img
                         src={`/assets/images/pages/${data.images?.[0].image}`}
                         alt={data.title}
-                        className="aspect-[16/9] w-full object-cover sm:aspect-[21/7]"
+                        className="w-full object-cover aspect-[16/4]"
                     />
                 </div>
             ) : (

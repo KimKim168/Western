@@ -23,9 +23,9 @@ const ExchangeProgram = ({ children }: { children: any[] }) => {
                         className="w-full object-cover md:mb-6"
                     />
 
-                    {/* Description under the image */}
+                    {/* Description under the image */} 
                     <div
-                        className="prose mt-2 max-w-full md:ml-[75px] dark:prose-invert"
+                        className="prose mt-2 max-w-full md:ml-[75px] text-black"
                         dangerouslySetInnerHTML={{
                             __html: locale === 'kh' ? (activeItem.long_description_kh ?? activeItem.long_description) : activeItem.long_description,
                         }}
