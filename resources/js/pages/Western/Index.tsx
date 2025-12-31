@@ -46,7 +46,9 @@ const Index = () => {
             <WesternHero />
             <Statistics />
             <Campush />
-            <ActivitiAndEventHero />
+            <div id="activities_and_events">
+                <ActivitiAndEventHero />
+            </div>
             <Contact />
         </WesternLayout>
     );

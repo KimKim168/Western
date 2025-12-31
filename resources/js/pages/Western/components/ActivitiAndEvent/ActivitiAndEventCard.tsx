@@ -41,7 +41,7 @@ export default function ActivitiAndEventCard({ data }: { data: any[] }) {
 
                         <div className="relative w-full bg-primary md:absolute md:bottom-0 md:left-0 md:bg-primary/70">
                             <div className="flex flex-col items-start p-3 lg:max-w-4xl">
-                                <h3 className="inline-block bg-white p-1.5 text-xl font-semibold text-primary">
+                                <h3 className="inline-block bg-white p-1.5 text-2xl md:text-4xl font-semibold text-primary">
                                     {currentLocale === 'kh' ? firstCard?.name_kh || firstCard?.name : firstCard?.name}
                                 </h3>
                                 <p className="text-lg text-white">
@@ -59,7 +59,7 @@ export default function ActivitiAndEventCard({ data }: { data: any[] }) {
                                                 setMainImageIndex(0);
                                             }}
                                         >
-                                            <p className="button w-[100px] cursor-pointer rounded-none bg-primary-two p-2 text-[13px] text-white transition-all hover:bg-primary-two md:text-[15px]">
+                                            <p className="button w-[100px] cursor-pointer rounded-none bg-primary-two p-2 text-[13px] text-white transition-all hover:bg-primary-two md:text-[15px] font-medium">
                                                 {t("Read More")}
                                             </p>
                                         </div>
@@ -80,10 +80,10 @@ export default function ActivitiAndEventCard({ data }: { data: any[] }) {
                                     </CardHeader>
 
                                     <CardContent className="px-3 pb-4">
-                                        <h3 className="inline-block bg-white p-1.5 text-xl font-semibold text-primary">{item.name}</h3>
-                                        <p className="text-lg">{item.short_description}</p>
+                                        <h3 className="inline-block bg-white p-1.5 text-2xl font-semibold text-primary">{item.name}</h3>
+                                        <p className="mt-1 text-lg">{item.short_description}</p>
 
-                                        <div className="mt-16 text-center">
+                                        <div className="mt-16 text-center ">
                                             <AlertDialogTrigger asChild>
                                                 <div
                                                     onClick={() => {
@@ -91,7 +91,7 @@ export default function ActivitiAndEventCard({ data }: { data: any[] }) {
                                                         setMainImageIndex(0);
                                                     }}
                                                 >
-                                                    <p className="button w-[100px] cursor-pointer rounded-none bg-primary-two p-2 text-[13px] text-white transition-all hover:bg-primary-two md:text-[15px]">
+                                                    <p className="button absolute bottom-4 w-[100px] cursor-pointer rounded-none bg-primary-two p-2 text-[13px] text-white transition-all hover:bg-primary-two md:text-[15px] font-medium">
                                                         {t("Read More")}
                                                     </p>
                                                 </div>
@@ -137,7 +137,7 @@ export default function ActivitiAndEventCard({ data }: { data: any[] }) {
                                     {currentLocale === 'kh' ? selectedItem?.name_kh || selectedItem?.name : selectedItem?.name}
                                 </h2>
                                 <p
-                                    className="mt-4 text-black md:text-lg"
+                                    className="mt-4 text-black md:text-lg text-justify"
                                     dangerouslySetInnerHTML={{
                                         __html:
                                             currentLocale === 'kh'

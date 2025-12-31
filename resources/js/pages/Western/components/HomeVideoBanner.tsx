@@ -21,7 +21,7 @@ const HomeVideoBanner = React.forwardRef<HTMLDivElement, HomeVideoBannerProps>(
             <div ref={ref} className={cn('relative overflow-hidden', className)} style={{ aspectRatio }} {...props}>
                 {/* Video */}
                 <video
-                    className="absolute inset-0 h-full w-full object-cover"
+                    className="absolute inset-0 h-full w-full object-cover "
                     src={videoUrl}
                     autoPlay={autoPlay}
                     muted={muted}

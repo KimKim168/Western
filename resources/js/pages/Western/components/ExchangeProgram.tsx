@@ -7,9 +7,9 @@ const ExchangeProgram = ({ children }: { children: any[] }) => {
     const { locale } = usePage().props;
 
     return (
-        <div className="mt-28 px-4 md:mt-32 md:px-0">
+        <div className=" px-4 md:px-0">
             {/* Title */}
-            <h1 className="mb-4 text-xl font-bold text-primary sm:text-3xl md:mb-6 md:ml-[75px] lg:text-4xl">
+            <h1 className="py-4 text-2xl font-extrabold text-primary sm:text-4xl md:py-6 md:ml-[75px] lg:text-[55px]">
                 {locale === 'kh' ? (activeItem.name_kh ?? activeItem.name) : activeItem.name}
             </h1>
 
@@ -25,7 +25,7 @@ const ExchangeProgram = ({ children }: { children: any[] }) => {
 
                     {/* Description under the image */} 
                     <div
-                        className="prose mt-2 max-w-full md:ml-[75px] text-black"
+                        className="prose list-disc list-inside marker:text-black mt-2 max-w-full md:ml-[75px] text-black text-justify sm:text-xl"
                         dangerouslySetInnerHTML={{
                             __html: locale === 'kh' ? (activeItem.long_description_kh ?? activeItem.long_description) : activeItem.long_description,
                         }}
@@ -42,7 +42,7 @@ const ExchangeProgram = ({ children }: { children: any[] }) => {
                                 <button
                                     key={item.id}
                                     onClick={() => setActiveTitle(item.name)}
-                                    className={`w-full cursor-pointer border-b border-black px-4 py-3 text-left text-lg transition last:border-0 ${
+                                    className={`w-full cursor-pointer border-b font-bold border-black px-4 py-3 text-left text-xl transition last:border-0 ${
                                         isActive ? 'bg-primary text-white' : 'bg-white text-black hover:bg-primary hover:text-white'
                                     }`}
                                 >

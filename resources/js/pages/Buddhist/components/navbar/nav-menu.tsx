@@ -27,8 +27,9 @@ export function MyNavMenu({ className }: { className?: string }) {
                                         active={active}
                                         item={currentLocale === 'kh' ? (item.name_kh || item.name) : item.name}
                                         subRoutes={item.children.map((c) => c.link).filter(Boolean)}
+                                        className='text-[15px] font-bold'
                                     >
-                                        <div className="flex flex-col space-y-2 text-sm">
+                                        <div className="flex flex-col space-y-2 text-[10px]">
                                             {item.children
                                                 .filter((child) => child.link)
                                                 .map((child) => (

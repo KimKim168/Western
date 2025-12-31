@@ -24,7 +24,7 @@ const GalleryCard = ({ item }) => {
                 <div className="group relative cursor-pointer">
                     <img src={`/assets/images/pages/${item.images[0]?.image}`} className="aspect-square object-cover" />
                     <div className="absolute bottom-0 w-full bg-primary/60 p-6 text-primary opacity-0 transition group-hover:opacity-100">
-                        <p className="inline-block bg-white p-2 text-base">{currentLocale == 'kh' ? item?.name_kh || item?.name : item?.name}</p>
+                        <p className="inline-block bg-white p-2 text-base font-bold">{currentLocale == 'kh' ? item?.name_kh || item?.name : item?.name}</p>
                     </div>
                 </div>
             </AlertDialogTrigger>
@@ -124,7 +124,7 @@ const GalleryCard = ({ item }) => {
                         </h2>
 
                         <p
-                            className="mt-2 text-black md:text-xl"
+                            className="mt-4 text-black md:text-xl"
                             dangerouslySetInnerHTML={{
                                 __html: currentLocale == 'kh' ? item?.long_description_kh || item?.long_description : item?.long_description,
                             }}

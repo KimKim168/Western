@@ -10,26 +10,26 @@ const VisionAndMission = () => {
         <div className="mt-12">
             <div className="flex flex-col items-center text-center">
                 {/* Title */}
-                <p className="inline-block text-3xl font-bold text-primary">
+                <p className="inline-block text-3xl md:text-[55px] font-bold text-primary">
                     {currentLocale === 'kh' ? ourVision?.name_kh || ourVision?.name : ourVision?.name}
                 </p>
                 {/* Underline (dynamic width) */}
 
                 <div
-                    className="prose max-w-none md:text-lg"
+                    className="prose max-w-none md:text-xl text-black"
                     dangerouslySetInnerHTML={{
                         __html: currentLocale === 'kh' ? ourVision?.long_description_kh || ourVision?.long_description : ourVision?.long_description,
                     }}
                 ></div>
             </div>
             <div className="mt-4 flex flex-col items-center text-center">
-                <p className="inline-block text-3xl font-bold text-primary">
+                <p className="inline-block text-3xl md:text-[55px] font-bold text-primary">
                     {currentLocale === 'kh' ? ourMission?.name_kh || ourMission?.name : ourMission?.name}
                 </p>
                 {/* Underline (dynamic width) */}
 
                 <div
-                    className="prose max-w-none text-left md:text-lg"
+                    className="prose max-w-none text-left md:text-xl text-black marker:text-black"
                     dangerouslySetInnerHTML={{
                         __html:
                             currentLocale === 'kh' ? ourMission?.long_description_kh || ourMission?.long_description : ourMission?.long_description,

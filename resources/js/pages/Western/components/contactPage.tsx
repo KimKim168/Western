@@ -7,14 +7,14 @@ const ContactPage = () => {
     const { t, currentLocale } = useTranslation();
 
     return (
-        <div className="mt-6 md:mt-10">
+        <div className="mt-3 md:mt-6">
             <div className="flex justify-center">
-                <p className="relative mx-auto inline-block text-center text-2xl font-bold text-primary after:absolute after:bottom-0 after:left-1/2 after:h-[1.5px] after:w-1/2 after:-translate-x-1/2 after:translate-y-1 after:rounded-full after:bg-primary after:content-[''] md:text-4xl md:after:w-[90%]">
+                <p className="relative mx-auto inline-block text-center text-3xl font-bold text-primary after:absolute after:bottom-0 after:left-1/2 after:h-[2px] after:w-1/2 after:-translate-x-1/2 after:translate-y-1 after:rounded-full after:bg-primary after:content-[''] md:text-[55px] md:after:w-[90%]">
                     {currentLocale === 'kh' ? contact?.short_description_kh || contact?.short_description : contact?.short_description}
                 </p>
             </div>
 
-            <div className="my-8 flex flex-col md:gap-16 lg:flex-row">
+            <div className="my-8 flex flex-col md:gap-20 lg:flex-row">
                 {/* Form */}
                 <div className="w-full lg:w-1/2">
                     <ContactMessage />
@@ -58,24 +58,24 @@ const ContactPage = () => {
                 {/* Contact Info */}
                 <div className="mt-[30px] flex w-full flex-col gap-2 lg:w-1/2">
                     <div>
-                        <h3 className="text-3xl font-semibold text-primary">Address:</h3>
-                        <p className="my-2 w-80 text-lg text-black">
+                        <h3 className="text-3xl font-bold text-primary">Address:</h3>
+                        <p className="my-2 md:w-96 text-xl text-black">
                             {currentLocale === 'kh' ? website_info?.address_kh || website_info?.address : website_info?.address}
                         </p>
                     </div>
 
                     <div>
-                        <h3 className="text-2xl font-semibold text-primary">Phone Number:</h3>
+                        <h3 className="text-3xl font-bold text-primary">Phone Number:</h3>
                         <p className="my-2 w-80 text-lg whitespace-pre-line text-black" dangerouslySetInnerHTML={{ __html: website_info?.phone }}></p>
                     </div>
 
                     <div>
-                        <h3 className="text-2xl font-semibold text-primary">Email:</h3>
-                        <p className="my-2 w-80 text-lg text-black">{website_info?.email}</p>
+                        <h3 className="text-3xl font-bold text-primary">Email:</h3>
+                        <p className="my-2 w-80 text-xl text-black">{website_info?.email}</p>
                     </div>
 
                     <div>
-                        <h3 className="text-2xl font-semibold text-primary">Opening Hours:</h3>
+                        <h3 className="text-3xl font-bold text-primary">Opening Hours:</h3>
                         <p
                             className="my-2 w-80 text-lg whitespace-pre-line text-black"
                             dangerouslySetInnerHTML={{
@@ -92,11 +92,11 @@ const ContactPage = () => {
             {/* Map */}
             <div>
                 <div className="flex flex-col justify-center">
-                    <p className="relative mx-auto inline-block text-center text-3xl font-bold text-primary after:absolute after:bottom-0 after:left-1/2 after:h-[1.5px] after:w-[70%] after:-translate-x-1/2 after:translate-y-1 after:rounded-full after:bg-primary after:content-[''] md:text-4xl">
+                    <p className="relative mx-auto inline-block text-center text-3xl font-bold text-primary after:absolute after:bottom-0 after:left-1/2 after:h-[1.5px] after:w-[70%] after:-translate-x-1/2 after:translate-y-1 after:rounded-full after:bg-primary after:content-[''] md:text-[55px]">
                         {currentLocale === 'kh' ? contact?.name_kh || contact?.name : contact?.name}
                     </p>
                     <div
-                        className="mx-auto mt-4 max-w-3xl text-center md:text-lg"
+                        className="mx-auto mt-4 max-w-3xl text-center md:text-xl"
                         dangerouslySetInnerHTML={{
                             __html: currentLocale === 'kh' ? contact?.long_description_kh || contact?.long_description : contact?.long_description,
                         }}

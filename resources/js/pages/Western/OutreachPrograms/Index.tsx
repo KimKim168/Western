@@ -7,19 +7,6 @@ import WesternLayout2 from '../WesternLayout2';
 const Index = () => {
     const { outreachPrograms } = usePage<any>().props;
     const { t, currentLocale } = useTranslation();
-    const data = [
-        {
-            id: 1,
-            title: 'Educational Field Trips',
-            images: ['/assets/buddhist/image1.jpg', '/assets/buddhist/image2.jpg', '/assets/buddhist/image3.jpg', '/assets/buddhist/hero.JPG'],
-            long_description: `
-<p>Lorem ipsum dolor sit amet...</p>
-<p>Lorem ipsum dolor sit amet...</p>
-<p>Lorem ipsum dolor sit amet...</p>
-`,
-        },
-    ];
-
     const [selectedItem, setSelectedItem] = useState(outreachPrograms);
 
     const [mainImageIndex, setMainImageIndex] = useState(0);
@@ -34,13 +21,16 @@ const Index = () => {
 
     return (
         <WesternLayout2>
-            <div className="section-container mt-26 md:mt-36">
-                <p className="relative inline-block text-3xl font-bold text-primary after:absolute after:bottom-0 after:left-1/2 after:h-[1.5px] after:w-4/5 after:-translate-x-1/2 after:translate-y-1 after:rounded-full after:bg-primary after:content-[''] md:text-5xl">
+            <div className="section-container">
+                <div className='py-3 md:pt-8'>
+                    <p className="relative inline-block text-3xl font-bold text-primary after:absolute after:bottom-0 after:left-1/2 after:h-[2px] after:w-4/5 after:-translate-x-1/2 after:translate-y-1 after:rounded-full after:bg-primary after:content-[''] md:text-[55px]">
                     {currentLocale == 'kh' ? outreachPrograms?.name_kh || outreachPrograms?.name : outreachPrograms?.name}
                 </p>
+                </div>
 
                 <div
-                    className="prose mt-4 max-w-5xl md:text-lg"
+                    // className="prose mt-4 max-w-5xl md:text-xl"
+                    className="prose mt-3 max-w-7xl md:text-xl pb-3 md:pb-4 text-black text-justify"
                     dangerouslySetInnerHTML={{
                         __html:
                             currentLocale == 'kh'
@@ -109,7 +99,7 @@ const Index = () => {
                                     key={index}
                                     src={`/assets/images/pages/${src?.image}`}
                                     onClick={() => setMainImageIndex(index)}
-                                    className={`h-20 w-40 cursor-pointer object-cover transition ${
+                                    className={`h-10 w-20 md:h-20 md:w-40 cursor-pointer object-cover transition ${
                                         index === mainImageIndex ? 'border-2 border-primary shadow-md' : 'opacity-70 hover:opacity-100'
                                     }`}
                                 />

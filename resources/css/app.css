@@ -12,6 +12,40 @@
     src: url('/assets/fonts/KantumruyPro/KantumruyPro.ttf') format('truetype');
 }
 
+@font-face {
+    font-family: RobotoSlab;
+    src: url('/assets/fonts/RobotoSlab-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: RobotoSlab;
+    src: url('/assets/fonts/RobotoSlab-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: RobotoSlab;
+    src: url('/assets/fonts/RobotoSlab-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: RobotoSlab;
+    src: url('/assets/fonts/RobotoSlab-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: RobotoSlab;
+    src: url('/assets/fonts/RobotoSlab-ExtraBold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}
 /* End Long Soeng Font */
 
 /* Scroll Bar Custom */
@@ -25,7 +59,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #05369F;
+    background-color: #10349F;
     /* Tailwind violet-500 */
     border-radius: 9999px;
 }
@@ -76,7 +110,8 @@
     --font-sans:
         'KantumruyPro', 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
         'Noto Color Emoji';
-
+    --font-roboto-slab:
+        'RobotoSlab', 'KantumruyPro';
     /* Sesor Font */
     --font-luckiest-guy-regular: 'LuckiestGuyRegular';
     --font-proxima-nova-regular: 'ProximaNovaRegular';
@@ -150,7 +185,7 @@
 /* === Start Colors Project === */
 
 /* --primary: #655eb3; camlibdata.com */
-/* --primary: #05369F; sesor.com */
+/* --primary: #10349F; sesor.com */
 /* --primary-two: #DE081B; sesor.com */
 /* --primary: #93191e; buddhist.gov.edu */
 /* --primary: #134571; book-cambo */
@@ -164,7 +199,7 @@
     --card-foreground: oklch(0.145 0 0);
     --popover: oklch(1 0 0);
     --popover-foreground: oklch(0.145 0 0);
-    --primary: #05369F;
+    --primary: #10349F;
     --dark-primary: #781216;
     --primary-two: #DE081B;
     --primary-three: #8ab35e;
@@ -197,7 +232,7 @@
     --sidebar-border: oklch(0.922 0 0);
     --sidebar-ring: oklch(0.87 0 0);
 
-    --true-primary: #05369F;
+    --true-primary: #10349F;
 }
 
 /* .dark {
@@ -237,7 +272,7 @@
     --sidebar-border: oklch(0.269 0 0);
     --sidebar-ring: oklch(0.439 0 0);
 
-    --true-primary: #05369F;
+    --true-primary: #10349F;
 } */
 
 @layer base {

@@ -18,7 +18,7 @@ export default function Timeline({ data }: { data: any }) {
     return (
         <>
             <div className="mx-4 h-0.5 w-4 bg-primary md:mx-auto"></div>
-            <div className="relative w-full px-4 py-10 md:px-6">
+            <div className="relative w-full px-4 py-6 md:px-6">
                 {/* CENTER LINE */}
                 <div className="absolute top-0 left-6 h-full w-0.5 bg-primary md:left-1/2 md:-translate-x-1/2"></div>
 
@@ -39,15 +39,15 @@ export default function Timeline({ data }: { data: any }) {
                                     {isLeft && (
                                         <div
                                             data-aos="fade-right"
-                                            className={`relative flex h-full min-h-[150px] flex-col justify-between p-6 ${
+                                            className={`relative flex h-full min-h-[150px] flex-col justify-between p-4 ${
                                                 type === 'blue' ? 'bg-primary text-white' : 'border border-primary bg-white'
                                             }`}
                                         >
                                             <div>
-                                                <h3 className="text-2xl font-bold">
+                                                <h3 className="text-xl md:text-3xl font-bold">
                                                     {currentLocale === 'kh' ? item?.name_kh || item?.name : item?.name}
                                                 </h3>
-                                                <p className="mt-2">
+                                                <p className="mt-2 md:text-xl">
                                                     {currentLocale === 'kh'
                                                         ? item?.short_description_kh || item?.short_description
                                                         : item?.short_description}
@@ -70,7 +70,7 @@ export default function Timeline({ data }: { data: any }) {
                                         data-aos="zoom-in"
                                         className="flex h-12 w-12 items-center justify-center rounded-full bg-primary md:h-14 md:w-14"
                                     >
-                                        <img src={`/assets/buddhist/${iconSrc}`} className="h-6 w-6 md:h-7 md:w-7" alt={item.title} />
+                                        <img src={`/assets/${iconSrc}`} className="h-6 w-6 md:h-7 md:w-7" alt={item.title} />
                                     </div>
                                 </div>
 
@@ -79,15 +79,15 @@ export default function Timeline({ data }: { data: any }) {
                                     {!isLeft && (
                                         <div
                                             data-aos="fade-left"
-                                            className={`relative flex h-full min-h-[150px] flex-col justify-between p-6 ${
+                                            className={`relative flex h-full min-h-[150px] flex-col justify-between p-4 ${
                                                 type === 'blue' ? 'bg-primary text-white' : 'border border-primary bg-white'
                                             }`}
                                         >
                                             <div>
-                                                <h3 className="text-2xl font-bold">
+                                                <h3 className="text-xl md:text-3xl font-bold">
                                                     {currentLocale === 'kh' ? item?.name_kh || item?.name : item?.name}
                                                 </h3>
-                                                <p className="mt-2">
+                                                <p className="mt-2 md:text-xl">
                                                     {currentLocale === 'kh'
                                                         ? item?.short_description_kh || item?.short_description
                                                         : item?.short_description}
@@ -113,8 +113,8 @@ export default function Timeline({ data }: { data: any }) {
                                         }`}
                                     >
                                         <div>
-                                            <h3 className="text-xl font-bold">{currentLocale === 'kh' ? item?.name_kh || item?.name : item?.name}</h3>
-                                            <p className="mt-2">
+                                            <h3 className="text-xl md:text-3xl font-bold">{currentLocale === 'kh' ? item?.name_kh || item?.name : item?.name}</h3>
+                                            <p className="mt-2 md:text-xl">
                                                 {currentLocale === 'kh'
                                                     ? item?.short_description_kh || item?.short_description
                                                     : item?.short_description}

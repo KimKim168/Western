@@ -1,6 +1,5 @@
 import useTranslation from '@/hooks/use-translation';
 import { usePage } from '@inertiajs/react';
-import { Mail, Phone } from 'lucide-react';
 
 export default function Contact() {
     const { contactUs, website_info } = usePage<any>().props;
@@ -28,12 +27,13 @@ export default function Contact() {
                         <p className="w-full max-w-md text-lg md:text-xl">{website_info?.address}</p>
 
                         <p className="flex items-center justify-start">
-                            <Phone className="mt-1 mr-2 h-6 w-6 flex-shrink-0 sm:h-7 sm:w-7" />
+                            <img src="/assets/phone.png" className="mt-1 mr-2 h-full w-14 flex-shrink-0" />
                             <span className="text-lg whitespace-pre-line md:text-xl" dangerouslySetInnerHTML={{ __html: website_info?.phone }} />
                         </p>
 
                         <p className="flex items-center justify-start">
-                            <Mail className="mr-2 h-6 w-6 flex-shrink-0 sm:h-7 sm:w-7" />
+                            <img src="/assets/email.png" className="mt-1 mr-2 h-full w-14 flex-shrink-0" />
+
                             <span className="text-lg md:text-xl">{website_info?.email}</span>
                         </p>
                     </div>

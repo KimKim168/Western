@@ -5,16 +5,16 @@ const StudentTeam = () => {
     const { gradeLevelLeaders, campusRepresentatives } = usePage<any>().props;
     const { t, currentLocale } = useTranslation();
     return (
-        <div className="mt-8">
-            <div className="mb-10">
+        <div className="my-4">
+            <div className="mb-4">
                 {/* Category Title */}
-                <p className="relative inline-block text-3xl font-bold text-primary after:absolute after:bottom-0 after:left-1/2 after:h-[1.5px] after:w-4/5 after:-translate-x-1/2 after:translate-y-1 after:rounded-full after:bg-primary after:content-[''] md:text-4xl">
+                <p className="relative inline-block text-3xl font-bold text-primary after:absolute after:bottom-0 after:left-1/2 after:h-[2px] after:w-4/5 after:-translate-x-1/2 after:translate-y-1 after:rounded-full after:bg-primary after:content-[''] md:text-[55px]">
                     {currentLocale == 'kh' ? gradeLevelLeaders?.name_kh || gradeLevelLeaders?.name : gradeLevelLeaders?.name}
                 </p>
 
                 {/* Category Description */}
                 <div
-                    className="mt-4 text-base whitespace-pre-line sm:text-lg"
+                    className="mt-3 text-base whitespace-pre-line sm:text-xl"
                     dangerouslySetInnerHTML={{
                         __html:
                             currentLocale == 'kh'
@@ -35,11 +35,11 @@ const StudentTeam = () => {
 
                                 <div className="mt-2 h-[1px] w-full bg-primary" />
 
-                                <h3 className="mt-2 text-lg font-semibold text-primary xl:text-xl">
+                                <h3 className="mt-2 text-xl font-bold text-primary xl:text-xl">
                                     {currentLocale == 'kh' ? member?.name_kh || member?.name : member?.name}
                                 </h3>
                                 {member.short_description && (
-                                    <p className="text-md whitespace-pre-line text-black">
+                                    <p className="text-[13px] whitespace-pre-line text-black">
                                         {currentLocale == 'kh'
                                             ? member?.short_description_kh || member?.short_description
                                             : member?.short_description}
@@ -50,9 +50,9 @@ const StudentTeam = () => {
                     </div>
                 </div>
             </div>
-            <div className="mb-10">
+            <div >
                 {/* Category Title */}
-                <p className="relative inline-block text-3xl font-bold text-primary after:absolute after:bottom-0 after:left-1/2 after:h-[1.5px] after:w-4/5 after:-translate-x-1/2 after:translate-y-1 after:rounded-full after:bg-primary after:content-[''] md:text-4xl">
+                <p className="relative inline-block text-3xl font-bold text-primary after:absolute after:bottom-0 after:left-1/2 after:h-[2px] after:w-4/5 after:-translate-x-1/2 after:translate-y-1 after:rounded-full after:bg-primary after:content-[''] md:text-[55px]">
                     {currentLocale == 'kh' ? campusRepresentatives?.name_kh || campusRepresentatives?.name : campusRepresentatives?.name}
                 </p>
 
@@ -79,11 +79,11 @@ const StudentTeam = () => {
 
                                 <div className="mt-2 h-[1px] w-full bg-primary" />
 
-                                <h3 className="mt-2 text-lg font-semibold text-primary xl:text-xl">
+                                <h3 className="mt-2 text-xl font-bold text-primary xl:text-xl">
                                     {currentLocale == 'kh' ? member?.name_kh || member?.name : member?.name}
                                 </h3>
                                 {member.short_description && (
-                                    <p className="text-md whitespace-pre-line text-black">
+                                    <p className="text-[13px] whitespace-pre-line text-black">
                                         {currentLocale == 'kh'
                                             ? member?.short_description_kh || member?.short_description
                                             : member?.short_description}

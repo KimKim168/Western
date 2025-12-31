@@ -46,7 +46,7 @@
     @inertiaHead
 </head>
 
-<body class="font-sans antialiased">
+<body class="font-roboto-slab antialiased">
     @inertia
 </body>
 

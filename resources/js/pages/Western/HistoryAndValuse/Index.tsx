@@ -12,7 +12,7 @@ const Index = () => {
 
     return (
         <WesternLayout2>
-            <div className="section-container mt-28 md:mt-36">
+            <div className="section-container py-3 md:py-8">
                 <Header
                     title={
                         currentLocale === 'kh'
@@ -33,7 +33,7 @@ const Index = () => {
                 /> */}
 
                 <div className="flex flex-col">
-                    <div className="mx-auto my-4 font-semibold text-primary md:text-2xl">
+                    <div className="mx-auto my-4 font-bold text-primary text-xl md:text-3xl">
                         {currentLocale === 'kh' ? timeLine?.name_kh || timeLine?.name : timeLine?.name}
                     </div>
                     <Timeline data={timeLine.children} />

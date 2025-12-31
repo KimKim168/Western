@@ -51,7 +51,7 @@ export default function ContactMessage() {
             <form onSubmit={onSubmit} className="form w-full p-0">
                 <div className="space-y-6">
                     <FormField
-                        className="mt-2 w-full rounded-none border-primary"
+                        className="mt-2 w-full rounded-none border-primary text-[15px]"
                         required
                         id="name"
                         name="name"
@@ -60,11 +60,11 @@ export default function ContactMessage() {
                         onChange={(val) => setData('name', val)}
                         error={errors.name}
                         containerClassName="col-span-2 gap-0"
-                        labelClassName='text-base'
+                        labelClassName='text-xl'
                     />
 
                     <FormField
-                        className="mt-2 w-full rounded-none border-primary"
+                        className="mt-2 w-full rounded-none border-primary text-[15px]"
                         required
                         id="phone"
                         name="phone"
@@ -74,11 +74,11 @@ export default function ContactMessage() {
                         onChange={(val) => setData('phone', val)}
                         error={errors.phone}
                         containerClassName="col-span-2 gap-0"
-                        labelClassName='text-base'
+                        labelClassName='text-xl'
                     />
 
                     <FormField
-                        className="mt-2 w-full rounded-none border-primary"
+                        className="mt-2 w-full rounded-none border-primary text-[15px]"
                         id="email"
                         name="email"
                         label="Email"
@@ -87,11 +87,11 @@ export default function ContactMessage() {
                         onChange={(val) => setData('email', val)}
                         error={errors.email}
                         containerClassName="col-span-2 gap-0"
-                        labelClassName='text-base'
+                        labelClassName='text-xl'
                     />
 
                     <FormFieldTextArea
-                        className="mt-2 w-full rounded-none border-primary"
+                        className="mt-2 w-full rounded-none border-primary text-[15px]"
                         required
                         id="messages"
                         name="messages"
@@ -101,7 +101,7 @@ export default function ContactMessage() {
                         onChange={(val) => setData('messages', val)}
                         error={errors.messages}
                         containerClassName="col-span-2 gap-0"
-                        labelClassName='text-base'
+                        labelClassName='text-xl'
                     />
                 </div>
                 <AlertFlashMessage
@@ -112,7 +112,7 @@ export default function ContactMessage() {
                 />
 
                 {errors && <AllErrorsAlert title="Please fix the following errors" errors={errors} />}
-                <Button className="mt-6 flex w-[150px] hover:-translate-y-2 duration-300 items-center justify-between gap-2 rounded-none" size="lg" disabled={processing}>
+                <Button className="mt-6 flex w-[200px] p-6 hover:-translate-y-2 text-xl duration-300 items-center justify-between gap-2 rounded-none" size="lg" disabled={processing}>
                     {processing && <Spinner />}
                     {t('Send Message')} <ArrowUpRight className="h-6 w-6" />
                 </Button>

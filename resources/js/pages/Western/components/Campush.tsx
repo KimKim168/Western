@@ -29,7 +29,7 @@ const Campush = () => {
                         {title}
                     </p>
 
-                    {description && <p className="mt-4 text-base text-white drop-shadow-lg sm:text-lg md:text-xl">{description}</p>}
+                    {description && <p className="mt-4 text-base text-white drop-shadow-lg sm:text-lg md:text-base">{description}</p>}
 
                     {/* Button */}
                     {ourCampuses?.link && (

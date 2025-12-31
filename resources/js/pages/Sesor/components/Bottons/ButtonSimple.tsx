@@ -10,7 +10,7 @@ const ButtonSimple = ({ title, link, targetBlank }: any) => {
             <Button
                 asChild
                 className={cn(
-                    'button w-[100px] bg-primary-two hover:bg-primary-two rounded-none px-2 text-[13px] text-white transition-all md:text-[15px]',
+                    'button w-[100px] bg-primary-two hover:bg-primary-two font-medium rounded-none px-2 text-[13px] text-white transition-all md:text-[15px]',
                     'newStyle',
                 )}
             >

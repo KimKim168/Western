@@ -22,7 +22,7 @@ const WesternHero = () => {
             {/* Title */}
             <div className="flex justify-center text-center">
                 <p className="relative inline-block text-2xl font-bold text-primary
-                    after:absolute after:bottom-0 after:left-1/2 after:h-[1.5px]
+                    after:absolute after:bottom-0 after:left-1/2 after:h-[2px]
                     after:w-[60%] after:-translate-x-1/2 after:translate-y-1
                     after:rounded-full after:bg-primary after:content-['']
                     md:text-4xl lg:after:w-4/5">
@@ -31,7 +31,7 @@ const WesternHero = () => {
             </div>
 
             {/* Desktop */}
-            <div className="relative mx-auto mt-8 hidden flex-col px-4 sm:px-6 lg:flex lg:px-0">
+            <div className="relative mx-auto mt-8 md:mt-12 hidden flex-col px-4 sm:px-6 lg:flex lg:px-0">
                 {/* Image */}
                 <div className="relative w-full">
                     {image && (
@@ -58,7 +58,7 @@ const WesternHero = () => {
                             <div
                                 className="ck-content prose max-w-none bg-background
                                     p-4 py-6 text-xs text-primary
-                                    xl:text-base dark:prose-invert"
+                                    xl:text-[15px] dark:prose-invert text-justify"
                                 dangerouslySetInnerHTML={{ __html: description }}
                             />
                         </div>
@@ -76,7 +76,7 @@ const WesternHero = () => {
                     />
                 )}
 
-                <div className="bg-primary/60 p-4 shadow-lg">
+                <div className="bg-primary p-4 shadow-lg">
                     <h3 className="mb-2 text-xl font-bold text-white">
                         {Hero?.short_description}
                     </h3>

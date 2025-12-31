@@ -11,7 +11,8 @@ const Index = () => {
         <WesternLayout2>
             <div className="section-container mt-28 md:mt-36">
                 {/* Title */}
-                <p className="relative inline-block text-3xl font-bold text-primary after:absolute after:bottom-0 after:left-1/2 after:h-[1.5px] after:w-4/5 after:-translate-x-1/2 after:translate-y-1 after:rounded-full after:bg-primary after:content-[''] md:text-5xl">
+                <div className='py-3 md:py-8'>
+ <p className="relative inline-block text-3xl font-bold text-primary after:absolute after:bottom-0 after:left-1/2 after:h-[1.5px] after:w-4/5 after:-translate-x-1/2 after:translate-y-1 after:rounded-full after:bg-primary after:content-[''] md:text-5xl">
                     {currentLocale == 'kh' ? schoolCalendar?.name_kh || schoolCalendar?.name : schoolCalendar?.name}
                 </p>
                 <div
@@ -23,7 +24,10 @@ const Index = () => {
                                 : schoolCalendar?.long_description,
                     }}
                 ></div>
-                <Tabs defaultValue={schoolCalendar?.children?.[0].id} className="mt-8">
+                </div>
+               
+                
+                <Tabs defaultValue={schoolCalendar?.children?.[0].id} >
                     <TabsList className="justify-centern w-full gap-2 rounded-none bg-transparent p-0">
                         {schoolCalendar?.children?.map((tab) => (
                             <TabsTrigger

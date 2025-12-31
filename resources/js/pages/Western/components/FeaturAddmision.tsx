@@ -29,7 +29,7 @@ const FeatureAddmision = ({ data }: { data: any }) => {
                                 className="flex w-full basis-[60%] flex-col justify-center border-12 border-primary p-2 text-primary"
                                 style={{ minHeight: maxHeight }}
                             >
-                                <h4 className="mb-3 mx-auto text-center text-2xl font-semibold tracking-[-0.02em] md:text-start">
+                                <h4 className="mb-1.5 md:mb-3 mx-auto text-center text-xl md:text-3xl font-bold tracking-[-0.02em] md:text-start">
                                     {currentLocale === 'kh' ? item?.name_kh || item?.name : item?.name}
                                 </h4>
 
@@ -40,7 +40,7 @@ const FeatureAddmision = ({ data }: { data: any }) => {
                                 {item.long_description && (
                                     <div className="px-2">
                                         <div
-                                            className="prose prose-strong:text-primary max-w-none text-base text-primary"
+                                            className="prose prose-strong:text-primary max-w-none text-[15px] text-primary"
                                             dangerouslySetInnerHTML={{
                                                 __html:
                                                     currentLocale === 'kh'

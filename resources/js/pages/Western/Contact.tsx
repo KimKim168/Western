@@ -10,7 +10,7 @@ const Contact = () => {
                 {contact?.images?.length > 0 && (
                     <img
                         src={`/assets/images/pages/${contact.images[0].image}`}
-                        className="aspect-[21/6] w-full object-cover"
+                        className="aspect-[16/4] w-full object-cover"
                         alt="Contact page banner"
                     />
                 )}

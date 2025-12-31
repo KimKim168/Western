@@ -47,10 +47,10 @@ const CardSectionTextFisrt = ({ data }: { data: any }) => {
                                     </CardHeader>
                                     <CardContent className="flex h-full flex-col justify-between px-3 pb-4">
                                         <div>
-                                            <h3 className="inline-block bg-white p-1.5 text-xl font-semibold text-primary">
+                                            <h3 className="inline-block bg-white p-1.5 text-2xl font-semibold text-primary">
                                                 {currentLocale == 'kh' ? item?.name_kh || item?.name : item?.name}
                                             </h3>
-                                            <p className="text-lg">
+                                            <p className="mt-1 text-lg">
                                                 {currentLocale == 'kh'
                                                     ? item?.short_description_kh || item?.short_description
                                                     : item?.short_description}
@@ -82,7 +82,7 @@ const CardSectionTextFisrt = ({ data }: { data: any }) => {
                     overflowY: 'auto', // enable vertical scroll
                 }}
             >
-                <div className="flex justify-end px-6">
+                <div className="flex justify-end">
                     <AlertDialogPrimitive.Cancel
                         className={buttonVariants({
                             variant: 'ghost',
@@ -166,12 +166,12 @@ const CardSectionTextFisrt = ({ data }: { data: any }) => {
 
                         {/* Text – SECOND on mobile */}
                         <div className="order-2 flex inline-block flex-col gap-4 lg:order-1">
-                            <h2 className="inline-block bg-primary p-2 text-lg font-bold text-white md:p-4 md:text-3xl lg:text-4xl">
+                            <h2 className="inline-block bg-primary p-2 text-xl font-semibold text-white md:p-3 md:text-3xl lg:text-[45px]">
                                 {currentLocale == 'kh' ? selectedItem?.name_kh || selectedItem?.name : selectedItem?.name}
                             </h2>
 
                             <p
-                                className="mt-4 text-black md:mt-4.5 md:text-lg"
+                                className="mt-4 text-black md:mt-6 md:text-xl prose text-justify"
                                 dangerouslySetInnerHTML={{
                                     __html:
                                         currentLocale == 'kh'

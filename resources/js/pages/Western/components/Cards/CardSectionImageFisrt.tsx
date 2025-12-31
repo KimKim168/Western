@@ -128,7 +128,7 @@ export default function CardSectionImageFisrt() {
                                 <CardContent className="px-3 pb-4">
                                     <h3 className="inline-block bg-white p-1.5 text-xl font-semibold text-primary">{item.name}</h3>
 
-                                    <p className="text-lg">{item.short_description}</p>
+                                    <p className="mt-1 text-lg">{item.short_description}</p>
 
                                     <div className="mt-16">
                                         <ButtonSimple title="Read More" link="" />

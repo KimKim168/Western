@@ -22,7 +22,7 @@ const Index = () => {
 
     return (
         <WesternLayout2>
-            <div className="mt-28">
+            <div >
                 <HeaderAllPage data={curriculum} />
             </div>
 

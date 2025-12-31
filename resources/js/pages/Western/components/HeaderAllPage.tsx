@@ -4,14 +4,14 @@ const HeaderAllPage = ({ data }: { data: any }) => {
     const { t, currentLocale } = useTranslation();
 
     return (
-        <div className="relative mx-auto mt-6 flex flex-col sm:mt-8">
+        <div className="relative mx-auto pt-0 flex flex-col sm:pt-0">
             {/* Hero Image */}
             {data.images?.[0]?.image ? (
                 <div className="relative w-full overflow-hidden">
                     <img
                         src={`/assets/images/pages/${data.images?.[0].image}`}
                         alt={data.title}
-                        className="w-full object-cover aspect-[16/4]"
+                        className="w-full object-cover aspect-[16/6] md:aspect-[16/4]"
                     />
                 </div>
             ) : (

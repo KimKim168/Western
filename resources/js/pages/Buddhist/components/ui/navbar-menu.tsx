@@ -39,13 +39,16 @@
       >
         <motion.div
           transition={{ duration: 0.3 }}
-          className={`text-base cursor-pointer mx-6 font-semibold text-white ${
+          className={`text-base cursor-pointer mx-6 gap-1 font-semibold text-white ${
             isActive ? "border-b-2" : ""
-          } hover:opacity-90 flex gap-0.5 items-center ${className}`}
+          } hover:opacity-90 flex gap-0.5 items-center justify-center ${className}`}
         >
-          {item}
-          {hasSubMenu && (
+          <p>{item}</p>
+          {/* {hasSubMenu && (
             <ChevronUp className="h-3 w-3 stroke-3 transition-transform duration-300 rotate-180" />
+          )} */}
+          {hasSubMenu && (
+            <img src="/assets/PolyLine.png" className="w-3 mt-1 transition-transform duration-300" />
           )}
         </motion.div>
 

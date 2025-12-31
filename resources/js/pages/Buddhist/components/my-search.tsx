@@ -19,7 +19,7 @@ const MySearch = () => {
           size="icon" 
           className="relative h-10 w-10 rounded-full text-white transition-all duration-300 hover:bg-white/10 hover:text-white active:scale-95"
         >
-          <Search className="size-5" />
+          <Search className="size-7" />
           <span className="sr-only">Open Search</span>
         </Button>
       </SheetTrigger>

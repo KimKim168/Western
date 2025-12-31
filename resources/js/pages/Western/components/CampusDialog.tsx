@@ -30,11 +30,11 @@ const CampusDialog = ({ item }: { item: any }) => {
                         />
                         <div className="absolute bottom-4 left-4 opacity-0 transition group-hover:opacity-100">
                             <p className="rounded bg-primary px-4 py-2 text-base font-semibold text-white">{t('View')}</p>
-                        </div>
+                        </div>  
                     </div>
 
                     <div className="mt-1">
-                        <p className="relative inline-block font-semibold text-primary after:absolute after:bottom-0 after:left-1/2 after:h-[2px] after:w-2/3 after:-translate-x-1/2 after:rounded-full after:bg-primary">
+                        <p className="relative inline-block text-lg font-bold text-primary after:absolute after:bottom-0 after:left-1/2 after:h-[2px] after:w-2/3 after:-translate-x-1/2 after:rounded-full after:bg-primary">
                             {currentLocale == 'kh' ? item?.name_kh || item?.name : item?.name}
                         </p>
                     </div>

@@ -22,7 +22,7 @@ const Index = () => {
 
     return (
         <WesternLayout2>
-            <div className="">
+            <div >
                 <HeaderAllPage data={schoolFacilties} />
             </div>
             <div className="section-container">
@@ -39,6 +39,7 @@ const Index = () => {
                                 ? schoolFacilties?.long_description_kh || schoolFacilties?.long_description
                                 : schoolFacilties?.long_description
                         }
+                        mainClass='text-xl md:text-[30px]'
                     />
                 </div>
                 <AlertDetial data={schoolFacilties.children} />

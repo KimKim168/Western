@@ -25,7 +25,7 @@ const SchoolFees = ({ data }: { data: any }) => {
 
             {/* Children */}
             {data?.children?.map((child: any) => (
-                <div key={child.id} className="flex flex-col items-center justify-between">
+                <div key={child.id} className="flex flex-col gap-2 items-center justify-between mt-4">
                     <h2 className="text-center text-lg font-semibold text-primary md:text-start md:text-3xl">
                         {currentLocale === 'kh' ? child?.name_kh || child?.name : child?.name}
                     </h2>

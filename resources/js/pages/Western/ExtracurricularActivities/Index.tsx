@@ -8,12 +8,12 @@ const Index = () => {
     const { t, currentLocale } = useTranslation();
     return (
         <WesternLayout2>
-            <div className="section-container mt-28 md:mt-36">
-                <p className="relative inline-block text-3xl font-bold text-primary after:absolute after:bottom-0 after:left-1/2 after:h-[1.5px] after:w-4/5 after:-translate-x-1/2 md:text-5xl">
+            <div className="section-container ">
+                <p className="relative inline-block py-3 md:pt-8 text-3xl font-bold text-primary after:absolute after:bottom-0 after:left-1/2 after:h-[1.5px] after:w-4/5 after:-translate-x-1/2 md:text-[55px]">
                     {currentLocale == 'kh' ? extracurricularActivities?.name_kh || extracurricularActivities?.name : extracurricularActivities?.name}
                 </p>
                 <div
-                    className="prose mt-2 max-w-5xl md:mt-4 md:text-lg"
+                    className="prose max-w-5xl md:text-xl pb-3 md:pb-4 text-black"
                     dangerouslySetInnerHTML={{
                         __html:
                             currentLocale == 'kh'
