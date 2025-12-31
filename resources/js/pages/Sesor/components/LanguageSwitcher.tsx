@@ -10,9 +10,10 @@ export function LanguageSwitcher() {
                 window.location.href = `/lang/${val}`; // redirect to language route
             }}
         >
-            <SelectTrigger className="text-base items-center font-semibold justify-center text-white border-none shadow-none [&>svg]:text-white [&_svg]:w-4 [&_svg]:h-3">
-            <Globe className='text-white w-6 h-6 mr-1' size={7}/>
+            <SelectTrigger className="text-base items-center font-semibold justify-center text-white border-none shadow-none [&>svg]:text-white [&_svg]:w-4 [&_svg]:h-0 gap-1">
+            <Globe className='text-white w-8 h-8 mr-1' size={10}/>
                 <SelectValue placeholder="Select language"/>
+            <img src="/assets/PolyLine.png" className="w-3 mt-1 transition-transform duration-300" />
             </SelectTrigger>
             <SelectContent>
                 <SelectGroup className='text-whit font-semibold text-base'>
