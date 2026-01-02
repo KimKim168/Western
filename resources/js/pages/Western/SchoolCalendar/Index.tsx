@@ -9,9 +9,9 @@ const Index = () => {
 
     return (
         <WesternLayout2>
-            <div className="section-container mt-28 md:mt-36">
+            <div className="section-container">
                 {/* Title */}
-                <div className='py-3 md:py-8'>
+                <div className='py-4 md:py-8'>
  <p className="relative inline-block text-3xl font-bold text-primary after:absolute after:bottom-0 after:left-1/2 after:h-[1.5px] after:w-4/5 after:-translate-x-1/2 after:translate-y-1 after:rounded-full after:bg-primary after:content-[''] md:text-5xl">
                     {currentLocale == 'kh' ? schoolCalendar?.name_kh || schoolCalendar?.name : schoolCalendar?.name}
                 </p>
