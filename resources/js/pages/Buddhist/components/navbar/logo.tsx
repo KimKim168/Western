@@ -8,7 +8,7 @@ export const Logo = () => {
             <img
                 src={`/assets/images/website_infos/${website_info?.logo}`}
                 alt="Logo"
-                className="h-12 w-auto object-cover xl:h-20"
+                className="h-12 w-auto object-cover xl:h-24"
             />
         </Link>
     );

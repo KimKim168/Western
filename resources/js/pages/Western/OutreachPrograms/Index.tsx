@@ -93,7 +93,7 @@ const Index = () => {
                         </div>
 
                         {/* Thumbnails */}
-                        <div className="mt-4 flex flex-wrap justify-center gap-3">
+                        {/* <div className="mt-4 flex flex-wrap justify-center gap-3">
                             {selectedItem.images.map((src: any, index) => (
                                 <img
                                     key={index}
@@ -104,6 +104,20 @@ const Index = () => {
                                     }`}
                                 />
                             ))}
+                        </div> */}
+                        <div className="mt-4 w-full overflow-x-auto pb-2 ">
+                            <div className="flex gap-3 justify-center md:mx-auto w-full">
+                                {selectedItem.images.map((src: any, index) => (
+                                    <img
+                                        key={index}
+                                        src={`/assets/images/pages/thumb/${src?.image}`}
+                                        onClick={() => setMainImageIndex(index)}
+                                        className={`h-10 w-20 shrink-0 cursor-pointer object-cover transition md:h-20 md:w-40 ${
+                                            index === mainImageIndex ? 'border-2 border-primary' : 'opacity-100'
+                                        } `}
+                                    />
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </PhotoProvider>

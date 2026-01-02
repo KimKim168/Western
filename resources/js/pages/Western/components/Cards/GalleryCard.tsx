@@ -3,12 +3,22 @@ import { buttonVariants } from '@/components/ui/button';
 import useTranslation from '@/hooks/use-translation';
 import { X } from 'lucide-react';
 import { AlertDialog as AlertDialogPrimitive } from 'radix-ui';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { PhotoProvider } from 'react-photo-view';
 
 const GalleryCard = ({ item }) => {
     const [mainImageIndex, setMainImageIndex] = useState(0);
     const { t, currentLocale } = useTranslation();
+    const containerRef = useRef<HTMLDivElement>(null);
+    const [scrollable, setScrollable] = useState(false);
+
+    useEffect(() => {
+        const el = containerRef.current;
+        if (!el) return;
+
+        // Check if content is wider than container
+        setScrollable(el.scrollWidth > el.clientWidth);
+    }, [item.images]);
 
     const prevImage = () => {
         setMainImageIndex((prev) => (prev === 0 ? item.images.length - 1 : prev - 1));
@@ -24,7 +34,9 @@ const GalleryCard = ({ item }) => {
                 <div className="group relative cursor-pointer">
                     <img src={`/assets/images/pages/${item.images[0]?.image}`} className="aspect-square object-cover" />
                     <div className="absolute bottom-0 w-full bg-primary/60 p-6 text-primary opacity-0 transition group-hover:opacity-100">
-                        <p className="inline-block bg-white p-2 text-base font-bold">{currentLocale == 'kh' ? item?.name_kh || item?.name : item?.name}</p>
+                        <p className="inline-block bg-white p-2 text-base font-bold">
+                            {currentLocale == 'kh' ? item?.name_kh || item?.name : item?.name}
+                        </p>
                     </div>
                 </div>
             </AlertDialogTrigger>
@@ -47,12 +59,12 @@ const GalleryCard = ({ item }) => {
                         <X />
                     </AlertDialogPrimitive.Cancel>
                 </div>
-                <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
+                <div className="grid grid-cols-1 gap-8 md:gap-12 lg:grid-cols-2">
                     {/* Image Gallery – FIRST on mobile */}
                     <PhotoProvider>
                         <div className="relative order-1 flex flex-col items-center lg:order-2">
                             {/* Main Image */}
-                            <div className="relative w-full max-w-xl">
+                            <div className="relative w-full">
                                 <button
                                     onClick={prevImage}
                                     className="absolute top-1/2 left-0 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center bg-primary/80 text-white hover:bg-primary"
@@ -102,7 +114,7 @@ const GalleryCard = ({ item }) => {
                             </div>
 
                             {/* Thumbnails */}
-                            <div className="mt-4 flex flex-wrap justify-center gap-3">
+                            {/* <div className="mt-4 flex flex-wrap justify-center gap-3">
                                 {item.images.map((src: any, index: number) => (
                                     <img
                                         key={index}
@@ -113,6 +125,21 @@ const GalleryCard = ({ item }) => {
                                         }`}
                                     />
                                 ))}
+                            </div> */}
+
+                            <div className="mt-4 w-full overflow-x-auto pb-2">
+                                <div ref={containerRef} className={`flex w-full gap-3 ${scrollable ? 'justify-start' : 'justify-center'}`}>
+                                    {item.images.map((src: any, index: number) => (
+                                        <img
+                                            key={index}
+                                            src={`/assets/images/pages/thumb/${src?.image}`}
+                                            onClick={() => setMainImageIndex(index)}
+                                            className={`h-16 w-32 cursor-pointer object-cover transition sm:h-20 sm:w-32 ${
+                                                index === mainImageIndex ? 'border-2 border-primary' : 'opacity-100'
+                                            }`}
+                                        />
+                                    ))}
+                                </div>
                             </div>
                         </div>
                     </PhotoProvider>
@@ -124,7 +151,7 @@ const GalleryCard = ({ item }) => {
                         </h2>
 
                         <p
-                            className="mt-4 text-black md:text-xl"
+                            className="mt-4 text-justify text-black md:text-xl"
                             dangerouslySetInnerHTML={{
                                 __html: currentLocale == 'kh' ? item?.long_description_kh || item?.long_description : item?.long_description,
                             }}

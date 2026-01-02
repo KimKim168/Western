@@ -53,6 +53,13 @@
     width: 3px;
     height: 3px;
 }
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.hide-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
 
 ::-webkit-scrollbar-track {
     background: transparent;
