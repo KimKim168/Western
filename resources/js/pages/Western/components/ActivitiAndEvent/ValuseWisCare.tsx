@@ -12,7 +12,7 @@ const ValuseWisCare = () => {
     const secondRow = valuesWiscare?.children?.slice(3);
 
     const renderItem = ({ name, name_kh, short_description, short_description_kh, icon, isLast }) => (
-        <div key={name} className="relative flex min-h-[80px] flex-col border-[0.5px] border-primary p-7">
+        <div key={name} className="relative flex min-h-[225px] flex-col border-[0.5px] border-primary p-7">
             {/* Title Row */}
             <div className="flex items-end justify-start gap-3">
                 <div className="flex h-14 w-14 shrink-0">

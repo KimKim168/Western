@@ -29,11 +29,11 @@ export default function AlertFlashMessage({ flashMessage, setFlashMessage, type 
 
     const colorMap = {
         success: {
-            bg: 'bg-green-50 dark:bg-green-900/30',
-            text: 'text-green-600 dark:text-green-400',
-            border: 'hover:border-green-600 dark:hover:border-green-400',
+            bg: 'bg-primary/10 dark:bg-primary/20',
+            text: 'text-primary dark:text-primary-light',
+            border: 'hover:border-primary dark:hover:border-primary-light',
             icon: CheckCircleIcon,
-            progressBg: 'bg-green-600/30 dark:bg-green-400/30',
+            progressBg: 'bg-primary/30 dark:bg-primary-light/30',
         },
         warning: {
             bg: 'bg-yellow-50 dark:bg-yellow-900/30',

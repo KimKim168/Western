@@ -51,7 +51,7 @@ export const FormField: React.FC<FormFieldProps> = ({
                 placeholder={placeholder ? t(placeholder) : t(label)}
                 value={value}
                 onChange={(e) => onChange(e.target.value)}
-                className={`dark:border-white/20 ${error ? 'border-destructive' : ''} ${className || ''}`}
+                className={`dark:border-primary ${error ? 'border-destructive' : ''} ${className || ''}`}
             />
             {description && <FormDescription description={description} />}
             <FormErrorLabel error={error} />
