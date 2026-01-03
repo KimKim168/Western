@@ -129,7 +129,7 @@ const GalleryCard = ({ item }: { item: any }) => {
                                             src={`/assets/images/pages/thumb/${src?.image}`}
                                             alt={`Thumbnail ${index + 1}`}
                                             onClick={() => setSelectedItem(index)}
-                                            className={`aspect-[16/9] h-16 cursor-pointer object-cover transition sm:w-32 ${
+                                            className={`h-10 w-20 cursor-pointer object-cover transition sm:h-16 sm:w-24 ${
                                                 index === selectedItem ? 'border-2 border-primary' : 'opacity-70 hover:opacity-100'
                                             }`}
                                         />

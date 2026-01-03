@@ -173,7 +173,7 @@ const CardSectionTextFisrt = ({ data }: { data: any }) => {
                                                 src={`/assets/images/pages/${src.image}`}
                                                 alt={`Thumbnail ${index + 1}`}
                                                 onClick={() => setMainImageIndex(index)}
-                                                className={`aspect-[16/9] h-16 cursor-pointer object-cover transition sm:w-32 ${
+                                                className={`h-10 w-20 cursor-pointer object-cover transition sm:h-16 sm:w-24 ${
                                                     index === mainImageIndex ? 'border-2 border-primary' : 'opacity-70 hover:opacity-100'
                                                 }`}
                                             />
