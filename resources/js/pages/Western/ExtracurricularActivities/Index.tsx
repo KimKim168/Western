@@ -2,6 +2,7 @@ import useTranslation from '@/hooks/use-translation';
 import { usePage } from '@inertiajs/react';
 import WesternLayout2 from '../WesternLayout2';
 import CardSectionTextFisrt from '../components/Cards/CardSectionTextFisrt';
+import ActivitiAndEventCard from '../components/ActivitiAndEvent/ActivitiAndEventCard';
 
 const Index = () => {
     const { extracurricularActivities } = usePage<any>().props;
@@ -23,6 +24,7 @@ const Index = () => {
                 />
                 {/* Card with dielog */}
                 <CardSectionTextFisrt data={extracurricularActivities?.children} />
+                {/* <ActivitiAndEventCard data={extracurricularActivities?.children} /> */}
             </div>
         </WesternLayout2>
     );

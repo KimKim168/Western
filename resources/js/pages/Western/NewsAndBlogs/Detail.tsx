@@ -8,7 +8,7 @@ const Detail = () => {
 
     return (
         <WesternLayout2>
-            <div className='pt-6 md:pt-10'>
+            <div className='pt-4 md:pt-10'>
               <div className="mx-auto flex h-[213px] md:h-[313px] items-center justify-center bg-primary text-center">
                 <p className={`mb-2 font-extrabold text-3xl text-white md:text-[55px]`}>
                     {currentLocale === 'kh' ? (showData?.title_kh ?? showData?.title) : showData?.title}

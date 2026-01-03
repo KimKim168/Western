@@ -5,14 +5,32 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import useTranslation from '@/hooks/use-translation';
 import { X } from 'lucide-react';
 import { AlertDialog as AlertDialogPrimitive } from 'radix-ui';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { PhotoProvider } from 'react-photo-view';
 
 export default function ActivitiAndEventCard({ data }: { data: any[] }) {
-    const {t, currentLocale } = useTranslation();
+    const { t, currentLocale } = useTranslation();
 
     const [selectedItem, setSelectedItem] = useState<any>(null);
     const [mainImageIndex, setMainImageIndex] = useState(0);
+
+    const thumbContainerRef = useRef<HTMLDivElement | null>(null);
+    const [thumbScrollable, setThumbScrollable] = useState(false);
+    useEffect(() => {
+        if (!selectedItem) return;
+
+        const measure = () => {
+            if (!thumbContainerRef.current) return;
+
+            const el = thumbContainerRef.current;
+            setThumbScrollable(el.scrollWidth > el.clientWidth);
+        };
+
+        // wait until DOM is painted
+        requestAnimationFrame(() => {
+            requestAnimationFrame(measure);
+        });
+    }, [selectedItem, selectedItem?.images?.length]);
 
     if (!data.length) return null;
 
@@ -41,7 +59,7 @@ export default function ActivitiAndEventCard({ data }: { data: any[] }) {
 
                         <div className="relative w-full bg-primary md:absolute md:bottom-0 md:left-0 md:bg-primary/70">
                             <div className="flex flex-col items-start p-3 lg:max-w-4xl">
-                                <h3 className="inline-block bg-white p-1.5 text-2xl md:text-4xl font-semibold text-primary">
+                                <h3 className="inline-block bg-white p-1.5 text-2xl font-semibold text-primary md:text-4xl">
                                     {currentLocale === 'kh' ? firstCard?.name_kh || firstCard?.name : firstCard?.name}
                                 </h3>
                                 <p className="text-lg text-white">
@@ -59,8 +77,8 @@ export default function ActivitiAndEventCard({ data }: { data: any[] }) {
                                                 setMainImageIndex(0);
                                             }}
                                         >
-                                            <p className="button w-[100px] cursor-pointer rounded-none bg-primary-two p-2 text-[13px] text-white transition-all hover:bg-primary-two md:text-[15px] font-medium">
-                                                {t("Read More")}
+                                            <p className="button w-[100px] cursor-pointer rounded-none bg-primary-two p-2 text-[13px] font-medium text-white transition-all hover:bg-primary-two md:text-[15px]">
+                                                {t('Read More')}
                                             </p>
                                         </div>
                                     </AlertDialogTrigger>
@@ -83,7 +101,7 @@ export default function ActivitiAndEventCard({ data }: { data: any[] }) {
                                         <h3 className="inline-block bg-white p-1.5 text-2xl font-semibold text-primary">{item.name}</h3>
                                         <p className="mt-1 text-lg">{item.short_description}</p>
 
-                                        <div className="mt-16 text-center ">
+                                        <div className="mt-16 text-center">
                                             <AlertDialogTrigger asChild>
                                                 <div
                                                     onClick={() => {
@@ -91,8 +109,8 @@ export default function ActivitiAndEventCard({ data }: { data: any[] }) {
                                                         setMainImageIndex(0);
                                                     }}
                                                 >
-                                                    <p className="button absolute bottom-4 w-[100px] cursor-pointer rounded-none bg-primary-two p-2 text-[13px] text-white transition-all hover:bg-primary-two md:text-[15px] font-medium">
-                                                        {t("Read More")}
+                                                    <p className="button absolute bottom-4 w-[100px] cursor-pointer rounded-none bg-primary-two p-2 text-[13px] font-medium text-white transition-all hover:bg-primary-two md:text-[15px]">
+                                                        {t('Read More')}
                                                     </p>
                                                 </div>
                                             </AlertDialogTrigger>
@@ -131,13 +149,13 @@ export default function ActivitiAndEventCard({ data }: { data: any[] }) {
                     </div>
 
                     {selectedItem && (
-                        <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
-                            <div className="flex inline-block flex-col gap-4">
+                        <div className="grid grid-cols-1 gap-8 md:gap-12 lg:grid-cols-2">
+                            <div className="order-2 flex inline-block flex-col gap-4 lg:order-1">
                                 <h2 className="inline-block bg-primary p-2 text-lg font-bold text-white md:p-4 md:text-3xl lg:text-4xl">
                                     {currentLocale === 'kh' ? selectedItem?.name_kh || selectedItem?.name : selectedItem?.name}
                                 </h2>
                                 <p
-                                    className="mt-4 text-black md:text-lg text-justify"
+                                    className="prose mt-4 text-justify text-black md:text-lg"
                                     dangerouslySetInnerHTML={{
                                         __html:
                                             currentLocale === 'kh'
@@ -148,8 +166,8 @@ export default function ActivitiAndEventCard({ data }: { data: any[] }) {
                             </div>
 
                             <PhotoProvider>
-                                <div className="relative flex flex-col items-center">
-                                    <div className="relative w-full max-w-xl">
+                                <div className="relative order-1 inline-block flex-col items-center gap-4 lg:order-1">
+                                    <div className="relative w-full">
                                         <button
                                             onClick={prevImage}
                                             className="absolute top-1/2 left-0 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center bg-primary/80 text-white transition hover:bg-primary"
@@ -161,7 +179,7 @@ export default function ActivitiAndEventCard({ data }: { data: any[] }) {
                                             <img
                                                 src={`/assets/images/pages/${selectedItem.images[mainImageIndex]?.image}`}
                                                 alt={selectedItem?.name || 'Campus image'}
-                                                className="max-h-[500px] w-full cursor-pointer object-cover shadow"
+                                                className="aspect-video max-h-[460px] cursor-pointer object-cover shadow"
                                             />
                                         )}
 
@@ -173,7 +191,7 @@ export default function ActivitiAndEventCard({ data }: { data: any[] }) {
                                         </button>
                                     </div>
 
-                                    <div className="mt-4 flex flex-wrap justify-center gap-3">
+                                    {/* <div className="mt-4 flex flex-wrap justify-center gap-3">
                                         {selectedItem?.images?.map((img: any, index: number) => (
                                             <img
                                                 key={img.id ?? index}
@@ -185,6 +203,24 @@ export default function ActivitiAndEventCard({ data }: { data: any[] }) {
                                                 }`}
                                             />
                                         ))}
+                                    </div> */}
+                                    <div className="mt-4 w-full overflow-x-auto pb-2">
+                                        <div
+                                            ref={thumbContainerRef}
+                                            className={`flex w-full gap-3 ${thumbScrollable ? 'justify-start' : 'justify-center'}`}
+                                        >
+                                            {selectedItem?.images?.map((img: any, index: number) => (
+                                                <img
+                                                    key={img.id ?? index}
+                                                    src={imagePath(img.image)}
+                                                    alt={`Thumbnail ${index + 1}`}
+                                                    onClick={() => setMainImageIndex(index)}
+                                                    className={`aspect-[16/9] h-16 cursor-pointer object-cover transition sm:w-32 ${
+                                                        index === mainImageIndex ? 'border-2 border-primary' : 'opacity-70 hover:opacity-100'
+                                                    }`}
+                                                />
+                                            ))}
+                                        </div>
                                     </div>
                                 </div>
                             </PhotoProvider>

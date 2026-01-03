@@ -26,7 +26,7 @@ const NavbarPage2 = () => {
     return (
         <>
             {/* Invisible sentinel above the navbar */}
-            <div ref={sentinelRef} className="absolute top-0 h-1 w-full" />
+            <div ref={sentinelRef} className="absolute top-0 z-50 h-1 w-full" />
 
             <nav
                 ref={headerRef}

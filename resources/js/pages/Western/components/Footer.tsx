@@ -21,10 +21,10 @@ const Footer = () => {
     const { t, currentLocale } = useTranslation();
 
     return (
-    <footer className="relative mt-10 w-full overflow-hidden bg-primary text-white">
+    <footer className="relative mt-10 w-full z-0 overflow-hidden bg-primary text-white">
     {/* 1. Background Layer */}
     <div 
-        className="absolute inset-0 z-0 opacity-10 pointer-events-none"
+        className="absolute inset-0 z-10 opacity-10 pointer-events-none"
         style={{
             backgroundImage: "url('/assets/footerBackground.png')",
             backgroundSize: 'contain',    // Shows the full image without cropping

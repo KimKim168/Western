@@ -6,26 +6,33 @@ import { AlertDialog as AlertDialogPrimitive } from 'radix-ui';
 import { useEffect, useRef, useState } from 'react';
 import { PhotoProvider } from 'react-photo-view';
 
-const GalleryCard = ({ item }) => {
-    const [mainImageIndex, setMainImageIndex] = useState(0);
+const GalleryCard = ({ item }: { item: any }) => {
+    const [selectedItem, setSelectedItem] = useState(0);
     const { t, currentLocale } = useTranslation();
     const containerRef = useRef<HTMLDivElement>(null);
-    const [scrollable, setScrollable] = useState(false);
+    const [thumbScrollable, setThumbScrollable] = useState(false);
+    const thumbContainerRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
-        const el = containerRef.current;
+        // reset first
+        setThumbScrollable(false);
+
+        const el = thumbContainerRef.current;
         if (!el) return;
 
-        // Check if content is wider than container
-        setScrollable(el.scrollWidth > el.clientWidth);
-    }, [item.images]);
+        requestAnimationFrame(() => {
+            setThumbScrollable(el.scrollWidth > el.clientWidth);
+            el.scrollLeft = 0;
+        });
+    }, [item.id, item.images.length]);
+    
 
     const prevImage = () => {
-        setMainImageIndex((prev) => (prev === 0 ? item.images.length - 1 : prev - 1));
+        setSelectedItem((prev) => (prev === 0 ? item.images.length - 1 : prev - 1));
     };
 
     const nextImage = () => {
-        setMainImageIndex((prev) => (prev === item.images.length - 1 ? 0 : prev + 1));
+        setSelectedItem((prev) => (prev === item.images.length - 1 ? 0 : prev + 1));
     };
 
     return (
@@ -87,8 +94,8 @@ const GalleryCard = ({ item }) => {
                                 </button>
 
                                 <img
-                                    src={`/assets/images/pages/${item.images[mainImageIndex]?.image}`}
-                                    className="max-h-[500px] w-full cursor-pointer object-cover shadow"
+                                    src={`/assets/images/pages/${item.images[selectedItem]?.image}`}
+                                    className="aspect-video max-h-[460px] cursor-pointer object-cover shadow"
                                 />
 
                                 <button
@@ -114,28 +121,16 @@ const GalleryCard = ({ item }) => {
                             </div>
 
                             {/* Thumbnails */}
-                            {/* <div className="mt-4 flex flex-wrap justify-center gap-3">
-                                {item.images.map((src: any, index: number) => (
-                                    <img
-                                        key={index}
-                                        src={`/assets/images/pages/${src?.image}`}
-                                        onClick={() => setMainImageIndex(index)}
-                                        className={`h-16 w-16 cursor-pointer object-cover transition sm:h-20 sm:w-20 ${
-                                            index === mainImageIndex ? 'border-2 border-primary shadow-md' : 'opacity-70 hover:opacity-100'
-                                        }`}
-                                    />
-                                ))}
-                            </div> */}
-
                             <div className="mt-4 w-full overflow-x-auto pb-2">
-                                <div ref={containerRef} className={`flex w-full gap-3 ${scrollable ? 'justify-start' : 'justify-center'}`}>
+                                <div ref={containerRef} className={`flex w-full gap-3 ${thumbScrollable ? 'justify-start' : 'justify-center'}`}>
                                     {item.images.map((src: any, index: number) => (
                                         <img
                                             key={index}
                                             src={`/assets/images/pages/thumb/${src?.image}`}
-                                            onClick={() => setMainImageIndex(index)}
-                                            className={`h-16 w-32 cursor-pointer object-cover transition sm:h-20 sm:w-32 ${
-                                                index === mainImageIndex ? 'border-2 border-primary' : 'opacity-100'
+                                            alt={`Thumbnail ${index + 1}`}
+                                            onClick={() => setSelectedItem(index)}
+                                            className={`aspect-[16/9] h-16 cursor-pointer object-cover transition sm:w-32 ${
+                                                index === selectedItem ? 'border-2 border-primary' : 'opacity-70 hover:opacity-100'
                                             }`}
                                         />
                                     ))}

@@ -5,7 +5,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import useTranslation from '@/hooks/use-translation';
 import { X } from 'lucide-react';
 import { AlertDialog as AlertDialogPrimitive } from 'radix-ui';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { PhotoProvider } from 'react-photo-view';
 import { styled } from 'styled-components';
 
@@ -13,6 +13,21 @@ const CardSectionTextFisrt = ({ data }: { data: any }) => {
     const [selectedItem, setSelectedItem] = useState<any>(null);
     const [mainImageIndex, setMainImageIndex] = useState(0);
     const { t, currentLocale } = useTranslation();
+    const containerRef = useRef<HTMLDivElement>(null);
+    const [thumbScrollable, setThumbScrollable] = useState(false);
+    const thumbContainerRef = useRef<HTMLDivElement | null>(null);
+
+    useEffect(() => {
+        if (!selectedItem) return;
+
+        const el = thumbContainerRef.current;
+        if (!el) return;
+
+        requestAnimationFrame(() => {
+            setThumbScrollable(el.scrollWidth > el.clientWidth);
+            el.scrollLeft = 0;
+        });
+    }, [selectedItem]);
 
     const prevImage = () => {
         if (!selectedItem) return;
@@ -76,7 +91,7 @@ const CardSectionTextFisrt = ({ data }: { data: any }) => {
             </Carousel>
 
             <AlertDialogContent
-                className="overflow-scroll overflow-y-scroll rounded-none p-4 sm:max-w-full md:py-6 md:pr-0 md:pl-6"
+                className="overflow-scroll overflow-y-scroll rounded-none p-4 sm:max-w-full md:p-6 md:py-6"
                 style={{
                     maxHeight: '90vh', // limits the height on mobile
                     overflowY: 'auto', // enable vertical scroll
@@ -94,7 +109,7 @@ const CardSectionTextFisrt = ({ data }: { data: any }) => {
                     </AlertDialogPrimitive.Cancel>
                 </div>
                 {selectedItem && (
-                    <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+                    <div className="grid grid-cols-1 gap-8 md:gap-12 lg:grid-cols-2">
                         {/* Image Gallery – FIRST on mobile */}
                         <PhotoProvider>
                             <div className="relative order-1 flex flex-col items-center lg:order-2">
@@ -123,7 +138,7 @@ const CardSectionTextFisrt = ({ data }: { data: any }) => {
 
                                     <img
                                         src={`/assets/images/pages/${selectedItem.images[mainImageIndex]?.image}`}
-                                        className="aspect-video max-h-[500px] w-full cursor-pointer object-cover shadow"
+                                        className="aspect-video max-h-[460px] cursor-pointer object-cover shadow"
                                     />
 
                                     <button
@@ -149,17 +164,21 @@ const CardSectionTextFisrt = ({ data }: { data: any }) => {
                                 </div>
 
                                 {/* Thumbnails */}
-                                <div className="mt-4 flex flex-wrap justify-center gap-3">
-                                    {selectedItem.images.map((src: any, index) => (
-                                        <img
-                                            key={index}
-                                            src={`/assets/images/pages/${src.image}`}
-                                            onClick={() => setMainImageIndex(index)}
-                                            className={`h-16 w-16 cursor-pointer object-cover transition sm:h-20 sm:w-20 ${
-                                                index === mainImageIndex ? 'border-2 border-primary shadow-md' : 'opacity-70 hover:opacity-100'
-                                            }`}
-                                        />
-                                    ))}
+
+                                <div className="mt-4 w-full overflow-x-auto pb-2">
+                                    <div ref={containerRef} className={`flex w-full gap-3 ${thumbScrollable ? 'justify-start' : 'justify-center'}`}>
+                                        {selectedItem.images.map((src: any, index) => (
+                                            <img
+                                                key={index}
+                                                src={`/assets/images/pages/${src.image}`}
+                                                alt={`Thumbnail ${index + 1}`}
+                                                onClick={() => setMainImageIndex(index)}
+                                                className={`aspect-[16/9] h-16 cursor-pointer object-cover transition sm:w-32 ${
+                                                    index === mainImageIndex ? 'border-2 border-primary' : 'opacity-70 hover:opacity-100'
+                                                }`}
+                                            />
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
                         </PhotoProvider>
@@ -171,7 +190,7 @@ const CardSectionTextFisrt = ({ data }: { data: any }) => {
                             </h2>
 
                             <p
-                                className="mt-4 text-black md:mt-6 md:text-xl prose text-justify"
+                                className="prose mt-4 text-justify text-black md:mt-6 md:text-xl"
                                 dangerouslySetInnerHTML={{
                                     __html:
                                         currentLocale == 'kh'

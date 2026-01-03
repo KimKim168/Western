@@ -3,12 +3,38 @@ import { buttonVariants } from '@/components/ui/button';
 import useTranslation from '@/hooks/use-translation';
 import { MapPin, X } from 'lucide-react';
 import { AlertDialog as AlertDialogPrimitive } from 'radix-ui';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { PhotoProvider } from 'react-photo-view';
 
 const CampusDialog = ({ item }: { item: any }) => {
     const [mainImageIndex, setMainImageIndex] = useState(0);
     const mainImage = item.images[mainImageIndex];
+    const { t, currentLocale } = useTranslation();
+
+    // Thumbnail scroll state
+    const thumbRef = useRef<HTMLDivElement>(null);
+    const [thumbScrollable, setThumbScrollable] = useState(false);
+
+    useEffect(() => {
+        const el = thumbRef.current;
+        if (!el) return;
+
+        const images = el.querySelectorAll('img');
+        let loadedCount = 0;
+
+        const checkScrollable = () => setThumbScrollable(el.scrollWidth > el.clientWidth);
+
+        images.forEach((img) => {
+            if (img.complete) loadedCount++;
+            else img.onload = () => {
+                loadedCount++;
+                if (loadedCount === images.length) checkScrollable();
+            };
+        });
+
+        // Check immediately in case all images already loaded
+        if (loadedCount === images.length) checkScrollable();
+    }, [item.images]);
 
     const prevImage = () => {
         setMainImageIndex((prev) => (prev === 0 ? item.images.length - 1 : prev - 1));
@@ -17,7 +43,6 @@ const CampusDialog = ({ item }: { item: any }) => {
     const nextImage = () => {
         setMainImageIndex((prev) => (prev === item.images.length - 1 ? 0 : prev + 1));
     };
-    const { t, currentLocale } = useTranslation();
 
     return (
         <AlertDialog>
@@ -30,9 +55,8 @@ const CampusDialog = ({ item }: { item: any }) => {
                         />
                         <div className="absolute bottom-4 left-4 opacity-0 transition group-hover:opacity-100">
                             <p className="rounded bg-primary px-4 py-2 text-base font-semibold text-white">{t('View')}</p>
-                        </div>  
+                        </div>
                     </div>
-
                     <div className="mt-1">
                         <p className="relative inline-block text-lg font-bold text-primary after:absolute after:bottom-0 after:left-1/2 after:h-[2px] after:w-2/3 after:-translate-x-1/2 after:rounded-full after:bg-primary">
                             {currentLocale == 'kh' ? item?.name_kh || item?.name : item?.name}
@@ -41,12 +65,11 @@ const CampusDialog = ({ item }: { item: any }) => {
                 </div>
             </AlertDialogTrigger>
 
-            {/* ===== Dialog ===== */}
             <AlertDialogContent
                 className="gap-0 rounded-none border-none px-0 pt-0 sm:max-w-full"
                 style={{
-                    maxHeight: '90vh', // limits the height on mobile
-                    overflowY: 'auto', // enable vertical scroll
+                    maxHeight: '90vh',
+                    overflowY: 'auto',
                 }}
             >
                 {/* Header */}
@@ -70,7 +93,7 @@ const CampusDialog = ({ item }: { item: any }) => {
                 <div className="grid grid-cols-1 gap-6 p-4 sm:p-8 lg:grid-cols-2">
                     {/* Image Gallery */}
                     <PhotoProvider>
-                        <div className="flex flex-col items-center">
+                        <div className="flex flex-col items-center w-full">
                             <div className="relative w-full">
                                 <button
                                     onClick={prevImage}
@@ -83,9 +106,9 @@ const CampusDialog = ({ item }: { item: any }) => {
                                         viewBox="0 0 24 24"
                                         fill="none"
                                         stroke="currentColor"
-                                        stroke-width="2"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
+                                        strokeWidth="2"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
                                         className="lucide lucide-chevron-left"
                                     >
                                         <path d="m15 18-6-6 6-6"></path>
@@ -95,10 +118,9 @@ const CampusDialog = ({ item }: { item: any }) => {
                                 {/* Main Image */}
                                 <img
                                     src={`/assets/images/pages/${mainImage?.image}`}
-                                    className="max-h-[500px] w-full cursor-pointer object-cover shadow"
+                                    className="aspect-video max-h-[460px] cursor-pointer object-cover shadow"
                                 />
 
-                                {/* Next Button */}
                                 <button
                                     onClick={nextImage}
                                     className="absolute top-1/2 right-0 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center bg-primary/80 text-white transition hover:bg-primary"
@@ -119,13 +141,19 @@ const CampusDialog = ({ item }: { item: any }) => {
                                 </button>
                             </div>
 
-                            <div className="mt-4 flex flex-wrap justify-center gap-3">
+                            {/* Thumbnails */}
+                            <div
+                                ref={thumbRef}
+                                className={`mt-4 flex w-full gap-3 overflow-x-auto pb-2 ${
+                                    thumbScrollable ? 'justify-start' : 'justify-center'
+                                }`}
+                            >
                                 {item.images.map((src: any, index: number) => (
                                     <img
                                         key={index}
                                         src={`/assets/images/pages/${src?.image}`}
                                         onClick={() => setMainImageIndex(index)}
-                                        className={`h-16 w-16 cursor-pointer object-cover sm:h-20 sm:w-20 ${
+                                        className={`aspect-[16/9] h-16 cursor-pointer object-cover transition sm:w-32 ${
                                             index === mainImageIndex ? 'border-2 border-primary' : 'opacity-70 hover:opacity-100'
                                         }`}
                                     />
@@ -135,7 +163,7 @@ const CampusDialog = ({ item }: { item: any }) => {
                     </PhotoProvider>
 
                     {/* Info */}
-                    <div className="flex h-[80%] flex-col justify-between gap-6">
+                    <div className="flex h-[81%] flex-col justify-between gap-6">
                         <div>
                             <h2 className="text-lg font-bold text-primary sm:text-2xl">{t('Address')}:</h2>
                             <p className="text-base sm:text-xl">

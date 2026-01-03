@@ -12,7 +12,7 @@ const WesternLayout2 = ({ children }: LayoutProps) => {
         <>
             <div className="relative mb-24 xl:mb-36">
                 {/* Navbar overlays video */}
-                <div className="absolute top-0 left-0 z-20 w-full">
+                <div className="absolute top-0 left-0 z-50 w-full">
                     <NavbarPage2 />
                 </div>
                 {/* HERO SECTION */}
