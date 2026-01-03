@@ -16,7 +16,7 @@ export const NavigationSheet = () => {
     return (
         <Sheet>
             <SheetTrigger asChild>
-                <Button variant="outline" size="icon">
+                <Button variant="outline" size="icon" className='dark:bg-white/30 dark:border-input dark:hover:bg-white/50'>
                     <AlignLeftIcon className="stroke-3 text-primary" />
                 </Button>
             </SheetTrigger>
