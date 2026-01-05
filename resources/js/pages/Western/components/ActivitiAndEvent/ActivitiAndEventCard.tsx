@@ -98,8 +98,12 @@ export default function ActivitiAndEventCard({ data }: { data: any[] }) {
                                     </CardHeader>
 
                                     <CardContent className="px-3 pb-4">
-                                        <h3 className="inline-block bg-white p-1.5 text-2xl font-semibold text-primary">{item.name}</h3>
-                                        <p className="mt-1 text-lg">{item.short_description}</p>
+                                        <h3 className="inline-block bg-white p-1.5 text-2xl font-semibold text-primary">
+                                            {currentLocale === 'kh' ? item?.name_kh || item?.name : item?.name}
+                                        </h3>
+                                        <p className="mt-1 text-lg">
+                                            {currentLocale === 'kh' ? item?.short_description_kh || item?.short_description : item?.short_description}
+                                        </p>
 
                                         <div className="mt-16 text-center">
                                             <AlertDialogTrigger asChild>

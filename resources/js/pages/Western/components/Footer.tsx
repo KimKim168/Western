@@ -67,7 +67,7 @@ const Footer = () => {
                             key={item.id}
                             href={item.link || '#'}
                             target="_blank"
-                            className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-white duration-300 hover:scale-110"
+                            className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-white duration-300 hover:scale-125"
                         >
                             <img src={`/assets/images/links/thumb/${item.image}`} alt="icon" className="h-8 w-8 object-contain" />
                         </a>
