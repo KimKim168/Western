@@ -1,3 +1,4 @@
+import NoDataDisplay from '@/components/NoDataDisplay';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import useTranslation from '@/hooks/use-translation';
@@ -10,7 +11,7 @@ const Index = () => {
     const { t, currentLocale } = useTranslation();
     return (
         <WesternLayout2>
-            <div className="section-container ">
+            <div className="section-container">
                 <div className="py-3 md:pt-8">
                     <p className="relative inline-block text-3xl font-bold text-primary after:absolute after:bottom-0 after:left-1/2 after:h-[1.5px] after:w-4/5 after:-translate-x-1/2 md:text-5xl">
                         {currentLocale === 'kh' ? header?.name_kh || header?.name : header?.name}
@@ -19,12 +20,14 @@ const Index = () => {
 
                 <div
                     // className="max-w-2xl md:text-xl"
-                    className="prose max-w-4xl md:text-xl pb-3 md:pb-4 text-black text-justify"
+                    className="prose max-w-4xl pb-3 text-justify text-black md:pb-4 md:text-xl"
                     dangerouslySetInnerHTML={{
                         __html: currentLocale === 'kh' ? header?.long_description_kh || header?.long_description : header?.long_description,
                     }}
                 ></div>
-
+                {/*No data  */}
+                {(!tableData || tableData.length === 0) && <NoDataDisplay />}
+                {/* No data */}
                 <Carousel opts={{ align: 'start' }} className="relative mt-4 w-full">
                     <CarouselContent>
                         {tableData?.map((item) => (
@@ -41,16 +44,22 @@ const Index = () => {
                                         {/* Category */}
                                         {item.category?.name && (
                                             <div className="absolute bottom-3 left-3">
-                                                <span className="bg-primary px-2 py-1 text-lg font-semibold text-white">{item?.category.name}</span>
+                                                <span className="bg-primary px-2 py-1 text-lg font-semibold text-white">
+                                                    {currentLocale === 'kh' ? item?.category.name_kh || item?.category.name : item?.category.name}
+                                                </span>
                                             </div>
                                         )}
                                     </CardHeader>
 
                                     {/* Content */}
                                     <CardContent className="px-3 pb-4">
-                                        <h3 className="inline-block bg-white p-1.5 text-2xl font-semibold text-primary">{item?.title}</h3>
+                                        <h3 className="inline-block bg-white p-1.5 text-2xl font-semibold text-primary">
+                                            {currentLocale === 'kh' ? item?.title_kh || item?.title : item?.title}
+                                        </h3>
 
-                                        <p className="mt-1 text-lg">{item?.short_description}</p>
+                                        <p className="mt-1 line-clamp-3 text-lg">
+                                            {currentLocale === 'kh' ? item?.short_description_kh || item?.short_description : item?.short_description}
+                                        </p>
 
                                         <div className="mt-16">
                                             <ButtonSimple title={t('Read More')} link={`/news_and_blog/${item?.id}`} />

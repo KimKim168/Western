@@ -310,14 +310,14 @@ export default function Create({ editData, readOnly }: { editData?: any; readOnl
                             />
                         </div>
 
-                        <div>
+                        <div className="md:col-span-2">
                             <FormFileUpload key={editData?.logo} id="logo" label="Logo" files={files} setFiles={setFiles} />
                             {editData?.logo && (
                                 <UploadedImage label="Uploaded Logo" images={editData?.logo} basePath="/assets/images/website_infos/" />
                             )}
                         </div>
 
-                        <div>
+                        {/* <div>
                             <FormFileUpload
                                 key={editData?.logo_darkmode}
                                 id="logo_darkmode"
@@ -332,7 +332,7 @@ export default function Create({ editData, readOnly }: { editData?: any; readOnl
                                     basePath="/assets/images/website_infos/"
                                 />
                             )}
-                        </div>
+                        </div> */}
                     </div>
                 )}
 
