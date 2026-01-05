@@ -32,7 +32,15 @@ const NavbarPage = () => {
                 className={`fixed top-0 left-0 z-50 w-full transition-all duration-300 ${isSticky ? 'bg-primary' : 'bg-transparent'} `}
             >
                 {isSticky && (
-                    <div className="pointer-events-none absolute top-0 right-0 -bottom-10 left-0 bg-[url('/assets/background.png')] bg-cover bg-center opacity-10 sm:-bottom-6 md:-bottom-3 md:h-24 lg:-bottom-2 xl:bottom-0 xl:h-36" />
+                    <div
+                        className="
+                            pointer-events-none absolute inset-0
+                            bg-[url('/assets/background2.png')]
+                            sm:bg-[url('/assets/background.png')]
+                            bg-cover bg-center opacity-10
+                            h-24 xl:h-36
+                        "
+                    />
                 )}
 
                 <div className="section-container">
