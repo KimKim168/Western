@@ -159,7 +159,7 @@ export default function ActivitiAndEventCard({ data }: { data: any[] }) {
                                     {currentLocale === 'kh' ? selectedItem?.name_kh || selectedItem?.name : selectedItem?.name}
                                 </h2>
                                 <p
-                                    className="prose mt-4 text-justify text-black md:text-lg"
+                                    className="prose mt-4 text-justify text-black  md:text-lg"
                                     dangerouslySetInnerHTML={{
                                         __html:
                                             currentLocale === 'kh'

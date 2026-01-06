@@ -39,8 +39,8 @@
       >
         <motion.div
           transition={{ duration: 0.3 }}
-          className={`text-base cursor-pointer mx-6 gap-1 font-semibold text-white ${
-            isActive ? "border-b-2" : ""
+          className={`text-base cursor-pointer mx-6 gap-1 font-semibold transition-transform duration-300 text-white ${
+            isActive ? "bg-primary-two px-6 py-1.5" : ""
           } hover:opacity-90 flex gap-0.5 items-center justify-center ${className}`}
         >
           <p>{item}</p>
@@ -88,19 +88,19 @@
     const isActive = url === href;
 
     return (
-      <Link
+      <a
         href={href}
         {...rest}
-        className={`group flex items-center text-sm w-full hover:text-primary hover:text-red-800  border-b-[0.5px] border-primary py-2 text-primary ${
-          isActive ? "text-red-800" : ""
+        className={`group flex items-center text-sm w-full  hover:text-red-800  border-b-[0.5px] border-primary py-2 text-primary ${
+          isActive ? "text-[#CD2531]" : ""
         }`}
       >
         {/* <ChevronRight className={`w-4 h-4 mr-1  ${isActive ? 'w-4 h-4 mr-4':' opacity-0 group-hover:opacity-100 transition-opacity duration-300'}`} /> */}
-        <Dot className={`w-4 h-4 mr-4  ${isActive ? 'w-4 h-4 ':'transition-opacity duration-300'}`}/>
-        <span className="transition-transform -translate-x-4 duration-300 group-hover:translate-x-[10px]">
+        <Dot className={`w-4 h-4 mr-4  ${isActive ? 'w-4 h-4 text-[#CD2531]':'transition-opacity duration-300'}`}/>
+        <span className={`transition-transform -translate-x-4 duration-300 group-hover:translate-x-[10px] ${isActive ? 'text-[#CD2531]':''}`}>
           {children}
         </span>
-      </Link>
+      </a>
     );
   };
 

@@ -12,7 +12,7 @@ const ValuseWisCare = () => {
     const secondRow = valuesWiscare?.children?.slice(3);
 
     const renderItem = ({ name, name_kh, short_description, short_description_kh, icon, isLast }) => (
-        <div key={name} className="relative flex min-h-[225px] flex-col border-[0.5px] border-primary p-7">
+        <div key={name} className="relative flex min-h-[225px] flex-col border-[0.5px] border-primary p-12">
             {/* Title Row */}
             <div className="flex items-end justify-start gap-3">
                 <div className="flex h-14 w-14 shrink-0">
@@ -24,13 +24,13 @@ const ValuseWisCare = () => {
                     <div className="absolute top-1/2 -right-6 z-10 hidden h-12 w-6 -translate-y-1/2 rounded-r-full border-t border-r border-b border-primary bg-white xl:block" />
                 )}
 
-                <h3 className="text-xl font-bold text-primary sm:text-xl md:text-2xl">{currentLocale === 'kh' ? name_kh || name : name}</h3>
+                <h3 className="text-xl font-bold text-primary sm:text-xl md:text-3xl">{currentLocale === 'kh' ? name_kh || name : name}</h3>
             </div>
 
             {/* Description */}
             <p className="mt-3 text-xl text-black">{currentLocale === 'kh' ? short_description_kh || short_description : short_description}</p>
         </div>
-    );
+    );  
 
     return (
         <div className="mt-8 md:mt-12">

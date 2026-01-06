@@ -33,12 +33,14 @@ const Index = () => {
                 /> */}
 
                 <div className="flex flex-col">
-                    <div className="mx-auto my-4 font-bold text-primary text-xl md:text-3xl">
+                    <div className="mx-auto my-4 text-xl font-bold text-primary md:text-3xl">
                         {currentLocale === 'kh' ? timeLine?.name_kh || timeLine?.name : timeLine?.name}
                     </div>
                     <Timeline data={timeLine.children} />
                 </div>
                 <VisionAndMission />
+            </div>
+            <div className='px-8 max-w-[2000px] mx-auto'>
                 <ValuseWisCare />
             </div>
         </WesternLayout2>

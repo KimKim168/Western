@@ -117,7 +117,7 @@ export default function Dashboard() {
             <div className="flex h-full flex-1 flex-col gap-4 overflow-x-auto rounded-xl p-4">
                 <div className="grid auto-rows-min gap-4 md:grid-cols-3">
                     <Link
-                        href={hasLibrary ? `/manage-library-data` : `/register-library`}
+                        href={hasLibrary ? `/manage-library-data` : `/admin/posts`}
                         className="group relative flex aspect-video flex-col items-center justify-center overflow-hidden rounded-xl border border-sidebar-border/70 p-6 text-center transition hover:bg-muted dark:border-sidebar-border"
                     >
                         <PlaceholderPattern className="absolute inset-0 size-full stroke-neutral-900/10 dark:stroke-neutral-100/10" />
@@ -128,9 +128,9 @@ export default function Dashboard() {
                             <PlusCircleIcon className="mb-3 h-12 w-12 text-primary transition group-hover:scale-110" />
                         )}
 
-                        <h3 className="text-lg font-semibold">{hasLibrary ? t('Manage Your Library') : t('Register Your Library')}</h3>
+                        <h3 className="text-lg font-semibold">{hasLibrary ? t('News Add Blogs') : t('News Add Blogs')}</h3>
                         <p className="mt-1 text-sm text-muted-foreground">
-                            {hasLibrary ? t('Update your library information') : t('Add your library to the network')}
+                            {hasLibrary ? t('Update your library information') : t('Add and manage news and blog content')}
                         </p>
                     </Link>
                     <Link
