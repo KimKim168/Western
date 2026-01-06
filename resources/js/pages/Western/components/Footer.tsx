@@ -24,10 +24,10 @@ const Footer = () => {
         <footer className="relative z-0 mt-10 w-full overflow-hidden bg-primary text-white">
             {/* 1. Background Layer */}
             <div
-                className="pointer-events-none w-full absolute inset-0 z-10 opacity-10"
+                className="pointer-events-none w-full absolute inset-0 z-10 opacity-10 bg-contain md:bg-cover"
                 style={{
                     backgroundImage: "url('/assets/footerBackground.png')",
-                    backgroundSize: 'cover', // Shows the full image without cropping
+                    // backgroundSize: 'cover', // Shows the full image without cropping
                     backgroundPosition: 'bottom', // Pins the image to the very bottom
                     backgroundRepeat: 'no-repeat', // Prevents tiling
                 }}
