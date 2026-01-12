@@ -11,12 +11,12 @@ const Index = () => {
 
     return (
         <WesternLayout2>
-            <div className="space-y-10">
+            <div >
                  <div>
                         <HeaderAllPage data={classSchedules} />
 
                         <div className="section-container">
-                            <div className="mt-2 space-y-4">
+                            <div className="mt-2">
                                 {/* Image */}
                                 {/* Long Description HTML */}
                                 <div
@@ -32,13 +32,13 @@ const Index = () => {
                     <div>
                         
 
-                        <div className="section-container">
-                            <div className='py-3 md:pt-8'>
-                    <p className="relative inline-block text-3xl font-bold text-primary after:absolute after:bottom-0 after:left-1/2 after:h-[2px] after:w-4/5 after:-translate-x-1/2 after:translate-y-1 after:rounded-full after:bg-primary after:content-[''] md:text-[55px]">
+                        <div className="section-container mt-4 md:mt-6">
+                            <div >
+                    <p className="relative inline-block text-xl sm:sm:text-3xl font-bold text-primary after:absolute after:bottom-0 after:left-1/2 after:h-[2px] after:w-4/5 after:-translate-x-1/2 after:translate-y-1 after:rounded-full after:bg-primary after:content-[''] md:text-[55px]">
                     {currentLocale == 'kh' ? classSubject?.name_kh || classSubject?.name : classSubject?.name}
                 </p>
                 </div>
-                            <div className="mt-2 space-y-4">
+                            <div className="mt-4 md:mt-8">
                                 {/* Image */}
                                 {classSubject?.images?.length > 3 && <ImageGrid images={classSubject.images} />}
                             </div>

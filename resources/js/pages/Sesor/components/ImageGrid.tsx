@@ -23,7 +23,7 @@ export default function ImageGrid({ images }: ImageGridProps) {
   const sortedImages = images?.slice().sort((a, b) => a.id - b.id);
 
   return (
-    <div className="mt-4 grid md:h-[1900px] grid-cols-4 grid-rows-6 gap-1 md:gap-3">
+    <div className="grid md:h-[1900px] grid-cols-4 grid-rows-6 gap-1 md:gap-3">
       {sortedImages?.map((img, index) => {
         const style = layout[index] || {};
         return (
