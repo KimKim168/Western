@@ -73,7 +73,7 @@ class HandleInertiaRequests extends Middleware
                 ->with('children.children')
                 ->orderBy('order_index')
                 ->get(),
-            'media_links' => Link::whereIn('type_code', ['social-media', 'contact'])->get(),
+            'media_links' => Link::whereIn('type_code', ['social-media', 'contact'])->orderBy('order_index')->get(),
 
             // Buddhist Global Info
             // 'post_categories' => PostCategory::orderBy('order_index')->orderBy('name')->get(),
