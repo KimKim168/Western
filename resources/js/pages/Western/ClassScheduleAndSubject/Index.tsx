@@ -3,7 +3,6 @@ import ImageGrid from '@/pages/Sesor/components/ImageGrid';
 import { usePage } from '@inertiajs/react';
 import HeaderAllPage from '../components/HeaderAllPage';
 import WesternLayout2 from '../WesternLayout2';
-import Heading from '@/components/heading';
 
 const Index = () => {
     const { classSchedules, classSubject } = usePage<any>().props;
@@ -11,39 +10,40 @@ const Index = () => {
 
     return (
         <WesternLayout2>
-            <div >
-                 <div>
-                        <HeaderAllPage data={classSchedules} />
+            <div>
+                <div>
+                    <HeaderAllPage data={classSchedules} />
 
-                        <div className="section-container">
-                            <div className="mt-2">
-                                {/* Image */}
-                                {/* Long Description HTML */}
-                                <div
-                                    className="prose mt-4 max-w-none"
-                                    dangerouslySetInnerHTML={{
-                                        __html: currentLocale == 'kh' ? classSchedules?.long_description_kh || classSchedules?.long_description : classSchedules?.long_description,
-                                    }}
-                                />
-                                {/* {item?.images?.length > 3 && <ImageGrid images={item.images} />} */}
-                            </div>
+                    <div className="section-container">
+                        <div className="mt-2">
+                            {/* Image */}
+                            {/* Long Description HTML */}
+                            <div
+                                className="prose mt-4 max-w-none"
+                                dangerouslySetInnerHTML={{
+                                    __html:
+                                        currentLocale == 'kh'
+                                            ? classSchedules?.long_description_kh || classSchedules?.long_description
+                                            : classSchedules?.long_description,
+                                }}
+                            />
+                            {/* {item?.images?.length > 3 && <ImageGrid images={item.images} />} */}
                         </div>
                     </div>
-                    <div>
-                        
-
-                        <div className="section-container mt-4 md:mt-6">
-                            <div >
-                    <p className="relative inline-block text-xl sm:sm:text-3xl font-bold text-primary after:absolute after:bottom-0 after:left-1/2 after:h-[2px] after:w-4/5 after:-translate-x-1/2 after:translate-y-1 after:rounded-full after:bg-primary after:content-[''] md:text-[55px]">
-                    {currentLocale == 'kh' ? classSubject?.name_kh || classSubject?.name : classSubject?.name}
-                </p>
                 </div>
-                            <div className="mt-4 md:mt-8">
-                                {/* Image */}
-                                {classSubject?.images?.length > 3 && <ImageGrid images={classSubject.images} />}
-                            </div>
+                <div>
+                    <div className="section-container mt-4 md:mt-6">
+                        <div>
+                            <p className="relative inline-block text-xl font-bold text-primary after:absolute after:bottom-0 after:left-1/2 after:h-[2px] after:w-4/5 after:-translate-x-1/2 after:translate-y-1 after:rounded-full after:bg-primary after:content-[''] sm:sm:text-3xl md:text-[55px]">
+                                {currentLocale == 'kh' ? classSubject?.name_kh || classSubject?.name : classSubject?.name}
+                            </p>
+                        </div>
+                        <div className="mt-4 md:mt-8">
+                            {/* Image */}
+                            {classSubject?.images?.length > 3 && <ImageGrid images={classSubject.images} />}
                         </div>
                     </div>
+                </div>
             </div>
 
             {/* <div className="section-container grid h-[1900px] grid-cols-4 grid-rows-6 gap-3">

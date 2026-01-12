@@ -116,14 +116,14 @@ export default function Create({ editData, readOnly }: { editData?: any; readOnl
                             error={errors.name_kh}
                         />
 
-                        <FormFieldTextArea
+                        {/* <FormFieldTextArea
                             id="short_description_kh"
                             name="short_description_kh"
                             label="Short Description Khmer"
                             value={data.short_description_kh}
                             onChange={(val) => setData('short_description_kh', val)}
                             error={errors.short_description_kh}
-                        />
+                        /> */}
                     </div>
                 ) : (
                     <div className="form-field-container">
@@ -148,7 +148,7 @@ export default function Create({ editData, readOnly }: { editData?: any; readOnl
                             containerClassName="col-span-2"
                         />
 
-                        <FormFieldTextArea
+                        {/* <FormFieldTextArea
                             id="short_description"
                             name="short_description"
                             label="Short Description"
@@ -156,7 +156,7 @@ export default function Create({ editData, readOnly }: { editData?: any; readOnl
                             onChange={(val) => setData('short_description', val)}
                             error={errors.short_description}
                             containerClassName="col-span-2"
-                        />
+                        /> */}
                     </div>
                 )}
                 {inputLanguage == 'default' && (
@@ -194,7 +194,7 @@ export default function Create({ editData, readOnly }: { editData?: any; readOnl
                                 description="Lower number has higher priority."
                             />
                         </div>
-                        <div className={cn('form-field-container', !editData?.image && 'md:grid-cols-1')}>
+                        {/* <div className={cn('form-field-container', !editData?.image && 'md:grid-cols-1')}>
                             <FormFileUpload
                                 key={editData?.image}
                                 id="image"
@@ -212,7 +212,7 @@ export default function Create({ editData, readOnly }: { editData?: any; readOnl
                                     basePath="/assets/images/item_categories/thumb/"
                                 />
                             )}
-                        </div>
+                        </div> */}
                     </>
                 )}
 

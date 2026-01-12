@@ -28,8 +28,8 @@ const TableData = () => {
                             <TableHeadWithSort field="name_kh" label="Name Khmer" />
                             <TableHeadWithSort field="order_index" label="Order Index" />
                             <TableHeadWithSort field="parent_id" label="Parent" />
-                            <TableHeadWithSort field="short_description" label="Short Description" />
-                            <TableHeadWithSort field="short_description_kh" label="Short Description Khmer" />
+                            {/* <TableHeadWithSort field="short_description" label="Short Description" />
+                            <TableHeadWithSort field="short_description_kh" label="Short Description Khmer" /> */}
                             <TableHeadWithSort field="created_at" label="Created at" />
                             <TableHeadWithSort field="created_by" label="Created by" />
                             <TableHeadWithSort field="updated_at" label="Updated at" />
@@ -76,8 +76,8 @@ const TableData = () => {
                                 <TableCellText value={item.name_kh} />
                                 <TableCellText value={item.order_index} />
                                 <TableCellBadge variant="accent" value={item.parent?.name} />
-                                <TableCellText value={item.short_description} />
-                                <TableCellText value={item.short_description_kh} />
+                                {/* <TableCellText value={item.short_description} />
+                                <TableCellText value={item.short_description_kh} /> */}
                                 <TableCellDate value={item.created_at} />
                                 <TableCellText value={item.created_user?.name} />
                                 <TableCellDate value={item.updated_at} />
