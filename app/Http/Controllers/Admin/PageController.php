@@ -78,7 +78,7 @@ class PageController extends Controller implements HasMiddleware
 
         $query->orderBy('id', 'desc');
 
-        $query->with('created_user', 'updated_user', 'type','images');
+        $query->with('created_user', 'updated_user', 'type', 'images');
 
 
         $tableData = $query->paginate($perPage)->onEachSide(1);
@@ -164,7 +164,7 @@ class PageController extends Controller implements HasMiddleware
             if ($image_files) {
                 try {
                     foreach ($image_files as $image) {
-                        $created_image_name = ImageHelper::uploadAndResizeImageWebp($image, 'assets/images/pages', 600);
+                        $created_image_name = ImageHelper::uploadAndResizeImageWebp($image, 'assets/images/pages', 600, false);
                         PageImage::create([
                             'image' => $created_image_name,
                             'page_id' => $created_page->id,
@@ -282,7 +282,7 @@ class PageController extends Controller implements HasMiddleware
             if ($image_files) {
                 try {
                     foreach ($image_files as $image) {
-                        $created_image_name = ImageHelper::uploadAndResizeImageWebp($image, 'assets/images/pages', 600);
+                        $created_image_name = ImageHelper::uploadAndResizeImageWebp($image, 'assets/images/pages', 600, false);
                         PageImage::create([
                             'image' => $created_image_name,
                             'page_id' => $page->id,

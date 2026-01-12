@@ -1,36 +1,49 @@
 import useTranslation from '@/hooks/use-translation';
+import ImageGrid from '@/pages/Sesor/components/ImageGrid';
 import { usePage } from '@inertiajs/react';
 import HeaderAllPage from '../components/HeaderAllPage';
 import WesternLayout2 from '../WesternLayout2';
-import ImageGrid from '@/pages/Sesor/components/ImageGrid';
+import Heading from '@/components/heading';
 
 const Index = () => {
-    const { classSchedulesndSubjects } = usePage<any>().props;
+    const { classSchedules, classSubject } = usePage<any>().props;
     const { t, currentLocale } = useTranslation();
 
     return (
         <WesternLayout2>
             <div className="space-y-10">
-                {classSchedulesndSubjects?.children?.map((item: any) => (
-                    <div key={item.id}>
-                        <HeaderAllPage data={item} />
+                 <div>
+                        <HeaderAllPage data={classSchedules} />
 
                         <div className="section-container">
-                            <div key={item.id} className="mt-2 space-y-4">
+                            <div className="mt-2 space-y-4">
                                 {/* Image */}
                                 {/* Long Description HTML */}
                                 <div
                                     className="prose mt-4 max-w-none"
                                     dangerouslySetInnerHTML={{
-                                        __html: currentLocale == 'kh' ? item?.long_description_kh || item?.long_description : item?.long_description,
+                                        __html: currentLocale == 'kh' ? classSchedules?.long_description_kh || classSchedules?.long_description : classSchedules?.long_description,
                                     }}
                                 />
-                                {item?.images?.length > 3 && <ImageGrid images={item.images} />}
-
+                                {/* {item?.images?.length > 3 && <ImageGrid images={item.images} />} */}
                             </div>
                         </div>
                     </div>
-                ))}
+                    <div>
+                        
+
+                        <div className="section-container">
+                            <div className='py-3 md:pt-8'>
+                    <p className="relative inline-block text-3xl font-bold text-primary after:absolute after:bottom-0 after:left-1/2 after:h-[2px] after:w-4/5 after:-translate-x-1/2 after:translate-y-1 after:rounded-full after:bg-primary after:content-[''] md:text-[55px]">
+                    {currentLocale == 'kh' ? classSubject?.name_kh || classSubject?.name : classSubject?.name}
+                </p>
+                </div>
+                            <div className="mt-2 space-y-4">
+                                {/* Image */}
+                                {classSubject?.images?.length > 3 && <ImageGrid images={classSubject.images} />}
+                            </div>
+                        </div>
+                    </div>
             </div>
 
             {/* <div className="section-container grid h-[1900px] grid-cols-4 grid-rows-6 gap-3">

@@ -145,19 +145,35 @@ class WesternFrontPageController extends Controller
     }
     public function class_schedules_and_subjects()
     {
-        $classSchedulesndSubjects = Page::where('code', 'class-schedule-and-subjects')
-            ->with('images')
-            ->with([
-                'children' => function ($q) {
-                    $q->orderBy('order_index');
-                },
-                'children.images'
-            ])
+        // $classSchedulesndSubjects = Page::where('code', 'class-schedule-and-subjects')
+        //     ->with(['images' => function ($query) {
+        //         $query->orderBy('image', 'asc'); // or 'desc' for descending
+        //     }])
+        //     ->with([
+        //         'children' => function ($q) {
+        //             $q->orderBy('order_index');
+        //         },
+        //         'children.images'
+        //     ])
+        //     ->orderBy('order_index')
+        //     ->first();
+        $classSchedules = Page::where('code', 'class-schedules')
+            ->with(['images' => function ($query) {
+                $query->orderBy('image', 'asc'); // or 'desc' for descending
+            }])
             ->orderBy('order_index')
             ->first();
-        // return ($classSchedulesndSubjects);
+        $classSubject = Page::where('code', 'class-subjects')
+            ->with(['images' => function ($query) {
+                $query->orderBy('image', 'asc'); // or 'desc' for descending
+            }])
+            ->orderBy('order_index')
+            ->first();
+
+        // return ($classSubject);
         return Inertia::render('Western/ClassScheduleAndSubject/Index', [
-            'classSchedulesndSubjects' => $classSchedulesndSubjects,
+            'classSchedules' => $classSchedules,
+            'classSubject' => $classSubject,
         ]);
     }
     public function student_services()
