@@ -34,10 +34,10 @@ Switch.displayName = SwitchPrimitives.Root.displayName;
 export default function SwitchDarkMode({ className = '' }: { className?: string }) {
     const { appearance, updateAppearance } = useAppearance();
 
-    const isDark = appearance === 'dark';
+    const isDark = 'light';
 
     const handleToggle = (checked: boolean) => {
-        updateAppearance(checked ? 'dark' : 'light');
+        updateAppearance(checked ? 'light' : 'light');
     };
 
     return (

@@ -12,13 +12,13 @@ type Props = {
 
 export const SwitchDarkModeSmoothAnimated = ({ className }: Props) => {
     const { appearance, updateAppearance } = useAppearance();
-    const isDark = appearance === 'dark';
+    const isDark = 'light';
     const buttonRef = useRef<HTMLButtonElement>(null);
 
     const toggleTheme = useCallback(async () => {
         if (!buttonRef.current) return;
 
-        const newTheme = isDark ? 'light' : 'dark';
+        const newTheme = isDark ? 'light' : 'light';
 
         await document.startViewTransition(() => {
             flushSync(() => {

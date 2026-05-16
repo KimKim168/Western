@@ -6,10 +6,10 @@ const SwitchDarkMode3D = () => {
     
     
     const { appearance, updateAppearance } = useAppearance();
-    const isDark = appearance === 'dark';
+    const isDark = appearance === 'light';
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        updateAppearance(e.target.checked ? 'dark' : 'light');
+        updateAppearance(e.target.checked ? 'light' : 'light');
     };
 
     return (
