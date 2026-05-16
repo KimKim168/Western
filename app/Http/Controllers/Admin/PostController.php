@@ -268,7 +268,7 @@ class PostController extends Controller implements HasMiddleware
             'long_description_kh' => 'nullable|string',
             'external_link' => 'nullable|string',
             'thumbnail' => 'nullable|mimes:jpeg,png,jpg,gif,webp,svg|max:4096',
-            'images.*' => 'nullable|mimes:jpeg,png,jpg,gif,webp,svg|max:4096',
+            'images.*' => 'nullable|mimes:jpeg,png,jpg,gif,webp,svg|max:10240',
         ]);
 
         if (trim($validated['long_description']) === '<p>&nbsp;</p>') {
