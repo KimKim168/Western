@@ -111,7 +111,7 @@
 }
 
 /* Switch dark mode */
-/* @custom-variant dark (&:is(.dark *)); */
+@custom-variant dark (&:is(.darkk *));
 
 @theme {
     --font-sans:
